@@ -1947,19 +1947,48 @@ Analyze the user's writing samples across these 7 categories. For each feature, 
 
 ---
 
-## Signature Passage Extraction
+## Signature Passage Extraction (Style-Extreme Selection)
 
-After analyzing the 42 features, extract 5-10 passages from the user's writing samples that BEST represent their distinctive voice.
+**The v3.1 change:** v3 selected passages that "best represent" the writer's voice — which in practice meant choosing representative, average-voice passages. v3.1 selects for stylistic outlierness. The passages chosen are the ones where this writer's voice is MOST different from generic Israeli Hebrew. Research basis: EMNLP 2025 showed that content-similar exemplars reduce style imitation accuracy; style-extreme exemplars increase it.
 
-**Selection criteria (in order of priority):**
+### Style-extreme selection criteria (ranked)
 
-1. **Voice-dense passages** — Sentences that contain multiple characteristic features at once (their typical slang + their sentence rhythm + their humor style in one passage)
-2. **Pattern-breaking moments** — Passages where the writer does something AI would never do: a self-correction, a tangent, a fragment after a long sentence, an abrupt opinion
-3. **Emotionally loaded passages** — Where the writer shows their emotional temperature most clearly
-4. **Distinctive openings** — How they start paragraphs or sections (their natural opener style)
-5. **Hebrew-specific markers** — Passages with their characteristic use of דווקא, construct state, discourse markers, cultural references
+1. **Maximum Key Tell concentration** — Passages that demonstrate 2+ Key Tells at once. A single passage showing both "never uses formal connectors" and "ends abruptly without conclusion" is worth more than two passages each showing one tell.
 
-**Passage format:** Each passage is 15-40 words, extracted verbatim from the user's samples with a one-line label describing what it demonstrates.
+2. **Most different from baseline** — For each candidate passage, compare to generic Israeli Hebrew. The passages where the writer's choices diverge most from baseline get priority. "Most them" = "most different from average."
+
+3. **Outlier emotional moments** — Passages where the writer's emotional temperature spikes (excitement, frustration, confession). These reveal the writer's voice under load, which is when implicit patterns are most visible.
+
+4. **Pattern-breaking choices** — Passages with a sudden register shift, a mid-sentence correction, an abrupt fragment, a parenthetical that goes somewhere unexpected. These show the writer doing what AI cannot.
+
+5. **Self-reference passages** — Passages where the writer refers to themselves, their experience, or their doubt. These carry vulnerability signals that anchor "who is this person."
+
+### Passage format
+
+Each passage is 15-40 words, extracted verbatim. Each passage gets three labels:
+
+```
+### SP1: [rhythm label] + [content label] + [Key Tell demonstrated]
+> "[verbatim passage]"
+— demonstrates: [what this shows about the writer's voice, specifically]
+— enforces: [Key Tell number(s) this passage anchors]
+```
+
+### Selection quantity
+
+- Basic tier (200-500 words sample): 3-5 passages
+- Strong tier (500-1500 words): 5-7 passages
+- Full Clone (1500+): 7-10 passages
+- Maximum (multi-file): 10-15 passages
+
+Beyond 10 passages, returns diminish. EMNLP 2025 data confirms: 5 well-selected passages beat 20 averagely-selected ones.
+
+### What NOT to select
+
+- Passages that are average in voice (they teach the model nothing specific)
+- Passages that are topically similar to what the user will be writing about (they become content references, not style references)
+- Passages where the writer is quoting someone else or being intentionally formal
+- Passages that any competent Hebrew writer could have written (not distinctive)
 
 **Example stored passages:**
 ```
