@@ -2101,6 +2101,19 @@ After reading the user's samples, ask: "For each of the 42 features, how differe
 
 **KT5:** This writer ends pieces without a conclusion — just stops. Baseline: ~30% of pieces have explicit conclusions. Writer: 0 of 8 samples. Enforce: Do not write a conclusion paragraph. End on the last substantive point.
 
+### Fallback when fewer than 3 Key Tells emerge
+
+If the sample doesn't show clear deviation on at least 3 features from baseline, do NOT fabricate Key Tells to fill slots. This happens with:
+- Basic tier samples (200-500 words) of bland/neutral writing
+- Writers whose voice is genuinely close to Israeli Hebrew baseline
+- Samples from a single content type where the writer plays it safe
+
+Protocol when fewer than 3 emerge:
+1. Record only the real Key Tells found (can be 1 or 2 — don't hallucinate more)
+2. Add a note to the profile's "Generation Notes" section: "Key Tell coverage is thin (only N found in baseline sample). Calibration strongly recommended for better voice match."
+3. Prompt user more aggressively to run `/hebrew-writer --calibrate` or provide more samples via `--setup-deep`
+4. Weight Signature Passages more heavily during generation to compensate
+
 ### Where Key Tells live in the profile
 
 Key Tells get their own section at the TOP of the voice profile file, before the 42-feature table. They are the first thing read during generation, and the last thing checked in self-audit.
