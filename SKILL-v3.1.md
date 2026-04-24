@@ -2049,6 +2049,20 @@ User said "version A was missing the self-correction moments I always have." New
 **Type 5 — Rewrite a signature passage:**
 If user identifies a signature passage as unrepresentative, mark it for removal or ask for a replacement excerpt.
 
+### Cross-round contradiction handling
+
+When feedback in Round N contradicts an update from Round M (M < N):
+- Do NOT silently overwrite the earlier update
+- Flag the contradiction in the profile's "Generation Notes" section:
+  ```
+  Cross-round conflict: Round [M] updated [what] based on feedback [X]. Round [N] feedback [Y] contradicts this.
+  ```
+- Before applying Round N's update, ask the user:
+  > "בסבב [M] אמרת [X] וזה עדכן את [Z]. עכשיו אתה אומר [Y] שמרמז על דבר הפוך. איזו העדפה חזקה יותר בשבילך?"
+- Apply whichever the user confirms. Don't silently pick one.
+
+This prevents calibration from oscillating and keeps the user in control of their own voice profile.
+
 ### The Key Generation Note
 
 During calibration, be honest about what you're doing. Show the user:
