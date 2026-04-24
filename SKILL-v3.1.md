@@ -2259,60 +2259,60 @@ Beyond 10 passages, returns diminish. EMNLP 2025 data confirms: 5 well-selected 
 
 ---
 
-## Smart Fusion Engine
+## Smart Fusion Engine (v3.1)
 
-When generating with a loaded voice profile, these rules determine what controls what.
+When generating with a loaded voice profile, these priority rules determine what controls what. v3.1 reorders priorities to put Key Tells at the top, above the 42-feature table.
 
-### User's Voice OVERRIDES (style layer)
+### Priority Order (v3.1)
 
-The user's measured patterns replace the skill's defaults:
+**Priority 1 — Key Tells (NEW top priority):** The 3-5 outlier behaviors are enforced absolutely. If a generation choice conflicts with a Key Tell, the Key Tell wins. No exceptions.
 
-| Dimension | Skill default | User override |
-|-----------|--------------|---------------|
-| Sentence length avg | 10-12 words | User's actual avg (e.g., 7.3) |
-| Fragment frequency | ~25% | User's actual % (e.g., 31%) |
-| Slang selection | Full menu | Only slang user actually uses |
-| Discourse markers | נו, בעצם, כאילו | User's ranked list + frequency |
-| English ratio | 5-8% | User's actual ratio |
-| Opinion strength | Bold (dugri) | User's measured boldness |
-| Humor style | Sarcastic + self-deprecating | User's actual humor type |
-| Opener patterns | Varied checklist | User's natural openers |
-| Paragraph length | Varied | User's actual pattern |
-| Emotional temperature | Warm | User's measured temperature |
-| Construct/של ratio | 30/70 | User's actual ratio |
-| Intensifier choice | ממש | User's preferred intensifier |
+**Priority 2 — Differential Features (from negative sample or calibration):** Enforced with near-equal weight to Key Tells.
 
-### Skill ALWAYS Enforces (safety net)
+**Priority 3 — Signature Passages (style-extreme selection):** Used as active few-shot anchors. Before generating each section, mentally reference the passages. Ask: "Could this paragraph fit naturally among the signature passages?"
 
-These rules apply regardless of the user's style:
+**Priority 4 — Behavioral Profile (from --setup-deep, if present):** Self-reported preferences override sample-measured features where they conflict.
 
-- AI vocabulary blacklist — 16 words never used, even if user uses them in samples
-- Em dash ban — always enforced
-- Big No-Nos — no macro copy, no slide structure, no LinkedIn punchlines, no disconnected temperature
-- Anti-detection minimums — burstiness floor, perplexity injection (20-30%), n-gram breaking
-- Minimum discourse marker frequency — even if user uses few, ensure at least 1-2% in casual text
-- No 3+ consecutive same-length sentences — always enforced
-- Self-audit scoring — 95/100 threshold applies to all output
+**Priority 5 — 42-Feature measurements:** Used for baseline constraints — sentence length target, formality level, slang density. These now function as a supporting scaffold, not the primary instruction.
 
-### Soul Layer ALWAYS Adds (depth layer)
+**Priority 6 — Safety net (skill rules):** AI vocabulary blacklist, em dash ban, Big No-Nos, anti-detection minimums. These ALWAYS apply regardless of voice profile.
 
-These techniques are active regardless of voice profile:
+**Priority 7 — Soul Layer requirements:** Proper noun density, דווקא usage, memory drops, stakes. These ALWAYS add on top.
 
-- Proper noun density — minimum 1 per 200 words
-- At least one דווקא or dugri opener
-- At least one memory/anecdote grounding
-- At least one visible thinking moment (pivot, self-correction)
-- At least one stake/vulnerability declaration
-- Strategic imperfection — gender stumble, spelling variation
+### Conflict Resolution (updated for v3.1)
 
-### Conflict Resolution
+**When user's voice conflicts with skill safety rules:**
+- Safety always wins. Even if the user's samples show "מהווה" usage, we ban it.
 
-When user's style and skill rules point in different directions:
+**When Key Tells conflict with 42-feature averages:**
+- Key Tells always win. If Key Tell says "never uses formal connectors" but the 42-feature table shows "0.3% formal connectors detected," the Key Tell rule (zero) overrides the measured average.
 
-1. **Safety net always wins over user style.** If the user naturally writes "מהווה" frequently, we still ban it. If they use em dashes, we still ban them.
-2. **User style always wins over skill defaults.** If the user writes at 7 words/sentence, we don't force 10-12. If they never use יאללה, we don't inject it.
-3. **Soul layer adds on top.** Never removes from user's style. If user already uses דווקא naturally, we don't double it. If they don't, we add one.
-4. **Signature passages are the final arbiter.** When in doubt about how the user would phrase something, consult the stored passages. They are ground truth.
+**When calibration feedback conflicts with original profile:**
+- Calibration always wins. Feedback is newer evidence and comes directly from the user's explicit preference.
+
+**When Signature Passages suggest something different from features:**
+- Passages win for rhythm, tone, and emotional temperature. Features win for frequency counts and averages.
+
+**When Behavioral Profile (Q&A) conflicts with sample measurements:**
+- Trust samples for measurable frequencies. Trust Q&A for conscious preferences and identity markers (like "my writing sounds like X").
+
+### Active Few-Shot Anchoring (v3.1 enhancement)
+
+Before generating each paragraph, do this mentally:
+
+1. Read the top 3 Signature Passages
+2. Identify the rhythm pattern, emotional temperature, and word choices
+3. Ask: "What would this writer do with this next paragraph?"
+4. Generate, matching the rhythm first, content second
+5. After each paragraph, check: "Does this fit in a collection with the signature passages? If I showed this paragraph alongside SP1 and SP2, would they feel like the same person?"
+
+If the answer is no, revise. This "signature passage fit check" is the v3.1 equivalent of pattern matching against the writer's actual voice.
+
+### When NO profile is loaded
+
+If no voice profile is loaded (first-time user, --voice not specified, no default profile):
+- Use default Israeli casual voice (Layers 1-5)
+- At end of output, append ONE line (once per session): "💡 רוצה שזה ישמע יותר כמוך? הרץ: /hebrew-writer --setup"
 
 ---
 
