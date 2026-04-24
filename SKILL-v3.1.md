@@ -1780,29 +1780,69 @@ When the skill generates content and NO default voice profile exists at `.claude
 
 ---
 
-## The --setup Onboarding Flow
+## The --setup Basic Onboarding Flow
 
 When user runs `/hebrew-writer --setup`:
 
-**Step 1:** Ask using AskUserQuestion:
+**Step 1 — Positive sample:** Ask using AskUserQuestion:
 > "הדבק 2-3 טקסטים שכתבת (פוסטים, אימיילים, מאמרים, הודעות — כל דבר שנשמע כמוך). מינימום 500 מילים סה״כ. יותר = יותר מדויק."
 
-**Step 2:** After receiving samples, ask:
+**Step 2 — Negative sample (NEW in v3.1):** Ask:
+> "(אופציונלי) יש לך דוגמה של כתיבה שלך שהרגישה לא ממך — שטוחה, פורמלית מדי, או סתם לא מרגישה כמוך? הדבק פה. דלג עם 'דלג'."
+
+**Why this question matters:** Research (RG-Contrastive 2025) shows that contrastive examples — knowing what's wrong — extracts implicit preferences better than positive examples alone. If the user provides a negative sample, we learn what voice this writer is NOT.
+
+**Step 3 — Gender:** Ask:
 > "מה המגדר שלך לנטיית פעלים? (male / female / neutral)"
 
-**Step 3:** Ask:
+**Step 4 — Primary content type:** Ask:
 > "איזה סוג תוכן אתה בעיקר כותב? (blog / social / business / mixed)"
 
-**Step 4:** Run the 42-Feature Extraction on the samples (see below).
+**Step 5 — Analysis:**
+- Run the 42-Feature Extraction on the positive samples
+- Extract the Key Tells (top 3-5 most outlier behaviors)
+- Select Signature Passages using style-extreme criteria (3-7 passages depending on sample size)
+- If negative sample was provided: run Contrastive Analysis (see below) and add Differential Features section to profile
 
-**Step 5:** Extract 5-10 Signature Passages from the samples (see below).
+**Step 6 — Save:** Write everything to `.claude/voices/default.hebrew-voice.md`. Create the directory if needed. Use the v3.1 profile structure (Key Tells at top, then 42 features, then passages, then differentials).
 
-**Step 6:** Save everything as `.claude/voices/default.hebrew-voice.md`. Create the directory if needed.
-
-**Step 7:** Confirm:
+**Step 7 — Confirm:**
 > "פרופיל הקול שלך נשמר! מעכשיו כל מה שאכתוב ישמע כמוך.
 > Accuracy tier: [tier] ([word count] words analyzed)
+> Key Tells found: [N]
+> Signature passages: [N]
+> [If negative sample provided:] Differential features extracted: [N]
+>
+> רוצה לשפר את ההתאמה? הרץ /hebrew-writer --calibrate כדי שאייצר דוגמאות ותגיד לי אילו הכי נשמעות כמוך.
 > לשינוי: /hebrew-writer --setup"
+
+## Contrastive Analysis (from negative sample)
+
+When a negative sample is provided, run this analysis:
+
+**Step A:** For each of the 42 features, measure the feature value in BOTH the positive and negative samples.
+
+**Step B:** Identify features where positive and negative differ most — these are "Differential Features" — the things that are present in the writer's real voice but missing from their "wrong" voice.
+
+**Step C:** Record 3-5 Differential Features in the profile with this format:
+```
+### DF1: [feature name]
+- Positive sample: [value]
+- Negative sample: [value]
+- Delta: [what makes the positive "more them"]
+- Enforcement: [how to apply in generation]
+```
+
+**Example:**
+```
+### DF1: Self-correction frequency
+- Positive sample: 3 self-corrections per 500 words
+- Negative sample: 0 self-corrections
+- Delta: When this writer sounds like themselves, they correct themselves mid-thought. The flat version skips this.
+- Enforcement: Insert at least 1 visible self-correction per piece of 300+ words. "רגע" / "בעצם" / "לא, זה לא מדויק".
+```
+
+Differential Features get enforced with the same priority as Key Tells.
 
 ---
 
