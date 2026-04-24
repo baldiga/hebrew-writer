@@ -1842,7 +1842,7 @@ When a negative sample is provided, run this analysis:
 - Enforcement: Insert at least 1 visible self-correction per piece of 300+ words. "רגע" / "בעצם" / "לא, זה לא מדויק".
 ```
 
-Differential Features get enforced with the same priority as Key Tells.
+Differential Features get enforced at Priority 2, directly below Key Tells (see Smart Fusion Engine section).
 
 ---
 

@@ -125,7 +125,7 @@ Self-reported preferences from the 10-question voice interview. Complements samp
 ## Fusion Rules (Generation-time priority order)
 
 1. Key Tells (absolute)
-2. Differential Features (absolute)
+2. Differential Features (near-absolute — Priority 2, directly below KT)
 3. Signature Passages (active few-shot anchors)
 4. Behavioral Profile (preference overrides)
 5. 42-Feature measurements (baseline scaffold)
