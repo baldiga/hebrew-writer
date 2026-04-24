@@ -3192,7 +3192,14 @@ Apply all layers:
 Score mentally against all 9 dimensions. Identify weak spots. Rewrite those sections. Run quick-check checklist. Emergency rebuild if needed.
 
 **Step 8: Voice adjustments** (Layer 7, if profile loaded)
-Apply the internal voice model: sentence length preferences, discourse marker patterns, characteristic vocabulary, opinion expression style, paragraph opening habits.
+Apply the Smart Fusion Engine priority order:
+1. First, read and internalize Key Tells (absolute rules)
+2. Then Differential Features (if present)
+3. Then read the top 3 Signature Passages — mentally feel their rhythm and voice
+4. Apply Behavioral Profile preferences (if --setup-deep was run)
+5. Calibrate frequencies to 42-Feature measurements as supporting scaffold
+6. Generate, constantly checking: "Does this fit alongside the Signature Passages?"
+7. If any generated paragraph feels off from the Key Tells or Passages, revise immediately
 
 **Step 8.5: Soul Layer activation** (Layer 8)
 Run the Soul Layer Activation Protocol. Verify all 20 technique slots against the activation table. At minimum: proper noun density, position declaration, one strong negative, one davka move or dugri opener, one memory drop or stake declaration, one moment of visible thinking. If any minimum is missing, insert it now — not by adding a separate section, but by revising the existing text to carry the soul technique naturally.
