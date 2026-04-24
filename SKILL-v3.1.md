@@ -560,7 +560,7 @@ For each pattern: trigger words in Hebrew, what's happening, the fix, before/aft
 *(Studies show that adequate sleep is essential for cognitive function, and experts recommend seven to nine hours of sleep per night.)*
 
 **After (human):**
-> קראתי פעם שמה שמפריד בין אנשים שמתפקדים על פחות שינה לבין כאלה שלא — זה לא הגנטיקה, זה שהאחד מסרב להודות שהוא עייף. ממש לא יודע אם זה נכון, אבל מסתדר עם מה שאני רואה.
+> קראתי פעם שמה שמפריד בין אנשים שמתפקדים על פחות שינה לבין כאלה שלא: זה לא הגנטיקה, זה שהאחד מסרב להודות שהוא עייף. ממש לא יודע אם זה נכון, אבל מסתדר עם מה שאני רואה.
 
 *(I once read that what separates people who function on less sleep from those who don't — it's not genetics, it's that one of them refuses to admit they're tired. I really don't know if that's true, but it fits what I see.)*
 
@@ -713,7 +713,7 @@ Long → Short → Medium → Very Short → Long → Medium → Medium → Shor
 **Variation in clause structure:**
 - Simple: ירדתי לים.
 - Compound: ירדתי לים, אבל המים היו קרים מדי.
-- Complex: כשירדתי לים ברגל — והמים הגיעו לברכיים — הבנתי שזה לא היה רעיון טוב.
+- Complex: כשירדתי לים ברגל, והמים הגיעו לברכיים, הבנתי שזה לא היה רעיון טוב.
 - Fragment: לא נורא.
 - Question: מי הולך לים בינואר?
 
@@ -810,7 +810,7 @@ Human: "אז כדי להבין מה זה אומר, צריך לראות את המ
 **Hebrew example:**
 
 AI: "יש דעות שונות לגבי השיטה הזו. מחד, ישנם יתרונות ברורים. מאידך, ישנן גם ביקורות מוצדקות."
-Human: "השיטה הזו עובדת. לא בשביל כולם, ולא בכל מצב — אבל אם אתה בתחום X, היא עובדת. מי שאומר אחרת לא ניסה אותה ברצינות."
+Human: "השיטה הזו עובדת. לא בשביל כולם, ולא בכל מצב, אבל אם אתה בתחום X, היא עובדת. מי שאומר אחרת לא ניסה אותה ברצינות."
 
 ---
 
@@ -1253,7 +1253,7 @@ This is different from AI hedging. AI hedges because it won't commit. A human ex
 
 This is distinctly human: a strong opening claim, then pulling back slightly, then forward again.
 
-"השיטה הזו מעולה — לא, רגע, זה לא מדויק. היא עובדת במצבים מסוימים. אבל כשהיא עובדת, היא ממש עובדת."
+"השיטה הזו מעולה. לא, רגע, זה לא מדויק. היא עובדת במצבים מסוימים. אבל כשהיא עובדת, היא ממש עובדת."
 
 Notice the self-correction. AI never corrects itself mid-paragraph. Humans do.
 
@@ -1265,7 +1265,7 @@ A writer who's tired writes differently than a writer who's excited. Let mood bl
 "ביטוח לאומי. שוב. שלוש שעות. ובסוף אמרו לי שהגעתי ביום הלא נכון. ביום הלא נכון."
 
 **Excited writing:**
-"הפרויקט הזה — אני לא יודע איך להסביר את זה — פשוט עובד בדרכים שלא ציפינו, ובכל פעם שאנחנו חושבים שמצאנו את הגבול שלו, מסתבר שאין גבול."
+"הפרויקט הזה, אני לא יודע איך להסביר את זה, פשוט עובד בדרכים שלא ציפינו, ובכל פעם שאנחנו חושבים שמצאנו את הגבול שלו, מסתבר שאין גבול."
 
 ### Before/After: Soulless vs. Alive
 
@@ -1275,7 +1275,7 @@ A writer who's tired writes differently than a writer who's excited. Let mood bl
 *(This technology offers innovative solutions to complex challenges. There are many advantages to adopting it, including improved efficiency and advanced capabilities. It is important to carefully examine the data before making a decision.)*
 
 **Alive (human):**
-> הטכנולוגיה הזו — תכל'ס — שינתה לי את הדרך שבה אני עובד. לא בגלל שהיא "חדשנית" (כל אחד טוען שהוא חדשני), אלא כי בפועל חסכתי שעה וחצי ביום. שעה וחצי. זה לא מעט. יש לה בעיות — אני לא אדון עיוור — אבל היחס עלות-תועלת? ברור לי.
+> הטכנולוגיה הזו, תכל'ס, שינתה לי את הדרך שבה אני עובד. לא בגלל שהיא "חדשנית" (כל אחד טוען שהוא חדשני), אלא כי בפועל חסכתי שעה וחצי ביום. שעה וחצי. זה לא מעט. יש לה בעיות, אני לא אדון עיוור, אבל היחס עלות-תועלת? ברור לי.
 
 *(This technology — tachles — changed the way I work. Not because it's "innovative" (everyone claims they're innovative), but because in practice I saved an hour and a half a day. An hour and a half. That's not nothing. It has problems — I'm not a blind follower — but the cost-benefit ratio? I'm clear on it.)*
 
