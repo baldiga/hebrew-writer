@@ -1754,16 +1754,18 @@ Keep the score honest. A score of 96 and a score of 91 both have meaning — inf
 
 ---
 
-# LAYER 7: Voice Matching & Fusion Engine (v3 Enhanced)
+# LAYER 7: Voice Matching & Fusion Engine (v3.1)
 
 ## Overview
 
-v3 replaces the basic 10-feature voice profiler with a 42-feature stylometric engine backed by signature passage anchoring. The core insight from EMNLP 2025 research ("Catch Me If You Can?"): giving LLMs statistical style summaries doesn't work well. What works is real examples from the target author combined with measured constraints.
+v3.1 rebuilds voice matching based on EMNLP 2025 research showing that feature tables systematically underperform iterative refinement and outlier-focused signals. The v3.1 voice system has six mechanisms:
 
-The v3 voice system has three components:
-1. **42-Feature Extraction** — measures the user's writing across 7 categories
-2. **Signature Passages** — stores 5-10 real excerpts as few-shot style anchors
-3. **Smart Fusion** — clear rules for what the user controls vs. what the skill enforces
+1. **Key Tells Extraction** — 3-5 outlier behaviors that form the writer's fingerprint (Priority 1)
+2. **Style-extreme Signature Passages** — 5-10 real excerpts chosen for stylistic outlierness
+3. **--setup Basic Onboarding** — with negative sample for contrastive analysis
+4. **--setup-deep Voice Interview** — 10 behavioral questions surfacing implicit preferences
+5. **--calibrate Iterative Refinement** — PROSE-style loop with user feedback
+6. **Smart Fusion Engine** — 7-level priority order with active few-shot anchoring
 
 ---
 
