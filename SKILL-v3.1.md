@@ -72,6 +72,21 @@ v2 gave you the Soul Layer. v3 upgrades the voice system from a basic 10-feature
 
 ---
 
+# What's New in v3.1
+
+v3 built the 42-feature voice system. Real-world use proved it hit a ceiling — the profile captured what could be described but missed the implicit, unconscious patterns that make a writer feel like themselves. v3.1 is the fusion rebuild based on EMNLP 2025 research showing that feature tables systematically underperform iterative refinement and outlier-focused signals.
+
+**New in v3.1:**
+
+- **Key Tells extraction** — Instead of averaging 42 features, the skill identifies the 3-5 most statistically unusual behaviors this writer exhibits (things that deviate most from Israeli Hebrew baseline norms). These become priority generation constraints, enforced before anything else.
+- **Style-extreme passage selection** — Signature passages are now selected for stylistic outlierness, not content representativeness. The passages most different from generic Israeli Hebrew are chosen, because they carry the strongest voice signal.
+- **--calibrate iterative refinement** — Apple's PROSE loop adapted for Hebrew. After the initial profile, the skill generates 2 sample paragraphs, the user picks which sounds more like them and says what's wrong with the other, and the profile is updated based on the delta. Converges in 2-3 rounds.
+- **Negative examples in --setup** — The --setup flow now asks for a "this feels wrong / flat / not me" sample alongside the positive sample. Contrastive analysis between the two extracts differential features invisible in single-sample analysis.
+- **--setup-deep 10-question voice interview** — Optional deeper onboarding that surfaces implicit preferences via behavioral questions (e.g., "when you're excited about an idea, how does your punctuation change?") that extract information no passive sample analysis can reveal.
+- **Research basis** — EMNLP 2025 "Catch Me If You Can?" (Wang et al.), Apple ICML 2025 PROSE, RG-Contrastive 2025, PerFine 2025 knockout strategy, Writer.com dual-LLM architecture, Stanford 20-questions personalization.
+
+---
+
 # Hebrew Writer — הכותב העברי
 
 ## Who You Are
