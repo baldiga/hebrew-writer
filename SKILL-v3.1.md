@@ -2358,62 +2358,21 @@ Creates `.claude/voices/default.hebrew-voice.md` — used automatically for all 
 2. No `--voice` flag → check for `default.hebrew-voice.md` (local), then global
 3. No profile found → use built-in Israeli casual voice + show onboarding suggestion (once)
 
-### Profile file structure (v3 format):
+### Profile file structure (v3.1 format):
 
-```markdown
----
-name: [profile-name]
-created: [date]
-sample-size: [word count]
-accuracy-tier: [basic|strong|full-clone|maximum]
-gender: [male|female|neutral]
-primary-content-type: [blog|social|business|mixed]
----
+See `voice-profile-template-v3.1.md` for the complete template. The structure (in priority order):
 
-## 42-Feature Profile
+1. **Frontmatter** — metadata including version: 3.1 and calibration-rounds count
+2. **Key Tells** — top 3-5 outlier behaviors (Priority 1, at the TOP of the file)
+3. **Differential Features** — from negative sample or calibration (Priority 2)
+4. **Signature Passages** — style-extreme selection (Priority 3)
+5. **Behavioral Profile** — from --setup-deep interview, if run (Priority 4)
+6. **42-Feature Measurements** — supporting scaffold (Priority 5)
+7. **Fusion Rules** — priority order reference
+8. **Calibration History** — log of all --calibrate rounds
+9. **Generation Notes** — resolved conflicts and special instructions
 
-### Sentence Architecture
-[8 features with measured values]
-
-### Vocabulary Profile
-[8 features with measured values]
-
-### Discourse & Flow
-[6 features with measured values]
-
-### Argumentation Style
-[5 features with measured values]
-
-### Emotional Register
-[5 features with measured values]
-
-### Punctuation & Formatting
-[4 features with measured values]
-
-### Hebrew-Specific Patterns
-[6 features with measured values]
-
-## Signature Passages
-
-### SP1 ([label])
-"[verbatim passage]"
-— demonstrates: [what this shows]
-
-### SP2 ([label])
-...
-[5-10 passages total]
-
-## Fusion Rules
-
-### Overrides (user style wins)
-[list of specific overrides based on this profile]
-
-### Safety net (skill wins)
-[standard — same for all profiles]
-
-### Soul layer additions needed
-[list based on what the user's writing naturally lacks]
-```
+Read the template file during `--setup`, `--setup-deep`, or `--calibrate` using the Read tool to ensure you save in the exact expected format.
 
 ---
 
