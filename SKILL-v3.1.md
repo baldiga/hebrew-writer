@@ -1806,6 +1806,55 @@ When user runs `/hebrew-writer --setup`:
 
 ---
 
+## Key Tells — The 3-5 Outlier Behaviors
+
+Before extracting 42 features, the skill identifies the **Key Tells**: the 3-5 behaviors that deviate MOST from Israeli Hebrew baseline norms. These are the fingerprint — the things a reader would use to pick this writer's text out of a lineup.
+
+### Why Key Tells come first
+
+Research on authorship attribution (CMU 2024, EMNLP 2025) consistently shows that style signal is concentrated in outlier behaviors, not averages. A writer who uses 11-word sentences on average has a weak signal. A writer who never uses formal connectors (לפיכך, על כן) — that absence is a strong signal. A writer who opens every argument with a question they immediately dismiss — that pattern is a fingerprint.
+
+The 42-feature table describes. The Key Tells constrain. During generation, Key Tells get priority enforcement — they are non-negotiable.
+
+### Baseline reference points (Israeli Hebrew norms from ivrit.ai + HeBERT data)
+
+When analyzing a sample, compare these metrics to baseline:
+
+| Feature | Israeli Hebrew baseline | "Deviates" means |
+|---------|-------------------------|------------------|
+| Avg sentence length | 8-13 words (8.9 written, 13.2 spoken) | <6 or >18 |
+| נו usage | 3.77% of tokens in casual | 0% (never) or >6% (heavy) |
+| אז as opener | ~4.5% of segment openers | 0% or >12% |
+| Ellipsis (...) | 21-41% of chunks | <5% or >60% |
+| English code-switching | 5-10% of segments | 0% or >20% |
+| Discourse markers total | 4-7% of tokens | <2% or >12% |
+| Formal connectors (לפיכך etc.) | ~1% in casual | 0% or >3% |
+| Construct state ratio | 30-50% in mixed | <15% or >70% |
+| Self-correction frequency | ~10% of segments | 0% or >25% |
+| Questions per 500 words | 0.5-2 | 0 or >5 |
+
+### Key Tells extraction protocol
+
+After reading the user's samples, ask: "For each of the 42 features, how different is this writer from baseline?" Rank features by deviation magnitude. Select the top 3-5 MOST deviating features. For each, write a specific Key Tell statement.
+
+**Key Tell statement format:** `[Specific behavior]. [Baseline comparison]. [How to enforce in generation].`
+
+**Example Key Tells:**
+
+**KT1:** This writer NEVER uses formal connectors (לפיכך, על כן, אי לכך, בשל כך). Baseline: ~1% casual. Writer: 0/47 occurrences. Enforce: Replace all formal connector suggestions with אז, כי, or bare sentence break.
+
+**KT2:** This writer uses ellipsis (...) at 3x baseline — every 80-100 words. Baseline: every 300-400 words. Enforce: Insert at least 2 "..." per 200 words, specifically at trailing thoughts or implied continuations.
+
+**KT3:** This writer opens arguments with a question she immediately dismisses. Pattern: "[Question]? [Dismissal]." appears 5 times in the sample. Enforce: Use this pattern at least once per piece over 300 words.
+
+**KT4:** This writer never uses "חשוב" (important) — instead uses "שווה" (worth it) or just states the claim. 0 occurrences of חשוב in the sample. Enforce: Blacklist חשוב for this voice; substitute שווה or direct assertion.
+
+**KT5:** This writer ends pieces without a conclusion — just stops. Baseline: ~30% of pieces have explicit conclusions. Writer: 0 of 8 samples. Enforce: Do not write a conclusion paragraph. End on the last substantive point.
+
+### Where Key Tells live in the profile
+
+Key Tells get their own section at the TOP of the voice profile file, before the 42-feature table. They are the first thing read during generation, and the last thing checked in self-audit.
+
 ## 42-Feature Voice Extraction
 
 Analyze the user's writing samples across these 7 categories. For each feature, record a concrete measurement or description.
