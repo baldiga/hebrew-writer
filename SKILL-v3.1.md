@@ -1846,6 +1846,103 @@ Differential Features get enforced with the same priority as Key Tells.
 
 ---
 
+## The --setup-deep Flow — 10-Question Voice Interview
+
+For users who want maximum fidelity. Takes 5-10 minutes. Surfaces information that passive sample analysis can't extract.
+
+Research basis: Stanford's 20-Questions personalization (2024) showed that targeted behavioral questions capture preference data far more effectively than self-description. Users cannot describe their own writing style abstractly but can accurately answer behavioral questions.
+
+### The 10 questions
+
+When user runs `/hebrew-writer --setup-deep`, ask each question in sequence using AskUserQuestion. After all 10, run the standard sample collection (steps 1-5 from Basic Onboarding) and synthesize both sources into the profile.
+
+**Q1 — Peak voice anchor:**
+> "הראה לי את הדבר האהוב עליך שכתבת — משפט או פסקה שהרגיש לך הכי 'אתה'. (Paste here)"
+
+**Q2 — Negative anchor:**
+> "הראה לי משהו שכתבת שהרגיש לא נכון / פורמלי מדי / שטוח. (Paste here, or type 'דלג')"
+
+**Q3 — Arousal punctuation:**
+> "כשאתה מתלהב מרעיון — איך משתנה הפיסוק שלך? (more exclamations? more dashes? fragments? longer sentences? other?)"
+
+**Q4 — Argument direction:**
+> "אתה נוטה להתחיל עם המסקנה ולהסביר אחריה, או לבנות אליה בהדרגה? (conclusion-first / build-up / story-first / question-first)"
+
+**Q5 — Disagreement handling:**
+> "כשאתה לא מסכים עם משהו — אתה מתמודד חזיתית, הולך סביב, או פשוט אומר את דעתך בלי להתייחס לצד השני? (head-on / sideways / bypass)"
+
+**Q6 — Discourse marker preference:**
+> "מאלה, איזה אתה הכי משתמש: אז / אבל / בעצם / נו / כאילו / תכל'ס? בחר את 3 הראשונים בסדר שימוש."
+
+**Q7 — Ending style:**
+> "איך אתה מסיים כתיבה? (explicit conclusion / call to action / reflective thought / just stop / question)"
+
+**Q8 — Parenthetical habit:**
+> "כמה אתה משתמש בסוגריים או מקפים להוספת הערות בצד? (never / rare / moderate / heavy — part of my rhythm)"
+
+**Q9 — Uncertainty handling:**
+> "כשאתה לא בטוח במשהו — אתה אומר שאתה לא בטוח, או פשוט מצהיר ועובר הלאה? (I hedge openly / I state it and move / mix)"
+
+**Q10 — External reference:**
+> "יש מישהו שאמרו לך שהכתיבה שלך נשמעת כמוהו? (specific person, TV character, podcast host, author, 'כמו אני מדבר עם חברים', etc. — free text)"
+
+### Synthesizing the answers into the profile
+
+After Q1-Q10 + the standard sample collection, combine both sources:
+
+1. **Build the 42-feature table** from the samples (as in Basic Onboarding)
+2. **Extract Key Tells** from the samples
+3. **Select style-extreme passages** from the samples
+4. **ADD: Behavioral Profile section** — synthesize the 10 Q&A responses into a behavioral narrative:
+
+```
+## Behavioral Profile (from --setup-deep interview)
+
+### Peak voice
+Writer's self-identified "most them" moment: [quote from Q1]
+This is the target voice — everything should feel like it could be from this peak.
+
+### Anti-voice (what they're fleeing from)
+[From Q2, if provided]
+Writer's self-identified "not me" zone. Avoid these patterns.
+
+### Arousal rhythm
+When emotionally engaged, this writer's style shifts: [from Q3]
+Enforcement: [specific adjustments in emotionally-loaded content]
+
+### Argument architecture
+Default direction: [from Q4]
+Enforcement: When writing an opinion piece or argument, structure accordingly.
+
+### Disagreement pattern
+[From Q5]
+Enforcement: When content involves disagreement/opposing view, use this exact pattern.
+
+### Preferred discourse markers (behavioral, not measured)
+Top 3: [from Q6, in order]
+Enforcement: These take priority over whatever the sample analysis found. Self-report is valid here.
+
+### Ending behavior
+[From Q7]
+Enforcement: Match this ending style explicitly.
+
+### Parenthetical/aside density
+Self-reported level: [from Q8]
+Enforcement: Calibrate aside frequency to match.
+
+### Uncertainty expression
+[From Q9]
+Enforcement: Hedge or commit based on this preference.
+
+### Voice reference
+[From Q10]
+Use this as an external anchor when generating. Ask: "Would this sound like [reference]?"
+```
+
+5. **Resolve conflicts between sources:** When the sample analysis and the interview answers disagree (e.g., sample shows 15% ellipsis, user says "I never use ellipsis"), trust the sample for frequency and the interview for conscious preferences. Note conflicts in the profile's "Generation Notes" section.
+
+---
+
 ## Key Tells — The 3-5 Outlier Behaviors
 
 Before extracting 42 features, the skill identifies the **Key Tells**: the 3-5 behaviors that deviate MOST from Israeli Hebrew baseline norms. These are the fingerprint — the things a reader would use to pick this writer's text out of a lineup.
