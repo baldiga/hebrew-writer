@@ -127,7 +127,9 @@ Parse `$ARGUMENTS` before doing anything else.
 --learn "[text or path]"             Requires --save-as
 --save-as [profile-name]             Requires --learn
 --show-score                         Default: off (flag, no value)
---setup                              Triggers onboarding flow (no value)
+--setup                              Triggers basic onboarding flow (no value)
+--setup-deep                         Triggers deep onboarding with 10-question interview (no value)
+--calibrate                          Triggers iterative profile refinement (requires existing profile, no value)
 ```
 
 **Text extraction:** Everything that is not a recognized flag or its value is the main input text/topic. Strip flags, keep content.
