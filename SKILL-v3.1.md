@@ -1943,6 +1943,119 @@ Use this as an external anchor when generating. Ask: "Would this sound like [ref
 
 ---
 
+## The --calibrate Loop — Iterative Profile Refinement
+
+The most important new mechanism in v3.1. Research basis: Apple ICML 2025 PROSE (33% improvement over static profiles), PerFine 2025 knockout strategy, Self-Refine NeurIPS.
+
+**Core insight:** No matter how well the profile is extracted from samples, it will have gaps. The writer's implicit preferences only become visible when they see what the model produces WITHOUT knowing those preferences. The calibration loop closes the gap by generating samples, getting corrective feedback, and updating the profile — running 2-3 rounds until the profile converges.
+
+### When to run --calibrate
+
+After `--setup` or `--setup-deep`, suggest:
+> "רוצה לשפר את ההתאמה? הרץ /hebrew-writer --calibrate"
+
+Users can also run it manually at any time to refine an existing profile.
+
+### The loop
+
+When user runs `/hebrew-writer --calibrate`:
+
+**Round 1 — Prime the loop**
+
+**Step 1.1:** Verify a default profile exists. If not:
+> "אין פרופיל קול. הרץ /hebrew-writer --setup קודם."
+
+**Step 1.2:** Pick a calibration topic. Use a neutral topic the user hasn't written about, appropriate to their primary content type. Examples by content type:
+- Blog: "למה סטארטאפים נכשלים ברגע שהם מגיעים לשלב ההסקיילאפ"
+- Social: "מה שלמדתי אתמול ממישהו ברכבת"
+- Business: "עדכון לצוות על שינוי בתכנון הרבעוני"
+- Email: "מייל תגובה ללקוח שמתלונן על עיכוב"
+
+**Step 1.3:** Generate TWO different versions of a short piece (200-400 words each) on the topic. Both use the current voice profile, but each emphasizes DIFFERENT aspects of the profile:
+- Version A: Emphasizes Key Tells and the most distinctive signature passages
+- Version B: Emphasizes the 42-feature averages and the more representative passages
+
+Present both labeled simply as "גרסה א" and "גרסה ב".
+
+**Step 1.4:** Ask using AskUserQuestion:
+> "איזו גרסה נשמעת יותר כמוך? (א / ב / שתיהן דומות / אף אחת לא מתאימה)"
+
+**Step 1.5:** Follow-up based on answer:
+
+If user picks A or B:
+> "מה בגרסה השנייה הרגיש לא ממך? (1-2 משפטים מספיקים)"
+
+If user says "שתיהן דומות":
+> "אז מה חסר בשתיהן? מה היית מוסיף או משנה כדי שזה ירגיש יותר ממך?"
+
+If user says "אף אחת לא מתאימה":
+> "ספר לי מה בדיוק לא מתאים. אפשר להצביע על משפטים ספציפיים: 'הקטע X לא נשמע כמוני כי Y'."
+
+**Step 1.6:** Update the profile based on the feedback:
+- If user picked a version: The winning version becomes the "ground truth." Update Key Tells to strengthen what it does well. Add new Key Tells for what the losing version did wrong (the user's description becomes the enforcement rule).
+- If both were similar: The feedback ("what's missing") becomes a new Key Tell or Differential Feature.
+- If neither worked: The feedback becomes priority-level corrections that override existing profile components.
+
+**Step 1.7:** Save the updated profile. Log the calibration round in the profile's "Calibration History" section:
+```
+### Calibration Round 1 ([date])
+- Topic: [topic]
+- User preference: [A/B/both similar/neither]
+- User feedback: [quote of their correction]
+- Profile changes: [list of what was updated]
+```
+
+**Round 2 — Verify and refine**
+
+**Step 2.1:** Generate TWO new versions on a DIFFERENT topic, now using the updated profile.
+
+**Step 2.2:** Repeat Steps 1.4-1.7.
+
+**Round 3 — Final validation (optional)**
+
+**Step 3.1:** Generate ONE version on a third topic.
+
+**Step 3.2:** Ask:
+> "זה נשמע כמוך? (כן, מושלם / כן, בעיקר / משהו קטן חסר / עדיין לא)"
+
+**Step 3.3:**
+- "כן, מושלם" → Profile locked. Exit loop.
+- "כן, בעיקר" → Ask what's missing. Update profile. Exit loop.
+- "משהו קטן חסר" → Ask what. Update. Offer round 4.
+- "עדיין לא" → Offer to run `/hebrew-writer --setup-deep` for the 10-question interview, or restart setup with fresh samples.
+
+### Maximum 4 rounds
+
+If the loop hits 4 rounds without the user saying "כן, מושלם" or "כן, בעיקר", something is fundamentally off — suggest re-running `--setup` with different samples, or trying `--setup-deep`.
+
+### How the profile updates work
+
+Each round's feedback generates ONE of these update types:
+
+**Type 1 — Strengthen existing Key Tell:**
+User said "גרסה א is more me — גרסה ב sounds too polished." The profile's "avoids polishing" Key Tell gets a stronger enforcement rule and moves to position #1.
+
+**Type 2 — Add new Key Tell:**
+User said "version B felt off because it used long sentences — I write short." New Key Tell: "Hard cap on sentence length — max 15 words in 90% of sentences."
+
+**Type 3 — Remove/weaken a Key Tell:**
+User said "both had too many 'נו' — I use it rarely." The existing "heavy נו usage" Key Tell gets demoted or removed.
+
+**Type 4 — Add a Differential Feature:**
+User said "version A was missing the self-correction moments I always have." New DF: "Self-correction required every 200 words minimum."
+
+**Type 5 — Rewrite a signature passage:**
+If user identifies a signature passage as unrepresentative, mark it for removal or ask for a replacement excerpt.
+
+### The Key Generation Note
+
+During calibration, be honest about what you're doing. Show the user:
+> "בסבב הזה שיניתי את הפרופיל שלך: [list of changes]. נראה לך הגיוני?"
+
+If the user disagrees with an update, don't apply it. Calibration should feel collaborative, not automated.
+
+---
+
 ## Key Tells — The 3-5 Outlier Behaviors
 
 Before extracting 42 features, the skill identifies the **Key Tells**: the 3-5 behaviors that deviate MOST from Israeli Hebrew baseline norms. These are the fingerprint — the things a reader would use to pick this writer's text out of a lineup.
