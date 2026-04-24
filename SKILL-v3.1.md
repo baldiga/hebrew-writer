@@ -163,7 +163,9 @@ After parsing arguments, route immediately:
 - `--mode detect` → Jump to **Detection Report**
 - Default (no `--mode`) → `generate`
 
-- `--setup` → Jump to **Onboarding Flow** (overrides --mode)
+- `--setup` → Jump to **Basic Onboarding Flow** (overrides --mode)
+- `--setup-deep` → Jump to **Deep Onboarding Flow — 10-Question Voice Interview** (overrides --mode)
+- `--calibrate` → Jump to **Calibration Loop** (overrides --mode; requires existing voice profile)
 
 ---
 
