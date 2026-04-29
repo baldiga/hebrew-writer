@@ -69,8 +69,12 @@ The structural argument arc of the whole piece. One of:
 | `4Ps` | Problem → Promise → Proof → Proposal | Skeptical audiences, evidence-heavy content |
 | `AIDA` | Attention → Interest → Desire → Action | Classic persuasion arc |
 | `QuestionCascade` | Opens with unanswered questions, builds toward resolution | Thought leadership |
+| `Narrative` | Situation → Complication → Resolution | Informational/editorial; no persuasion agenda, event-driven |
+| `Explainer` | Context → Mechanism → Implication | How-to, educational, academic; explains a system or concept |
 
 **Israeli note:** PSB and HSO are the most culturally native schemas for Israeli readers — Israeli discourse is narrative-first. Pure AIDA (claim-first) reads as American copywriting. BAB is natural in Israeli startup culture.
+
+**Informational note:** `Narrative` and `Explainer` are the correct schemas when the piece is not trying to persuade — product updates, market recaps, educational explainers, academic writing. Forcing a persuasion schema onto informational content is its own AI tell.
 
 ### Dimension 2 — Opener Shape
 
@@ -82,7 +86,9 @@ How the first paragraph begins. One of:
 | `in-medias-res` | Mid-thought reaction; reader walks in on the writer already processing something |
 | `provocative` | A claim most readers would instinctively resist |
 | `evidence-first` | A surprising data point or external fact that reframes scale |
-| `contextual` | Slow burn; sets situation before making a claim |
+| `contextual` | Slow burn; sets situation before making a claim — **last resort only** (see below) |
+
+**`contextual` is the LLM's natural default** — setting context before saying anything is what models gravitate toward without instruction. It is valid (some content genuinely needs context-setting), but should only appear in the fingerprint if no other opener has been used in the last 5 pieces, OR if the content type is academic or explainer (where slow-burn is structurally appropriate). Never select `contextual` as a tie-breaker — always pick another option first.
 
 ### Dimension 3 — Body Rhythm
 
@@ -140,11 +146,13 @@ Before assigning fingerprint values, assess three signals:
 | Context combination | Schema | Opener | Rhythm | Vocab | Closing |
 |--------------------|--------|--------|--------|-------|---------|
 | Emotional/personal + social/blog, any length | HSO or PSB | intimate or in-medias-res | staccato or alternating | street or hybrid | open or abrupt |
-| Analytical/data + blog/business, medium/long | 4Ps or AIDA | evidence-first or contextual | flowing or alternating | elevated-casual or technical-light | earned-insight |
+| Analytical/data + blog/business, medium/long | 4Ps or AIDA | evidence-first or in-medias-res | flowing or alternating | elevated-casual or technical-light | earned-insight |
 | Controversial opinion + any type, any length | PAS or QuestionCascade | provocative or in-medias-res | alternating or mosaic | hybrid | abrupt or challenge |
-| Transformation/case study + blog/business | BAB | intimate or contextual | flowing or spiral | elevated-casual | reflective or earned-insight |
+| Transformation/case study + blog/business | BAB | intimate or in-medias-res | flowing or spiral | elevated-casual | reflective or earned-insight |
 | Thought leadership + long | QuestionCascade | provocative or evidence-first | mosaic or spiral | elevated-casual or hybrid | open or reflective |
 | Short pieces (any context) | PAS or HSO | intimate or provocative | staccato | street or elevated-casual | abrupt or open |
+| Informational/recap + blog/business/email | Narrative | in-medias-res or evidence-first | flowing or alternating | elevated-casual or technical-light | reflective or earned-insight |
+| Educational/how-to/academic | Explainer | evidence-first or contextual | flowing or mosaic | elevated-casual or technical-light | earned-insight or open |
 
 **Tie-breaking rule:** When the mapping offers two options, session memory decides — whichever was used less recently wins.
 
@@ -178,9 +186,31 @@ If no profile is active: `.claude/voices/default/variation-log.json`
 | Vocab | No more than 2 of last 5 share the same register |
 | Closing | Not the same as any of last 3 pieces |
 
+**First-run fallback:** If the log file does not exist (first use or after `--fresh`), treat all dimensions as equally available. Select purely based on context mapping. After generation completes, create the log file and write the first fingerprint entry.
+
 **Conflict resolution:** If context mapping and memory constraints conflict, memory wins — use the next-best option from the same mapping category.
 
 **`--fresh` flag:** Clears the variation log entirely. Use when starting a new content project where variety relative to prior pieces doesn't matter.
+
+---
+
+## Schema-Opener Compatibility
+
+Not all schema-opener combinations work. When memory tie-breaking or fallback would produce an incompatible pair, move to the next compatible option.
+
+| Schema | Compatible openers | Incompatible openers |
+|--------|-------------------|---------------------|
+| `PAS` | provocative, in-medias-res, evidence-first | intimate, contextual |
+| `PSB` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `HSO` | intimate, in-medias-res, provocative | evidence-first, contextual |
+| `BAB` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `4Ps` | evidence-first, provocative | intimate, in-medias-res, contextual |
+| `AIDA` | provocative, evidence-first, in-medias-res | intimate, contextual |
+| `QuestionCascade` | provocative, in-medias-res, evidence-first | intimate, contextual |
+| `Narrative` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `Explainer` | evidence-first, contextual | intimate, provocative, in-medias-res |
+
+**Rule:** After the fingerprint is computed, check this table. If the Schema-Opener pair is incompatible, replace the opener with the first compatible alternative not used in the last 3 pieces.
 
 ---
 
