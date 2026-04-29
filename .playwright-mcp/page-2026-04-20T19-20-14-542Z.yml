@@ -1,0 +1,373 @@
+- generic [ref=e2]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - link "Hugging Face's logo Hugging Face" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - img "Hugging Face's logo" [ref=e8]
+          - generic [ref=e9]: Hugging Face
+        - generic [ref=e10]:
+          - textbox "Search models, datasets, users..." [ref=e11]
+          - img [ref=e12]
+      - navigation "Main" [ref=e14]:
+        - list [ref=e15]:
+          - listitem [ref=e16]:
+            - link "Models" [ref=e17] [cursor=pointer]:
+              - /url: /models
+              - img [ref=e18]
+              - text: Models
+          - listitem [ref=e22]:
+            - link "Datasets" [ref=e23] [cursor=pointer]:
+              - /url: /datasets
+              - img [ref=e24]
+              - text: Datasets
+          - listitem [ref=e29]:
+            - link "Spaces" [ref=e30] [cursor=pointer]:
+              - /url: /spaces
+              - img [ref=e31]
+              - text: Spaces
+          - listitem [ref=e35]:
+            - link "Docs" [ref=e36] [cursor=pointer]:
+              - /url: /docs
+              - img [ref=e37]
+              - text: Docs
+          - listitem [ref=e41]:
+            - link "Pricing" [ref=e42] [cursor=pointer]:
+              - /url: /pricing
+          - listitem [ref=e43]:
+            - button [ref=e45] [cursor=pointer]:
+              - img [ref=e46]
+          - listitem [ref=e51]:
+            - separator [ref=e52]
+          - listitem [ref=e53]:
+            - link "Log In" [ref=e54] [cursor=pointer]:
+              - /url: /login
+          - listitem [ref=e55]:
+            - link "Sign Up" [ref=e56] [cursor=pointer]:
+              - /url: /join
+  - main [ref=e57]:
+    - generic [ref=e60]:
+      - 'heading "Datasets: guymorlan / IsraParlTweet like 2" [level=1] [ref=e61]':
+        - link "Datasets:" [ref=e62] [cursor=pointer]:
+          - /url: /datasets
+          - img [ref=e63]
+          - generic [ref=e68]: "Datasets:"
+        - generic [ref=e69]:
+          - link [ref=e73] [cursor=pointer]:
+            - /url: /guymorlan
+          - link "guymorlan" [ref=e77] [cursor=pointer]:
+            - /url: /guymorlan
+          - generic [ref=e78]: /
+        - generic [ref=e79]:
+          - link "IsraParlTweet" [ref=e80] [cursor=pointer]:
+            - /url: /datasets/guymorlan/IsraParlTweet
+          - button "Copy dataset name to clipboard" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+        - generic [ref=e86]:
+          - button "like" [ref=e87] [cursor=pointer]:
+            - img [ref=e88]
+            - generic [ref=e90]: like
+          - button "2" [ref=e91] [cursor=pointer]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic [ref=e94]: "Languages:"
+          - link "Hebrew" [ref=e95] [cursor=pointer]:
+            - /url: /datasets?language=language%3Ahe
+            - generic [ref=e96]:
+              - img [ref=e97]
+              - generic [ref=e99]: Hebrew
+        - generic [ref=e100]:
+          - generic [ref=e101]: "Tags:"
+          - link "hebrew" [ref=e102] [cursor=pointer]:
+            - /url: /datasets?other=hebrew
+            - generic [ref=e104]: hebrew
+          - link "parliament" [ref=e105] [cursor=pointer]:
+            - /url: /datasets?other=parliament
+            - generic [ref=e107]: parliament
+          - link "knesset" [ref=e108] [cursor=pointer]:
+            - /url: /datasets?other=knesset
+            - generic [ref=e110]: knesset
+          - link "twitter" [ref=e111] [cursor=pointer]:
+            - /url: /datasets?other=twitter
+            - generic [ref=e113]: twitter
+        - generic [ref=e114]:
+          - generic [ref=e115]: "License:"
+          - button "cc-by-4.0" [ref=e117] [cursor=pointer]:
+            - generic [ref=e119]:
+              - img [ref=e120]
+              - generic [ref=e122]: cc-by-4.0
+      - generic [ref=e125]:
+        - link "Dataset card" [ref=e126] [cursor=pointer]:
+          - /url: /datasets/guymorlan/IsraParlTweet
+          - img [ref=e127]
+          - text: Dataset card
+        - link "Files xet" [ref=e131] [cursor=pointer]:
+          - /url: /datasets/guymorlan/IsraParlTweet/tree/main
+          - img [ref=e132]
+          - generic [ref=e135]: Files
+          - generic [ref=e138]:
+            - img [ref=e139]
+            - generic [ref=e142]: xet
+        - link "Community" [ref=e143] [cursor=pointer]:
+          - /url: /datasets/guymorlan/IsraParlTweet/discussions
+          - img [ref=e144]
+          - text: Community
+    - generic [ref=e147]:
+      - generic [ref=e148]:
+        - generic [ref=e150]: The Dataset Viewer has been disabled on this dataset.
+        - button [ref=e156] [cursor=pointer]:
+          - img [ref=e157]
+        - generic [ref=e160]:
+          - paragraph [ref=e161]:
+            - link "Paper" [ref=e162] [cursor=pointer]:
+              - /url: https://aclanthology.org/2024.lrec-main.819.pdf
+              - img "Paper" [ref=e163]
+            - link "Conference" [ref=e164] [cursor=pointer]:
+              - /url: https://lrec-coling-2024.org/
+              - img "Conference" [ref=e165]
+            - link "Version" [ref=e166] [cursor=pointer]:
+              - /url: "#"
+              - img "Version" [ref=e167]
+          - 'heading "IsraParlTweet: The Israeli Parliamentary and Twitter Resource" [level=1] [ref=e168]':
+            - link [ref=e169] [cursor=pointer]:
+              - /url: "#israparltweet-the-israeli-parliamentary-and-twitter-resource"
+              - img [ref=e171]
+            - generic [ref=e173]: "IsraParlTweet: The Israeli Parliamentary and Twitter Resource"
+          - paragraph [ref=e174]:
+            - text: Guy Mor-Lan, Effi Levi, Tamir Sheafer, Shaul R. Shenhav.
+            - emphasis [ref=e175]: LREC-COLING 2024
+            - text: .
+          - paragraph [ref=e176]:
+            - strong [ref=e177]: Paper
+            - text: ":"
+            - link "https://aclanthology.org/2024.lrec-main.819/" [ref=e178] [cursor=pointer]:
+              - /url: https://aclanthology.org/2024.lrec-main.819/
+          - paragraph [ref=e179]:
+            - strong [ref=e180]: Dataset
+            - text: ":"
+            - link "https://huggingface.co/datasets/guymorlan/IsraParlTweet/tree/main" [ref=e181] [cursor=pointer]:
+              - /url: https://huggingface.co/datasets/guymorlan/IsraParlTweet/tree/main
+          - paragraph [ref=e182]:
+            - text: For access to Twitter data, please contact authors at
+            - emphasis [ref=e183]: guy.mor -AT- mail.huji.ac.il
+          - paragraph [ref=e184]: "Note: v1.1 removes duplicate speeches from different versions of the original protocol files."
+          - heading "Abstract" [level=2] [ref=e185]:
+            - link [ref=e186] [cursor=pointer]:
+              - /url: "#abstract"
+              - img [ref=e188]
+            - generic [ref=e190]: Abstract
+          - paragraph [ref=e191]: We introduce IsraParlTweet, a new linked corpus of Hebrew-language parliamentary discussions from the Knesset (Israeli Parliament) between the years 1992-2023 and Twitter posts made by Members of the Knesset between the years 2008-2023, containing a total of 294.5 million Hebrew tokens. In addition to raw text, the corpus contains comprehensive metadata on speakers and Knesset sessions as well as several linguistic annotations. As a result, IsraParlTweet can be used to conduct a wide variety of quantitative and qualitative analyses and provide valuable insights into political discourse in Israel.
+          - heading "Dataset Description" [level=1] [ref=e192]:
+            - link [ref=e193] [cursor=pointer]:
+              - /url: "#dataset-description"
+              - img [ref=e195]
+            - generic [ref=e197]: Dataset Description
+          - paragraph [ref=e198]: "The corpus is divided into four main sections: Knesset Sessions, Twitter Posts, Office Sessions, and Linguistic Analyses."
+          - heading "Knesset Sessions - knesset_speeches.csv" [level=2] [ref=e199]:
+            - link [ref=e200] [cursor=pointer]:
+              - /url: "#knesset-sessions---knesset_speechescsv"
+              - img [ref=e202]
+            - generic [ref=e204]: Knesset Sessions - knesset_speeches.csv
+          - paragraph [ref=e205]: "This section contains the utterances of the MKs on the Knesset floor, in the order in which they appeared in the consecutive plenary protocol files. The utterances vary in length and may contain anything from a few words to a complete speech. Interruptions and interjections are preserved as they appear in the protocols. In total, this section contains approximately 4.5M individual utterances. The data is organized in CSV format, where each row represents a single utterance and contains the following fields:"
+          - list [ref=e206]:
+            - listitem [ref=e207]:
+              - strong [ref=e208]: text
+              - text: ": The text of the utterance."
+            - listitem [ref=e209]:
+              - strong [ref=e210]: uuid
+              - text: ": A unique text identifier used for associating the text with separately provided morphological analysis."
+            - listitem [ref=e211]:
+              - strong [ref=e212]: knesset
+              - text: ": Knesset term."
+            - listitem [ref=e213]:
+              - strong [ref=e214]: session_number
+              - text: ": Session number in current Knesset term."
+            - listitem [ref=e215]:
+              - strong [ref=e216]: date
+              - text: ": Date of session."
+            - listitem [ref=e217]:
+              - strong [ref=e218]: person_id
+              - text: ": Numeric identifier for speaker. Numeric identifiers are only assigned to MKs. 3% of speakers lack an identifier in cases of non-MK politicians (e.g. president, non-MK ministers), administrative Knesset workers, or guests, or if the matching MK could not be determined. Speakers are assigned an identifier if they were MKs in the time period of the corpus, even if they are not MKs at the time the utterance is made (e.g. presidents that were previously MKs)."
+            - listitem [ref=e219]:
+              - strong [ref=e220]: canonical_name
+              - text: ": The canonical name (first name and surname) of the speaker. Only present for MKs for which an identifier can be determined."
+            - listitem [ref=e221]:
+              - strong [ref=e222]: name
+              - text: ": The name of the speaker as extracted from the protocol."
+            - listitem [ref=e223]:
+              - strong [ref=e224]: chair
+              - text: ": Indicator for whether or not the speaker was the chair of the session."
+            - listitem [ref=e225]:
+              - strong [ref=e226]: topic
+              - text: ": Topic of discussion or agenda item."
+            - listitem [ref=e227]:
+              - strong [ref=e228]: topic_extra
+              - text: ": Additional information on the topic (e.g. subtitle, legislation proposal number)."
+            - listitem [ref=e229]:
+              - strong [ref=e230]: qa
+              - text: ": Indicator for whether or not the utterance is part of a Questions and Answers session."
+            - listitem [ref=e231]:
+              - strong [ref=e232]: query
+              - text: ": The written query to which the utterance is an oral response."
+            - listitem [ref=e233]:
+              - strong [ref=e234]: only_read
+              - text: ": Indicator for whether or not the utterance was a Q&A response that was read and not delivered by the answerer orally."
+          - heading "Twitter Posts - contact authors for access" [level=2] [ref=e235]:
+            - link [ref=e236] [cursor=pointer]:
+              - /url: "#twitter-posts---contact-authors-for-access"
+              - img [ref=e238]
+            - generic [ref=e240]: Twitter Posts - contact authors for access
+          - list [ref=e241]:
+            - listitem [ref=e242]:
+              - strong [ref=e243]: text
+              - text: ": The text of the tweet."
+            - listitem [ref=e244]:
+              - strong [ref=e245]: uuid
+              - text: ": A unique text identifier used for associating the text with separately provided morphological analysis."
+            - listitem [ref=e246]:
+              - strong [ref=e247]: tweet_id
+              - text: ": Twitter's unique tweet identifier."
+            - listitem [ref=e248]:
+              - strong [ref=e249]: date
+              - text: ": Date of the tweet."
+            - listitem [ref=e250]:
+              - strong [ref=e251]: knesset
+              - text: ": The Knesset term corresponding to the date of the tweet."
+            - listitem [ref=e252]:
+              - strong [ref=e253]: person_id
+              - text: ": Numeric identifier for the tweet poster. All rows have an identifier since only posts by MKs were collected. However, note that the poster was not necessarily serving as an MK at the time of posting."
+            - listitem [ref=e254]:
+              - strong [ref=e255]: user_id
+              - text: ": Twitter user ID number."
+            - listitem [ref=e256]:
+              - strong [ref=e257]: username
+              - text: ": Twitter handle name."
+            - listitem [ref=e258]:
+              - strong [ref=e259]: name
+              - text: ": The canonical name (first name + surname) of the poster."
+            - listitem [ref=e260]:
+              - strong [ref=e261]: likes
+              - text: ": Number of likes received at collection time."
+            - listitem [ref=e262]:
+              - strong [ref=e263]: retweets
+              - text: ": Number of retweets at collection time."
+            - listitem [ref=e264]:
+              - strong [ref=e265]: replies
+              - text: ": Number of replies at collection time."
+            - listitem [ref=e266]:
+              - strong [ref=e267]: quotes
+              - text: ": Number of quotes at collection time."
+          - heading "Office Sessions - metadata.csv" [level=2] [ref=e268]:
+            - link [ref=e269] [cursor=pointer]:
+              - /url: "#office-sessions---metadatacsv"
+              - img [ref=e271]
+            - generic [ref=e273]: Office Sessions - metadata.csv
+          - paragraph [ref=e274]: "This section contains metadata describing the office sessions of the MKs. An office session is a period of time in which a person served as an MK under a given party or faction. The data is organized in CSV format, where each row, representing a single office session, contains the following fields:"
+          - list [ref=e275]:
+            - listitem [ref=e276]:
+              - strong [ref=e277]: start_date
+              - text: ": Start date of office session."
+            - listitem [ref=e278]:
+              - strong [ref=e279]: end_date
+              - text: ": End date of office session."
+            - listitem [ref=e280]:
+              - strong [ref=e281]: knesset
+              - text: ": Relevant Knesset term."
+            - listitem [ref=e282]:
+              - strong [ref=e283]: person_id
+              - text: ": A unique personal id used for matching with Knesset Session utterances and Twitter Posts."
+            - listitem [ref=e284]:
+              - strong [ref=e285]: first_name
+              - text: ": MK's first name."
+            - listitem [ref=e286]:
+              - strong [ref=e287]: surname
+              - text: ": MK's surname."
+            - listitem [ref=e288]:
+              - strong [ref=e289]: gender
+              - text: ": MK's gender."
+            - listitem [ref=e290]:
+              - strong [ref=e291]: faction
+              - text: ": Name of faction under which the MK served."
+            - listitem [ref=e292]:
+              - strong [ref=e293]: faction_id
+              - text: ": Unique identifier for faction."
+            - listitem [ref=e294]:
+              - strong [ref=e295]: party_name
+              - text: ": Unified party name under which the MK served."
+            - listitem [ref=e296]:
+              - strong [ref=e297]: dob
+              - text: ": MK's date of birth."
+            - listitem [ref=e298]:
+              - strong [ref=e299]: cob
+              - text: ": MK's country of birth."
+            - listitem [ref=e300]:
+              - strong [ref=e301]: yod
+              - text: ": MK's year of death."
+            - listitem [ref=e302]:
+              - strong [ref=e303]: yoi
+              - text: ": MK's year of immigration (Aliyah) to Israel."
+            - listitem [ref=e304]:
+              - strong [ref=e305]: city
+              - text: ": MK's city of residence."
+            - listitem [ref=e306]:
+              - strong [ref=e307]: languages
+              - text: ": MK's spoken languages – a comma separated string."
+          - heading "Linguistic Analyses" [level=2] [ref=e308]:
+            - link [ref=e309] [cursor=pointer]:
+              - /url: "#linguistic-analyses"
+              - img [ref=e311]
+            - generic [ref=e313]: Linguistic Analyses
+          - paragraph [ref=e314]: All JSON files utilize the texts' uuid as keys.
+          - list [ref=e315]:
+            - listitem [ref=e316]:
+              - strong [ref=e317]: knesset_sentences.json
+              - text: ": List of segmented sentences (processed by Stanza) for Knesset utterances."
+            - listitem [ref=e318]:
+              - strong [ref=e319]: knesset_lemmas.json
+              - text: ": List of lemmas (processed by Stanza) for Knesset utterances."
+            - listitem [ref=e320]:
+              - strong [ref=e321]: knesset_sentiment
+              - text: ": List of predicted sentiment (by HeBERT sentiment model) for Knesset utterances."
+          - paragraph [ref=e322]: For additional linguistic analyses, please contact the authors.
+          - heading "BibTeX" [level=2] [ref=e323]:
+            - link [ref=e324] [cursor=pointer]:
+              - /url: "#bibtex"
+              - img [ref=e326]
+            - generic [ref=e328]: BibTeX
+          - code [ref=e330]: "@inproceedings{mor-lan-etal-2024-israparltweet-israeli, title = \"{I}sra{P}arl{T}weet: The Israeli Parliamentary and {T}witter Resource\", author = \"Mor-Lan, Guy and Levi, Effi and Sheafer, Tamir and Shenhav, Shaul R.\", editor = \"Calzolari, Nicoletta and Kan, Min-Yen and Hoste, Veronique and Lenci, Alessandro and Sakti, Sakriani and Xue, Nianwen\", booktitle = \"Proceedings of the 2024 Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING 2024)\", month = may, year = \"2024\", address = \"Torino, Italia\", publisher = \"ELRA and ICCL\", url = \"https://aclanthology.org/2024.lrec-main.819\", pages = \"9372--9381\", abstract = \"We introduce IsraParlTweet, a new linked corpus of Hebrew-language parliamentary discussions from the Knesset (Israeli Parliament) between the years 1992-2023 and Twitter posts made by Members of the Knesset between the years 2008-2023, containing a total of 294.5 million Hebrew tokens. In addition to raw text, the corpus contains comprehensive metadata on speakers and Knesset sessions as well as several linguistic annotations. As a result, IsraParlTweet can be used to conduct a wide variety of quantitative and qualitative analyses and provide valuable insights into political discourse in Israel.\", }"
+      - generic [ref=e331]:
+        - button [ref=e337] [cursor=pointer]:
+          - img [ref=e338]
+        - generic [ref=e343]:
+          - term [ref=e344]: Downloads last month
+          - definition [ref=e346]: "142"
+        - generic [ref=e348]:
+          - generic:
+            - generic: "Total file size:"
+            - generic: 22 GB
+  - contentinfo [ref=e349]:
+    - navigation [ref=e350]:
+      - button "System theme" [ref=e353] [cursor=pointer]:
+        - img [ref=e354]
+        - text: System theme
+      - link "TOS" [ref=e359] [cursor=pointer]:
+        - /url: /terms-of-service
+      - link "Privacy" [ref=e360] [cursor=pointer]:
+        - /url: /privacy
+      - link "About" [ref=e361] [cursor=pointer]:
+        - /url: /huggingface
+      - link "Careers" [ref=e362] [cursor=pointer]:
+        - /url: https://apply.workable.com/huggingface/
+      - link "Hugging Face" [ref=e363] [cursor=pointer]:
+        - /url: /
+        - img [ref=e364]
+      - link "Models" [ref=e378] [cursor=pointer]:
+        - /url: /models
+      - link "Datasets" [ref=e379] [cursor=pointer]:
+        - /url: /datasets
+      - link "Spaces" [ref=e380] [cursor=pointer]:
+        - /url: /spaces
+      - link "Pricing" [ref=e381] [cursor=pointer]:
+        - /url: /pricing
+      - link "Docs" [ref=e382] [cursor=pointer]:
+        - /url: /docs
