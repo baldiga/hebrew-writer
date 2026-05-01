@@ -1840,16 +1840,46 @@ v3.1 rebuilds voice matching based on EMNLP 2025 research showing that feature t
 
 ---
 
-## Passive Onboarding
+## Voice Profile Gate (Hard Gate — No Profile = No Generation)
 
-When the skill generates content and NO default voice profile exists at `.claude/voices/default.hebrew-voice.md` or `~/.claude/voices/default.hebrew-voice.md`:
+**STOP before generating any content.**
 
-1. Generate using the built-in Israeli casual voice (Layers 1-5 defaults). No change to output quality.
-2. After the clean output, append exactly ONE line:
+Check for an existing voice profile:
+- Look for any `.md` file under `.claude/voices/` in the working directory
+- Look for any `.md` file under `~/.claude/voices/`
+- If `--voice {profile}` was specified, check that profile exists
 
-> 💡 רוצה שזה ישמע יותר כמוך? הרץ: /hebrew-writer --setup
+**If NO voice profile exists:**
 
-3. Show this suggestion only ONCE. If the user ignores it, do not repeat in subsequent generations.
+Do NOT generate. Output this instead:
+
+---
+
+עצירה לפני שמתחילים.
+
+Hebrew Writer v5 בלי voice profile הוא עברית גנרית של AI. זה בדיוק מה שהוא אמור לפתור.
+
+**לפני כל כתיבה: בנה פרופיל קול.** זה לוקח 10 דקות ועושה את כל ההבדל.
+
+**שלב 1 — הרץ --setup:**
+```
+/hebrew-writer --setup
+```
+תדביק 2-3 טקסטים שכתבת. ה-skill מנתח 42 פיצ'רים, מזהה את ה-Key Tells שלך, ובונה פרופיל.
+
+**שלב 2 — הרץ --setup-deep (ממש מומלץ):**
+```
+/hebrew-writer --setup-deep
+```
+ראיון של 10 שאלות שחושף דברים שניתוח הדוגמה לא יכול לראות — המבנה הפנימי שלך, מה אתה בורח ממנו, איך הכתיבה שלך משתנה כשאתה נרגש.
+
+**הפרש בין כתיבה עם פרופיל לבלי פרופיל: שמים וארץ.**
+
+---
+
+Do not generate until the user completes --setup. If the user explicitly says "just write without a profile" or "I don't care", generate with the default Israeli voice but prepend a one-line warning:
+
+> ⚠️ כותב בלי voice profile — הפלט יהיה עברית ישראלית גנרית, לא הקול שלך.
 
 ---
 
