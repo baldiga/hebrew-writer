@@ -1,18 +1,27 @@
 ---
 name: hebrew-writer
 description: |
-  Write Hebrew content indistinguishable from a native Israeli human.
+  v5 — Write Hebrew content indistinguishable from a native Israeli human.
   Generates, rewrites, or detects AI patterns in Hebrew text.
-  7-layer system: Hebrew-first thinking, 55+ AI pattern detection,
-  Israeli voice injection, linguistic precision, rhythm engineering,
-  self-audit scoring (95/100 threshold), and voice cloning.
+  9-layer system with Variation Fingerprint Engine: Hebrew-first thinking,
+  55+ AI pattern detection, Israeli voice injection, linguistic precision,
+  rhythm engineering, self-audit scoring (95/100 threshold), adaptive
+  voice cloning (Key Tells + style-extreme passages + calibration loop),
+  Soul Layer (נשמה עמוקה), and Versatility Engine (מנגנון המגוון).
+  v5 adds: Pre-Write Commitment Oath (Step 0), Soul-First Planning (Step 4b),
+  Tier 1 Violation Scanner (Step 6.5), Tier 1 auto-fail severity system in
+  Self-Audit, reordered Quick-Check Checklist (Tier 1 items first). Enforcement
+  rebuild — all rules from v1-v4 already existed; v5 ensures they execute.
+  Grounded in PNAS 2025 register-leveling research, Antislop ICLR 2026
+  (8,000+ pattern taxonomy), MATTR lexical diversity, and Hebrew
+  argumentative discourse stance research (Frontiers 2025).
   Use when: writing Hebrew content, humanizing Hebrew text, checking
   Hebrew text for AI tells, or matching someone's Hebrew writing voice.
   Triggers: "write in Hebrew", "Hebrew content", "כתוב בעברית",
   "humanize Hebrew", "sound Israeli", "Hebrew blog", "Hebrew article",
   "rewrite in Hebrew", "detect AI Hebrew", "תכתוב לי", "shadow writer"
 user-invocable: true
-argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--type blog|academic|social|business|email|creative|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
+argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--setup] [--setup-deep] [--calibrate] [--fresh] [--type blog|academic|social|business|email|creative|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
 allowed-tools:
   - Read
   - Write
@@ -20,6 +29,99 @@ allowed-tools:
   - Grep
   - Glob
   - AskUserQuestion
+---
+
+# What's New in v2
+
+v1 gave you 7 layers and a complete anti-detection system. v2 adds the crown jewel: a Soul Layer that goes beyond "avoid AI tells" into active authenticity construction. Everything in v1 is preserved unchanged. The new material is additive.
+
+**New in v2:**
+
+- **Soul Layer (Layer 8, נשמה עמוקה)** — 20 concrete, implementable techniques organized into 6 categories: Specificity Injection, Conviction Architecture, Digression & Texture, Vulnerability & Stakes, Non-Linearity & Thinking on Paper, and Hebrew Soul Markers. Each technique has a rule, a rationale, and a Hebrew before/after example.
+- **Data-grounded in 90M+ words of Israeli podcast transcripts** (ivrit.ai corpus) — real patterns from how Israelis actually speak and think, not normative prescriptions.
+- **Split soul scoring** — the former נשמה dimension (12%) is now split into נשמה (Soul presence, 8%) for basic emotional/opinion presence, and נשמה עמוקה (Deep Soul, 8%) for advanced specificity, vulnerability, stakes, and non-linearity. Total still 100%.
+- **Hebrew-specific soul markers** — דווקא, the memory drop, the register shift mid-paragraph, the cultural code-switch: five techniques specific to how Israeli writers create the feeling of a real person behind the text.
+- **Research basis** — Princeton 2025 study on AI writing signatures, Northeastern University slop taxonomy, ivrit.ai corpus analysis, 40+ academic sources across psycholinguistics, composition research, and Hebrew linguistics.
+- **ivrit.ai data calibration** — 50,000 podcast transcript segments (742K words) analyzed. Key findings that update v1's assumptions:
+
+**Data from 742,075 words of real Israeli podcast speech (ivrit.ai):**
+
+| Metric | v1 assumption | ivrit.ai actual data | v2 calibration |
+|--------|--------------|---------------------|----------------|
+| Avg sentence length | 8.9 (comments) | 13.2 (speech) | 10-12 (weighted) |
+| Discourse markers total | "3-5%" | **6.83%** of all tokens | 4-6% casual, 2-3% semi-formal |
+| נו frequency | "use it" | **3.77%** of all tokens (!) | Dominant marker. Use heavily. |
+| Ellipsis (...) | 21.6% | **41.4%** of chunks | 20-30% of paragraphs |
+| English code-switching | 4.1% | **9.2%** of segments | 5-8% of segments |
+| Self-corrections | not measured | **10.2%** of segments | At least 1 per 500 words |
+| Top opener word | not measured | **אז (4.5%)** | אז as default opener |
+| דווקא frequency | not measured | 88/5000 segments | Natural, ~1 per 500 words |
+
+---
+
+# What's New in v3
+
+v2 gave you the Soul Layer. v3 upgrades the voice system from a basic 10-feature profiler to a professional-grade 42-feature stylometric engine with real passage anchoring. The insight from EMNLP 2025 research: statistical style descriptions in prompts don't work well. Real examples from the target author work much better.
+
+**New in v3:**
+
+- **Passive Onboarding** — First time you use the skill, it works with default voice. After output, suggests: "💡 רוצה שזה ישמע יותר כמוך? הרץ: /hebrew-writer --setup". No friction.
+- **--setup Flow** — Dedicated onboarding: paste your writing, set gender, set content type preference. Creates a default voice profile in one go.
+- **42-Feature Voice Extraction** — Up from 10 features. 7 categories: Sentence Architecture (8), Vocabulary Profile (8), Discourse & Flow (6), Argumentation Style (5), Emotional Register (5), Punctuation & Formatting (4), Hebrew-Specific Patterns (6).
+- **Signature Passage Storage** — Extracts and saves 5-10 real passages (15-40 words each) from your writing as few-shot anchors. During generation, these passages serve as the style reference — not abstract descriptions.
+- **Smart Fusion Engine** — Clear rules for what the user's voice controls (style), what the skill always enforces (safety net), and what the Soul Layer always adds (depth). Documented conflict resolution.
+- **Research basis** — Based on stylometric-transfer (40+ feature JSON fingerprints), EMNLP 2025 finding that few-shot examples outperform statistical summaries, TinyStyler authorship embeddings, and Writer.com's dual-LLM voice extraction architecture.
+
+---
+
+# What's New in v3.1
+
+v3 built the 42-feature voice system. Real-world use proved it hit a ceiling — the profile captured what could be described but missed the implicit, unconscious patterns that make a writer feel like themselves. v3.1 is the fusion rebuild based on EMNLP 2025 research showing that feature tables systematically underperform iterative refinement and outlier-focused signals.
+
+**New in v3.1:**
+
+- **Key Tells extraction** — Instead of averaging 42 features, the skill identifies the 3-5 most statistically unusual behaviors this writer exhibits (things that deviate most from Israeli Hebrew baseline norms). These become priority generation constraints, enforced before anything else.
+- **Style-extreme passage selection** — Signature passages are now selected for stylistic outlierness, not content representativeness. The passages most different from generic Israeli Hebrew are chosen, because they carry the strongest voice signal.
+- **--calibrate iterative refinement** — Apple's PROSE loop adapted for Hebrew. After the initial profile, the skill generates 2 sample paragraphs, the user picks which sounds more like them and says what's wrong with the other, and the profile is updated based on the delta. Converges in 2-3 rounds.
+- **Negative examples in --setup** — The --setup flow now asks for a "this feels wrong / flat / not me" sample alongside the positive sample. Contrastive analysis between the two extracts differential features invisible in single-sample analysis.
+- **--setup-deep 10-question voice interview** — Optional deeper onboarding that surfaces implicit preferences via behavioral questions (e.g., "when you're excited about an idea, how does your punctuation change?") that extract information no passive sample analysis can reveal.
+- **Research basis** — EMNLP 2025 "Catch Me If You Can?" (Wang et al.), Apple ICML 2025 PROSE, RG-Contrastive 2025, PerFine 2025 knockout strategy, Writer.com dual-LLM architecture, Stanford 20-questions personalization.
+
+---
+
+# What's New in v4
+
+v3.1 fixed the fusion engine. Extended use of v3.1 revealed the next ceiling: structural and lexical repetition across pieces. After 3-4 posts, the same arc, the same openers, the same phrase cadences. This is the known LLM register-leveling problem (PNAS 2025): instruction-tuned models have a single attractor basin they return to regardless of topic. v4 breaks that basin by design.
+
+**New in v4:**
+
+- **Variation Fingerprint System (Layer 9, מנגנון המגוון)** — Before every generation, the skill computes a 5-dimension Variation Fingerprint: Schema (9 options), Opener Shape (5), Body Rhythm (5), Vocabulary Register (4), Closing Type (5). Each dimension is selected by context-aware rules (topic emotional weight + content type + length), then checked against session memory to guarantee the fingerprint differs meaningfully from the last 3-5 pieces.
+- **9 Structural Schemas** — AIDA, PAS, BAB, 4Ps, PSB, HSO, QuestionCascade (for persuasive/opinion content) plus `Narrative` (Situation → Complication → Resolution) and `Explainer` (Context → Mechanism → Implication) for informational and educational content. Forcing a persuasion schema onto a product update or how-to article is its own AI tell.
+- **Session Memory Log** — Variation fingerprints stored at `.claude/voices/{profile}/variation-log.json`. Enforces: no same Schema in last 3 pieces, no same Opener in last 3, no same Rhythm in last 2, no same Closing in last 3, no more than 2 of last 5 share the same vocab register. First-run fallback: if log doesn't exist, pick from context mapping and create the log after generation.
+- **Schema-Opener Compatibility Table** — Not all schema-opener pairs are structurally coherent. PAS with `intimate` opener is awkward; HSO with `evidence-first` doesn't work. The compatibility table enforces valid pairings after fingerprint computation.
+- **6 Within-Piece Enforcement Rules** — Paragraph opener rotation (7 types), connector category rotation (6 categories), question type rotation (3 types), root-family lexical diversity (pre-map alternatives per key concept), stance category rotation (4 Hebrew discourse stance types), paragraph-level structural burstiness (mandatory single-sentence paragraph, no 3 same-length paragraphs in a row).
+- **Spent Phrase Protocol** — Per-piece internal tracker. Any 3+ word expression, any connector (by category), any question type, any quote integration style used once is spent. Trigram rule: no 3-word sequence appears twice in any piece.
+- **`--fresh` flag** — Clears the variation log. Use when starting a new content project where cross-piece variety from prior pieces is irrelevant.
+- **Updated Self-Audit** — מגוון (Versatility) added as a 9th scoring dimension (10%). 10% redistributed from existing dimensions. 95/100 threshold unchanged.
+- **Research basis** — PNAS 2025 "Do LLMs Write Like Humans?" (register leveling), Antislop ICLR 2026 (8,000+ slop pattern taxonomy), Bestgen 2024 MATTR lexical diversity, Frontiers 2025 Hebrew discourse stance, IsraParlTweet LREC-COLING 2024, avoid-ai-writing trigram suppression (GitHub).
+
+---
+
+# What's New in v5
+
+v4 solved structural repetition with the Versatility Engine. Extended use of v4 revealed a different problem: **enforcement reliability**. Every rule from v1–v4 exists in the skill file — but the generation pipeline is complex enough that critical bans (em-dash, negative parallelism, blacklisted words) slip through in practice. Real-world outputs contained em-dashes (—) and "לא X אלא Y" structures that are explicitly banned. The root cause: the sequential pipeline doesn't intercept violations early enough, and the self-audit is described as "internal" (a mental check) rather than systematic.
+
+**v5 is the enforcement rebuild. Zero new rules. Better architecture for executing the rules that already exist.**
+
+**New in v5:**
+
+- **Pre-Write Commitment Oath (Step 0)** — Before writing a single Hebrew word, the skill explicitly commits to every Tier 1 violation ban. Transforms passive background rules into active commitments at the moment they matter — before generation starts, not after.
+- **Soul-First Planning (Step 4b)** — Before drafting, plan WHERE each soul technique will appear: which proper noun, where the memory drop goes, where the position declaration lands, where the strong negative hits, where the aside appears. Soul is scaffolded into the draft's architecture — not retrofitted at Step 8.5. This restores the soul quality that was strongest in v2 before it became an afterthought check.
+- **Tier 1 Violation Scanner (Step 6.5)** — After draft generation, before self-audit: a systematic explicit scan for Tier 1 violations. Not "internal" — each item is checked deliberately. Any violation found triggers surgical revision before the draft can proceed to scoring.
+- **Tier 1 Severity System** — Violations categorized by severity. Tier 1 (em-dash, blacklist words, 2+ negative parallelisms, formal connectors in casual text, 3+ same-length consecutive sentences) are auto-fail conditions that block output until fixed. A piece scoring 98/100 but containing an em-dash fails. These conditions are now explicit in Layer 6.
+- **Reordered Quick-Check Checklist** — Tier 1 violations moved to the top of the checklist. Previously, the em-dash check was item #2 under "Vocabulary and style" — buried in the middle of the list. Now it is the first item under a dedicated TIER 1 header.
+- **Layer 6 Tier 1 table repositioned as backstop** — The Tier 1 violations table at the top of Layer 6 is now framed as a backup check rather than the primary enforcement gate. Step 6.5 is the first-line scanner (fix in place + re-scan); Layer 6's Tier 1 table catches anything that survived, signaling a structural problem requiring re-draft.
+
 ---
 
 # Hebrew Writer — הכותב העברי
@@ -62,6 +164,10 @@ Parse `$ARGUMENTS` before doing anything else.
 --learn "[text or path]"             Requires --save-as
 --save-as [profile-name]             Requires --learn
 --show-score                         Default: off (flag, no value)
+--setup                              Triggers basic onboarding flow (no value)
+--setup-deep                         Triggers deep onboarding with 10-question interview (no value)
+--calibrate                          Triggers iterative profile refinement (requires existing profile, no value)
+--fresh                              Clears variation log for active profile. Resets cross-piece memory. No value.
 ```
 
 **Text extraction:** Everything that is not a recognized flag or its value is the main input text/topic. Strip flags, keep content.
@@ -94,6 +200,11 @@ After parsing arguments, route immediately:
 - `--mode rewrite` → Jump to **Rewrite Pipeline**
 - `--mode detect` → Jump to **Detection Report**
 - Default (no `--mode`) → `generate`
+
+- `--setup` → Jump to **Basic Onboarding Flow** (overrides --mode)
+- `--setup-deep` → Jump to **Deep Onboarding Flow — 10-Question Voice Interview** (overrides --mode)
+- `--calibrate` → Jump to **Calibration Loop** (overrides --mode; requires existing voice profile)
+- `--fresh` → Clear variation log at `.claude/voices/{profile}/variation-log.json` (or `default` if no profile). Confirm deletion with one line: "✓ Variation log cleared. Next piece starts with a clean slate." Then proceed with `--mode generate` (or the specified mode) as normal.
 
 ---
 
@@ -488,7 +599,7 @@ For each pattern: trigger words in Hebrew, what's happening, the fix, before/aft
 *(Studies show that adequate sleep is essential for cognitive function, and experts recommend seven to nine hours of sleep per night.)*
 
 **After (human):**
-> קראתי פעם שמה שמפריד בין אנשים שמתפקדים על פחות שינה לבין כאלה שלא — זה לא הגנטיקה, זה שהאחד מסרב להודות שהוא עייף. ממש לא יודע אם זה נכון, אבל מסתדר עם מה שאני רואה.
+> קראתי פעם שמה שמפריד בין אנשים שמתפקדים על פחות שינה לבין כאלה שלא: זה לא הגנטיקה, זה שהאחד מסרב להודות שהוא עייף. ממש לא יודע אם זה נכון, אבל מסתדר עם מה שאני רואה.
 
 *(I once read that what separates people who function on less sleep from those who don't — it's not genetics, it's that one of them refuses to admit they're tired. I really don't know if that's true, but it fits what I see.)*
 
@@ -596,15 +707,18 @@ Do not title-case Hebrew headings. Hebrew doesn't have the same capitalization c
 
 These rules target classifier-based detectors: GPTZero, Originality.ai, Turnitin, Copyleaks.
 
-### Sentence Length Variance — Data-Driven (from 5,000 real Israeli comments)
+### Sentence Length Variance — Data-Driven (from 550K real Israeli texts: comments + podcast transcripts)
 
-**Real Israeli sentence statistics:**
-- Average sentence length: **8.9 words** (NOT 15-20 like AI produces)
-- 36.6% of sentences are under 6 words
-- Only 4.5% of sentences exceed 25 words
-- Range: 1 word to 40+ words
+**Combined real Israeli data (v2 — two sources):**
 
-Your sentences should center around **8-12 words**, with frequent short bursts (3-6 words) and occasional long ones (20-30 words). The long sentence is the exception, not the norm.
+| Metric | Comments (HeBERT, 500K) | Podcasts (ivrit.ai, 742K words) | Weighted target |
+|--------|------------------------|--------------------------------|-----------------|
+| Avg sentence length | **8.9 words** | **13.2 words** | **10-12 words** |
+| Short sentences (<6 words) | 36.6% | 20.6% | **25-30%** |
+| Long sentences (>25 words) | 4.5% | 10.0% | **7-8%** |
+| Medium sentences (6-15 words) | ~59% | 54.7% | **55-60%** |
+
+Your sentences should center around **10-12 words** (the weighted average of written and spoken Israeli Hebrew), with frequent short bursts (3-6 words, ~25% of sentences) and occasional long ones (20-30 words, ~7%). The long sentence is the exception, not the norm. AI writes at 15-20 words average — nearly double the Israeli natural center.
 
 **Failure mode:** AI sentences cluster at 15-20 words. This is DOUBLE the natural Israeli average. If most of your sentences are 15+ words, you're writing AI Hebrew.
 
@@ -620,7 +734,9 @@ Never write three consecutive sentences of similar length. If you notice three i
 - At most 2-3 sentences exceeding 25 words — more than that is AI territory
 - Most sentences in the 6-12 word range
 
-**Ellipsis (...):** Real Israelis use "..." constantly — 21.6% of comments contain ellipsis. Use it to trail off, to imply something unsaid, to leave a thought hanging. "אבל מה אני יודע..." / "לא בטוח שזה עובד ככה..." This is a major authenticity marker that AI almost never uses.
+**Ellipsis (...):** Real Israelis use "..." constantly. v2 data: **21.6% of written comments** and **41.4% of spoken transcript chunks** contain ellipsis. Use it to trail off, to imply something unsaid, to leave a thought hanging. "אבל מה אני יודע..." / "לא בטוח שזה עובד ככה..." This is a major authenticity marker that AI almost never uses. Target: at least one "..." per 300 words in casual writing.
+
+**Self-corrections:** ivrit.ai data shows **10.2% of spoken segments** contain self-corrections (רגע, לא, בעצם, כלומר, זאת אומרת). This is the "thinking on paper" pattern. In writing, include at least one visible self-correction per 500 words: "כלומר, רגע, זה לא מה שהתכוונתי..." / "לא, בעצם, זה בדיוק מה שהתכוונתי." AI never corrects itself mid-text. Humans do it all the time.
 
 **Exclamation marks:** Real Israelis use them. Almost one per comment on average. Don't be afraid of them in casual writing. "!מה פתאום" / "!בדיוק" Multiple exclamation marks ("!!!") are genuine Israeli emphasis in casual contexts.
 
@@ -636,7 +752,7 @@ Long → Short → Medium → Very Short → Long → Medium → Medium → Shor
 **Variation in clause structure:**
 - Simple: ירדתי לים.
 - Compound: ירדתי לים, אבל המים היו קרים מדי.
-- Complex: כשירדתי לים ברגל — והמים הגיעו לברכיים — הבנתי שזה לא היה רעיון טוב.
+- Complex: כשירדתי לים ברגל, והמים הגיעו לברכיים, הבנתי שזה לא היה רעיון טוב.
 - Fragment: לא נורא.
 - Question: מי הולך לים בינואר?
 
@@ -733,7 +849,7 @@ Human: "אז כדי להבין מה זה אומר, צריך לראות את המ
 **Hebrew example:**
 
 AI: "יש דעות שונות לגבי השיטה הזו. מחד, ישנם יתרונות ברורים. מאידך, ישנן גם ביקורות מוצדקות."
-Human: "השיטה הזו עובדת. לא בשביל כולם, ולא בכל מצב — אבל אם אתה בתחום X, היא עובדת. מי שאומר אחרת לא ניסה אותה ברצינות."
+Human: "השיטה הזו עובדת. לא בשביל כולם, ולא בכל מצב, אבל אם אתה בתחום X, היא עובדת. מי שאומר אחרת לא ניסה אותה ברצינות."
 
 ---
 
@@ -1077,11 +1193,16 @@ These are not filler words. They are signals that a human brain is at work — t
 
 | Register | Target frequency | Notes |
 |----------|----------------|-------|
-| Casual / social media | 3-5% of word tokens | Place naturally at thinking moments |
-| Blog / semi-formal | 1-3% of word tokens | Less frequent, but must be present |
-| Business writing | 1% or below | תכל'ס is fine; כאילו is borderline |
+| Casual / social media | **5-7%** of word tokens | ivrit.ai data shows 6.83% in natural speech. נו alone is 3.77%. |
+| Blog / semi-formal | 2-4% of word tokens | Less than speech but must be present |
+| Business writing | 1-2% | תכל'ס and בעצם are fine; כאילו is borderline |
 | Academic | Near zero | Replace with formal: "כלומר," "דהיינו," "זאת אומרת" |
-| Email (informal) | 1-2% | Match to the relationship formality |
+| Email (informal) | 1-3% | Match to the relationship formality |
+
+**v2 data insight:** ivrit.ai podcast analysis revealed נו is the DOMINANT discourse marker in Israeli speech at 3.77% of all tokens. That's nearly 4 out of every 100 words. In casual writing, use נו liberally. It signals impatience, urging, "come on already" — deeply Israeli.
+
+**Top markers by frequency (from 742K words of real speech):**
+נו (3.77%) >> אז (1.27%) > בעצם (0.45%) > ממש (0.38%) > כאילו (0.31%) > נכון (0.20%) > דווקא (0.05%)
 
 **Natural insertion points:**
 - Before a reframe: "...כאילו, זה לא מה שחשבתי בהתחלה"
@@ -1171,7 +1292,7 @@ This is different from AI hedging. AI hedges because it won't commit. A human ex
 
 This is distinctly human: a strong opening claim, then pulling back slightly, then forward again.
 
-"השיטה הזו מעולה — לא, רגע, זה לא מדויק. היא עובדת במצבים מסוימים. אבל כשהיא עובדת, היא ממש עובדת."
+"השיטה הזו מעולה. לא, רגע, זה לא מדויק. היא עובדת במצבים מסוימים. אבל כשהיא עובדת, היא ממש עובדת."
 
 Notice the self-correction. AI never corrects itself mid-paragraph. Humans do.
 
@@ -1183,7 +1304,7 @@ A writer who's tired writes differently than a writer who's excited. Let mood bl
 "ביטוח לאומי. שוב. שלוש שעות. ובסוף אמרו לי שהגעתי ביום הלא נכון. ביום הלא נכון."
 
 **Excited writing:**
-"הפרויקט הזה — אני לא יודע איך להסביר את זה — פשוט עובד בדרכים שלא ציפינו, ובכל פעם שאנחנו חושבים שמצאנו את הגבול שלו, מסתבר שאין גבול."
+"הפרויקט הזה, אני לא יודע איך להסביר את זה, פשוט עובד בדרכים שלא ציפינו, ובכל פעם שאנחנו חושבים שמצאנו את הגבול שלו, מסתבר שאין גבול."
 
 ### Before/After: Soulless vs. Alive
 
@@ -1193,7 +1314,7 @@ A writer who's tired writes differently than a writer who's excited. Let mood bl
 *(This technology offers innovative solutions to complex challenges. There are many advantages to adopting it, including improved efficiency and advanced capabilities. It is important to carefully examine the data before making a decision.)*
 
 **Alive (human):**
-> הטכנולוגיה הזו — תכל'ס — שינתה לי את הדרך שבה אני עובד. לא בגלל שהיא "חדשנית" (כל אחד טוען שהוא חדשני), אלא כי בפועל חסכתי שעה וחצי ביום. שעה וחצי. זה לא מעט. יש לה בעיות — אני לא אדון עיוור — אבל היחס עלות-תועלת? ברור לי.
+> הטכנולוגיה הזו, תכל'ס, שינתה לי את הדרך שבה אני עובד. לא בגלל שהיא "חדשנית" (כל אחד טוען שהוא חדשני), אלא כי בפועל חסכתי שעה וחצי ביום. שעה וחצי. זה לא מעט. יש לה בעיות, אני לא אדון עיוור, אבל היחס עלות-תועלת? ברור לי.
 
 *(This technology — tachles — changed the way I work. Not because it's "innovative" (everyone claims they're innovative), but because in practice I saved an hour and a half a day. An hour and a half. That's not nothing. It has problems — I'm not a blind follower — but the cost-benefit ratio? I'm clear on it.)*
 
@@ -1370,6 +1491,14 @@ Before outputting any generated text, run this fast check:
 - [ ] Temperature varies — writer cares more about some parts?
 - [ ] Not just "people think X but actually Y" structure?
 
+**Soul Layer (v2 additions):**
+- [ ] Has at least one proper noun per 200 words?
+- [ ] Has at least one unusual or specific number (not round, not generic)?
+- [ ] Has at least one moment of visible thinking — a pivot, self-correction, or mid-paragraph discovery?
+- [ ] Has at least one stake or vulnerability declaration — the writer admits something costs them or risks something?
+- [ ] Uses דווקא at least once (or a functional equivalent counter-intuitive move)?
+- [ ] Has at least one memory, anecdote, or experiential grounding?
+
 If any box fails, fix it before outputting.
 
 ---
@@ -1448,7 +1577,7 @@ This is not a multi-turn loop. It is an internal revision process within a singl
 
 **Phase 1: Generate initial draft** using all previous layers (1-5). Target length, register, content type all locked in.
 
-**Phase 2: Score against 8 dimensions** (described below). Mentally assign a score to each. No need to write this out — it is an internal assessment. Weight each score per the rubric. Calculate whether the weighted total reaches 95/100.
+**Phase 2: Score against 9 dimensions** (described below). Mentally assign a score to each. No need to write this out — it is an internal assessment. Weight each score per the rubric. Calculate whether the weighted total reaches 95/100.
 
 **Phase 3: Identify weak spots.** Any dimension scoring below 9 gets targeted. Rewrite those specific sections, not the whole piece. Remember: achieving 95/100 weighted total requires most dimensions at 9-10. If דוגריות is weak, add position and opinion. If קצב is weak, break up uniform-length sentences. If אנטי-זיהוי is weak, vary word choices and structure.
 
@@ -1460,9 +1589,9 @@ Output the highest-scoring version produced.
 
 ---
 
-## The 8-Dimension Scoring Rubric
+## The 9-Dimension Scoring Rubric
 
-### 1. דוגריות — Directness (weight: 13%)
+### 1. דוגריות — Directness (weight: 11%)
 
 The writer takes positions. The text moves toward something.
 
@@ -1474,7 +1603,7 @@ The writer takes positions. The text moves toward something.
 
 ---
 
-### 2. קצב — Rhythm (weight: 14%)
+### 2. קצב — Rhythm (weight: 12%)
 
 Sentence length varies. The reading experience has texture — fast, slow, punch, breathe.
 
@@ -1486,7 +1615,7 @@ Sentence length varies. The reading experience has texture — fast, slow, punch
 
 ---
 
-### 3. אמינות — Authenticity (weight: 14%)
+### 3. אמינות — Authenticity (weight: 13%)
 
 Could a specific Israeli person have written this? Not "a person" — an Israeli, with their specific speech patterns and cultural context.
 
@@ -1498,7 +1627,7 @@ Could a specific Israeli person have written this? Not "a person" — an Israeli
 
 ---
 
-### 4. טקסטורה — Texture (weight: 11%)
+### 4. טקסטורה — Texture (weight: 10%)
 
 The surface of the text has variation — register shifts, punctuation choices, word-choice surprises.
 
@@ -1510,9 +1639,9 @@ The surface of the text has variation — register shifts, punctuation choices, 
 
 ---
 
-### 5. נשמה — Soul (weight: 12%)
+### 5. נשמה — Soul (weight: 7%)
 
-There is a human behind this text who feels something about what they are writing.
+There is a human behind this text who feels something about what they are writing. (Basic soul presence — emotions, opinions, visible thinking. Advanced soul is scored separately in dimension 5b.)
 
 **10/10:** At least one moment of genuine emotion — frustration, enthusiasm, ambivalence, humor. At least one place where the writer's thinking is visible: a mid-sentence correction, a discovery, an honest "I don't know." The stakes of the piece are clear — the writer cares about this subject.
 
@@ -1522,7 +1651,19 @@ There is a human behind this text who feels something about what they are writin
 
 ---
 
-### 6. צפיפות — Density (weight: 8%)
+### 5b. נשמה עמוקה — Deep Soul (weight: 7%)
+
+Advanced authenticity: the text does not merely have emotions — it has specificity, stakes, non-linearity, and vulnerability. This is what separates writing that passes as human from writing that feels genuinely written by a real person. (See Layer 8 for the full 20-technique system.)
+
+**10/10:** At least one proper noun or unusual specific number that couldn't have been invented generically. At least one moment of visible thinking (a pivot, a self-correction, a tangent that loops back). At least one stake declared — the writer admits something costs them, risks something, or exposes something real. At least one Hebrew soul marker (דווקא, a memory drop, a register shift). The text could not have been written by anyone — it was clearly written by someone.
+
+**8/10:** Two or three soul techniques visible. Specific details present but sometimes vague. One moment of non-linearity. The writer is discernible but not fully three-dimensional.
+
+**Below 8:** Generic throughout. No proper nouns, no unusual numbers, no self-correction, no stakes, no vulnerability. The piece passes an AI filter but would not fool a careful human reader for more than a paragraph. Feels like a skilled impersonation, not a real person.
+
+---
+
+### 6. צפיפות — Density (weight: 6%)
 
 Every sentence earns its place.
 
@@ -1534,7 +1675,7 @@ Every sentence earns its place.
 
 ---
 
-### 7. רישום — Register (weight: 8%)
+### 7. רישום — Register (weight: 6%)
 
 The formality level is consistent with the content type and audience.
 
@@ -1546,7 +1687,7 @@ The formality level is consistent with the content type and audience.
 
 ---
 
-### 8. אנטי-זיהוי — Anti-Detection (weight: 20%)
+### 8. אנטי-זיהוי — Anti-Detection (weight: 18%)
 
 The highest-weighted dimension because it is the hardest to fix retroactively and the most consequential to fail.
 
@@ -1556,20 +1697,45 @@ The highest-weighted dimension because it is the hardest to fix retroactively an
 
 **Below 8:** Multiple blacklist words present. Em dash. Sentence lengths cluster. Connectors repeat. This text will register AI on any quality detector.
 
+### 9. מגוון — Versatility (weight: 10%)
+
+The piece has structural and lexical DNA distinct from the last 3-5 pieces. Within this piece, paragraph openers rotate, connectors vary by category, question types alternate, root families do not cluster, and at least one single-sentence paragraph creates structural burstiness.
+
+**10/10:** Variation Fingerprint was computed and logged. No two consecutive paragraphs share an opener type. At least 3 Hebrew stance categories present (in pieces 600+ words). No root family repeated within 80 words. At least one single-sentence paragraph present. The piece feels structurally different from the previous one — different arc, different opening energy, different rhythm.
+
+**8/10:** Fingerprint computed. Most opener types varied. Stance categories mostly rotated. One or two root-family repetitions within 80 words. Structural burstiness present but no single-sentence paragraph.
+
+**Below 8:** No fingerprint computed. Paragraph openers follow the same grammatical type throughout. Only one stance category (usually epistemic) used throughout. Key vocabulary clusters in the same root family across paragraphs. Paragraph lengths are uniform — no burstiness at structural level.
+
 ---
 
 ## Weighted Score Calculation
 
 ```
-Score = (דוגריות × 0.13) + (קצב × 0.14) + (אמינות × 0.14) + (טקסטורה × 0.11)
-      + (נשמה × 0.12) + (צפיפות × 0.08) + (רישום × 0.08) + (אנטי-זיהוי × 0.20)
+Score = (דוגריות × 0.11) + (קצב × 0.12) + (אמינות × 0.13) + (טקסטורה × 0.10)
+      + (נשמה × 0.07) + (נשמה עמוקה × 0.07) + (צפיפות × 0.06) + (רישום × 0.06) + (אנטי-זיהוי × 0.18) + (מגוון × 0.10)
 
 Multiply each dimension score (out of 10) by 10 to get out-of-100.
 Example: all 9s → 9 × 10 = 90/100. Need 95+.
 To reach 95: most dimensions at 9.5-10, none below 8.
+Weights: 11+12+13+10+7+7+6+6+18+10 = 100%
 ```
 
 **Quality gate:** 95/100 minimum. No individual dimension below 8/10. If either condition fails, revise.
+
+### Tier 1 - Auto-Fail Violations
+
+Backstop check: Step 6.5 should have already cleared all Tier 1 violations. If any violation appears here, it survived the Step 6.5 scanner — indicating a structural issue that surgical revision cannot fix. Do not score. Do not revise. Re-draft from Step 0.
+
+| Violation | Test | Consequence |
+|-----------|------|-------------|
+| Em-dash (—) | Search entire output for "—" | Automatic discard |
+| Blacklisted vocabulary | Check for any word from the AI Vocabulary Blacklist (Layer 2) | Automatic discard |
+| Negative parallelism overuse | Count "לא X אלא Y" / "לא X זה Y" / "לא מדובר ב-X אלא ב-Y" patterns — more than 1 in piece | Automatic discard |
+| Formal connectors in casual register | Check for formal connectors in the Casual Register Banned List (Layer 3) | Automatic discard |
+| Three same-length sentences in a row | Scan paragraph by paragraph for 3 consecutive sentences within 3 words of each other | Automatic discard |
+| Significance inflation | Check for "חסר תקדים", "משנה משחק", "מהפכני" used without specific data backing the claim | Automatic discard |
+| Macro copy windup | Check opening — does it open with "בעולם שבו", "בעידן של", "כולנו יודעים ש" or similar generic frame? | Automatic discard |
 
 ---
 
@@ -1577,10 +1743,18 @@ To reach 95: most dimensions at 9.5-10, none below 8.
 
 Run this before outputting. Every item must pass.
 
+**TIER 1 - Auto-Fail (check these first - any hit = discard and re-draft):**
+*(These are the same violations as the Layer 6 Self-Audit Tier 1 table — this is the final output gate.)*
+- [ ] Em-dash (—): zero in output
+- [ ] Vocabulary: zero words from AI Vocabulary Blacklist (Layer 2)
+- [ ] Negative parallelism: maximum 1 "לא X אלא Y" pattern total
+- [ ] Formal connectors: zero Casual Register Banned List (Layer 3) items in blog/social/email
+- [ ] Sentence-length monotony: no 3 consecutive sentences within 3 words of each other in length
+- [ ] Significance inflation: no "חסר תקדים", "משנה משחק", "מהפכני" without a specific numeric or named source in the same sentence
+- [ ] Macro copy windup: opening does not use "בעולם שבו", "בעידן של", "כולנו יודעים ש" or similar generic frame
+
 **Vocabulary and style:**
-- [ ] Zero AI blacklist words? (All 16 from the blacklist table: מגוון, מרתק, חיוני, מהותי, ייחודי, רב-ממדי, מקיף, חדשני, פורץ דרך, חסר תקדים, משמעותי, מרכזי, בולט, רלוונטי, רב-תכליתי, מאתגר)
-- [ ] Zero em dashes (—) anywhere in the text?
-- [ ] Zero banned formal connectors in casual-register text (לפיכך, יתר על כן, כמו כן, אי לכך, בשל כך)?
+*(See Tier 1 above for em-dash, blacklist vocabulary, and formal connector checks.)*
 - [ ] No significance inflation phrases (מהווה אבן דרך, משקף מגמה רחבה, מסמל את)?
 
 **Rhythm:**
@@ -1613,6 +1787,14 @@ Run this before outputting. Every item must pass.
 - [ ] Temperature varies? Writer cares more about some parts than others — some sections are rushed, some are detailed?
 - [ ] Not organized as "people think X but actually Y"? Argument has a structure beyond binary contrast?
 
+**Soul Layer check (v2 — Layer 8):**
+- [ ] Has at least one proper noun per 200 words?
+- [ ] Has at least one unusual or specific number (not round, not generic)?
+- [ ] Has at least one moment of visible thinking — a pivot, self-correction, or mid-paragraph discovery?
+- [ ] Has at least one stake or vulnerability declaration — the writer admits something costs them or risks something?
+- [ ] Uses דווקא at least once (or a functional equivalent counter-intuitive move)?
+- [ ] Has at least one memory, anecdote, or experiential grounding?
+
 ---
 
 ## --show-score Output Format
@@ -1629,9 +1811,10 @@ When `--show-score` is set, append this block after the generated text:
 | קצב | X/10 | 14% | X.X |
 | אמינות | X/10 | 14% | X.X |
 | טקסטורה | X/10 | 11% | X.X |
-| נשמה | X/10 | 12% | X.X |
-| צפיפות | X/10 | 8% | X.X |
-| רישום | X/10 | 8% | X.X |
+| נשמה | X/10 | 8% | X.X |
+| נשמה עמוקה | X/10 | 8% | X.X |
+| צפיפות | X/10 | 6% | X.X |
+| רישום | X/10 | 6% | X.X |
 | אנטי-זיהוי | X/10 | 20% | X.X |
 | **סה"כ** | | **100%** | **XX/100** |
 
@@ -1642,134 +1825,1479 @@ Keep the score honest. A score of 96 and a score of 91 both have meaning — inf
 
 ---
 
-# LAYER 7: Voice Matching
+# LAYER 7: Voice Matching & Fusion Engine (v3.1)
 
-## Mode A — Default Voice
+## Overview
 
-When no voice flag is provided, this mode is active. Use the built-in Israeli casual voice defined by Layers 1-5: dugri, opinionated, slang-sprinkled, culturally grounded. This is the out-of-box experience. It sounds like a smart Israeli person who reads a lot and doesn't try to impress anyone.
+v3.1 rebuilds voice matching based on EMNLP 2025 research showing that feature tables systematically underperform iterative refinement and outlier-focused signals. The v3.1 voice system has six mechanisms:
 
-No additional configuration needed. Layers 1-5 produce this voice when applied faithfully.
+1. **Key Tells Extraction** — 3-5 outlier behaviors that form the writer's fingerprint (Priority 1)
+2. **Style-extreme Signature Passages** — 5-10 real excerpts chosen for stylistic outlierness
+3. **--setup Basic Onboarding** — with negative sample for contrastive analysis
+4. **--setup-deep Voice Interview** — 10 behavioral questions surfacing implicit preferences
+5. **--calibrate Iterative Refinement** — PROSE-style loop with user feedback
+6. **Smart Fusion Engine** — 7-level priority order with active few-shot anchoring
 
 ---
 
-## Mode B — Voice Clone
+## Passive Onboarding
 
-Activated by any of: `--my-voice`, `--my-voice-file`, `--my-voice-files`, or `--voice`.
+When the skill generates content and NO default voice profile exists at `.claude/voices/default.hebrew-voice.md` or `~/.claude/voices/default.hebrew-voice.md`:
 
-**The Ghostwriter Rule:** Match their voice, not yours. If the sample person writes in short fragments — write fragments. If they never use סבבה — don't inject it. If they overuse אז — overuse it. Your job is to disappear into their patterns.
+1. Generate using the built-in Israeli casual voice (Layers 1-5 defaults). No change to output quality.
+2. After the clean output, append exactly ONE line:
 
-### 10 Features to Extract
+> 💡 רוצה שזה ישמע יותר כמוך? הרץ: /hebrew-writer --setup
 
-Read the sample carefully. For each feature, form a concrete description:
+3. Show this suggestion only ONCE. If the user ignores it, do not repeat in subsequent generations.
 
-| Feature | What to look for |
-|---------|-----------------|
-| **אורך משפטים** | What is the typical sentence length? Short punchy sentences (under 10 words)? Medium flowing ones (12-20)? Long complex constructions (25+)? What is the range? |
-| **רמת פורמליות** | Where on the 1-10 formality scale? Which specific formal/informal markers appear? Do they use של or סמיכות predominantly? |
-| **מילות מילוי** | Which discourse markers do they favor? כאילו? בעצם? יעני? Or none at all? How often? |
-| **מבנה טיעון** | Do they open with the conclusion and defend it? Build up to a point? Start with a story? Lead with a question? |
-| **פיסוק** | Heavy comma use or minimal? Long sentences broken with semicolons? Short sentences with many periods? Any unusual punctuation habits? |
-| **אוצר מילים** | Casual vocabulary or elevated? Technical terms? English loanwords — rare, moderate, or constant? Any characteristic words or phrases they repeat? |
-| **אנגלית** | Code-switching frequency: never, occasional, frequent, dominant? Which Hebrew-English mixing patterns? |
-| **הומור** | Sarcastic? Self-deprecating? Dry? Warm? Absent? What triggers their humor in the sample? |
-| **חוות דעת** | Do they state opinions boldly or hedge? Do they invite disagreement or shut it down? Certainty vs. ambivalence patterns? |
-| **פתיחות** | How do they open paragraphs and sections? Verb-first? Topic sentence? Question? Jump into the middle? |
+---
 
-### Accuracy Tiers and Feature Extraction
+## The --setup Basic Onboarding Flow
 
-**Basic tier (200-500 words):** Extract features 1, 2, and 6 only. Sentence length, formality, and vocabulary. These three are reliably readable from short samples. Other features require more data to distinguish signal from noise. Be honest: this is a rough approximation. The voice will sound similar, not identical.
+When user runs `/hebrew-writer --setup`:
 
-**Strong tier (500-1500 words):** Add features 3, 4, 5, 7, 8. Now discourse markers, argument structure, punctuation habits, English ratio, and humor are visible. Solid voice match. Most writing tasks will land correctly.
+**Step 1 — Positive sample:** Ask using AskUserQuestion:
+> "הדבק 2-3 טקסטים שכתבת (פוסטים, אימיילים, מאמרים, הודעות — כל דבר שנשמע כמוך). מינימום 500 מילים סה״כ. יותר = יותר מדויק."
 
-**Full Clone tier (1500+ words):** Add features 9 and 10 — opinion expression patterns and paragraph opening variety. All 10 features extracted. High-fidelity match: the person's characteristic hesitations, their opinion strength, their structural habits.
+**Step 2 — Negative sample (NEW in v3.1):** Ask:
+> "(אופציונלי) יש לך דוגמה של כתיבה שלך שהרגישה לא ממך — שטוחה, פורמלית מדי, או סתם לא מרגישה כמוך? הדבק פה. דלג עם 'דלג'."
 
-**Maximum tier (multiple texts from `--my-voice-files`):** Extract all 10 features across multiple samples. Look for cross-document consistency — which patterns appear in every text vs. which are topic-dependent. This is professional ghostwriter-level matching.
+**Why this question matters:** Research (RG-Contrastive 2025) shows that contrastive examples — knowing what's wrong — extracts implicit preferences better than positive examples alone. If the user provides a negative sample, we learn what voice this writer is NOT.
 
-### Generating the Internal Voice Profile
+**Step 3 — Gender:** Ask:
+> "מה המגדר שלך לנטיית פעלים? (male / female / neutral)"
 
-After analysis, form an internal model:
+**Step 4 — Primary content type:** Ask:
+> "איזה סוג תוכן אתה בעיקר כותב? (blog / social / business / mixed)"
+
+**Step 5 — Analysis:**
+- Run the 42-Feature Extraction on the positive samples
+- Extract the Key Tells (top 3-5 most outlier behaviors)
+- Select Signature Passages using style-extreme criteria (3-7 passages depending on sample size)
+- If negative sample was provided: run Contrastive Analysis (see below) and add Differential Features section to profile
+
+**Step 6 — Save:** Write everything to `.claude/voices/default.hebrew-voice.md`. Create the directory if needed. Use the v3.1 profile structure (Key Tells at top, then 42 features, then passages, then differentials).
+
+**Step 7 — Confirm:**
+> "פרופיל הקול שלך נשמר! מעכשיו כל מה שאכתוב ישמע כמוך.
+> Accuracy tier: [tier] ([word count] words analyzed)
+> Key Tells found: [N]
+> Signature passages: [N]
+> [If negative sample provided:] Differential features extracted: [N]
+>
+> רוצה לשפר את ההתאמה? הרץ /hebrew-writer --calibrate כדי שאייצר דוגמאות ותגיד לי אילו הכי נשמעות כמוך.
+> לשינוי: /hebrew-writer --setup"
+
+## Contrastive Analysis (from negative sample)
+
+When a negative sample is provided, run this analysis:
+
+**Step A:** For each of the 42 features, measure the feature value in BOTH the positive and negative samples.
+
+**Step B:** Identify features where positive and negative differ most — these are "Differential Features" — the things that are present in the writer's real voice but missing from their "wrong" voice.
+
+**Step C:** Record 3-5 Differential Features in the profile with this format:
+```
+### DF1: [feature name]
+- Positive sample: [value]
+- Negative sample: [value]
+- Delta: [what makes the positive "more them"]
+- Enforcement: [how to apply in generation]
+```
+
+**Example:**
+```
+### DF1: Self-correction frequency
+- Positive sample: 3 self-corrections per 500 words
+- Negative sample: 0 self-corrections
+- Delta: When this writer sounds like themselves, they correct themselves mid-thought. The flat version skips this.
+- Enforcement: Insert at least 1 visible self-correction per piece of 300+ words. "רגע" / "בעצם" / "לא, זה לא מדויק".
+```
+
+Differential Features get enforced at Priority 2, directly below Key Tells (see Smart Fusion Engine section).
+
+---
+
+## The --setup-deep Flow — 10-Question Voice Interview
+
+For users who want maximum fidelity. Takes 5-10 minutes. Surfaces information that passive sample analysis can't extract.
+
+Research basis: Stanford's 20-Questions personalization (2024) showed that targeted behavioral questions capture preference data far more effectively than self-description. Users cannot describe their own writing style abstractly but can accurately answer behavioral questions.
+
+### The 10 questions
+
+When user runs `/hebrew-writer --setup-deep`, ask each question in sequence using AskUserQuestion. After all 10, run the standard sample collection (steps 1-5 from Basic Onboarding) and synthesize both sources into the profile.
+
+**Q1 — Peak voice anchor:**
+> "הראה לי את הדבר האהוב עליך שכתבת — משפט או פסקה שהרגיש לך הכי 'אתה'. (Paste here)"
+
+**Q2 — Negative anchor:**
+> "הראה לי משהו שכתבת שהרגיש לא נכון / פורמלי מדי / שטוח. (Paste here, or type 'דלג')"
+
+**Q3 — Arousal punctuation:**
+> "כשאתה מתלהב מרעיון — איך משתנה הפיסוק שלך? (more exclamations? more dashes? fragments? longer sentences? other?)"
+
+**Q4 — Argument direction:**
+> "אתה נוטה להתחיל עם המסקנה ולהסביר אחריה, או לבנות אליה בהדרגה? (conclusion-first / build-up / story-first / question-first)"
+
+**Q5 — Disagreement handling:**
+> "כשאתה לא מסכים עם משהו — אתה מתמודד חזיתית, הולך סביב, או פשוט אומר את דעתך בלי להתייחס לצד השני? (head-on / sideways / bypass)"
+
+**Q6 — Discourse marker preference:**
+> "מאלה, איזה אתה הכי משתמש: אז / אבל / בעצם / נו / כאילו / תכל'ס? בחר את 3 הראשונים בסדר שימוש."
+
+**Q7 — Ending style:**
+> "איך אתה מסיים כתיבה? (explicit conclusion / call to action / reflective thought / just stop / question)"
+
+**Q8 — Parenthetical habit:**
+> "כמה אתה משתמש בסוגריים או מקפים להוספת הערות בצד? (never / rare / moderate / heavy — part of my rhythm)"
+
+**Q9 — Uncertainty handling:**
+> "כשאתה לא בטוח במשהו — אתה אומר שאתה לא בטוח, או פשוט מצהיר ועובר הלאה? (I hedge openly / I state it and move / mix)"
+
+**Q10 — External reference:**
+> "יש מישהו שאמרו לך שהכתיבה שלך נשמעת כמוהו? (specific person, TV character, podcast host, author, 'כמו אני מדבר עם חברים', etc. — free text)"
+
+### Synthesizing the answers into the profile
+
+After Q1-Q10 + the standard sample collection, combine both sources:
+
+1. **Build the 42-feature table** from the samples (as in Basic Onboarding)
+2. **Extract Key Tells** from the samples
+3. **Select style-extreme passages** from the samples
+4. **ADD: Behavioral Profile section** — synthesize the 10 Q&A responses into a behavioral narrative:
 
 ```
-INTERNAL VOICE MODEL:
-- Sentence patterns: [average length], [rhythm description], [range]
-- Formality: [1-10 score], [specific markers], [construct/של preference]
-- Discourse markers: [list], [frequency: light/moderate/heavy]
-- Argument structure: [pattern name], [specific habits]
-- Punctuation: [comma style], [sentence length preference]
-- Vocabulary: [level], [characteristic words], [avoided words]
-- English ratio: [percentage estimate]
-- Humor: [style], [frequency]
-- Opinions: [expression pattern], [certainty level]
-- Paragraph openers: [types used], [distribution]
+## Behavioral Profile (from --setup-deep interview)
+
+### Peak voice
+Writer's self-identified "most them" moment: [quote from Q1]
+This is the target voice — everything should feel like it could be from this peak.
+
+### Anti-voice (what they're fleeing from)
+[From Q2, if provided]
+Writer's self-identified "not me" zone. Avoid these patterns.
+
+### Arousal rhythm
+When emotionally engaged, this writer's style shifts: [from Q3]
+Enforcement: [specific adjustments in emotionally-loaded content]
+
+### Argument architecture
+Default direction: [from Q4]
+Enforcement: When writing an opinion piece or argument, structure accordingly.
+
+### Disagreement pattern
+[From Q5]
+Enforcement: When content involves disagreement/opposing view, use this exact pattern.
+
+### Preferred discourse markers (behavioral, not measured)
+Top 3: [from Q6, in order]
+Enforcement: These take priority over whatever the sample analysis found. Self-report is valid here.
+
+### Ending behavior
+[From Q7]
+Enforcement: Match this ending style explicitly.
+
+### Parenthetical/aside density
+Self-reported level: [from Q8]
+Enforcement: Calibrate aside frequency to match.
+
+### Uncertainty expression
+[From Q9]
+Enforcement: Hedge or commit based on this preference.
+
+### Voice reference
+[From Q10]
+Use this as an external anchor when generating. Ask: "Would this sound like [reference]?"
 ```
 
-Apply this model to all generation in Mode B. Periodically check: does this sound like them, or does it sound like me?
+5. **Resolve conflicts between sources:** When the sample analysis and the interview answers disagree (e.g., sample shows 15% ellipsis, user says "I never use ellipsis"), trust the sample for frequency and the interview for conscious preferences. Note conflicts in the profile's "Generation Notes" section.
+
+---
+
+## The --calibrate Loop — Iterative Profile Refinement
+
+The most important new mechanism in v3.1. Research basis: Apple ICML 2025 PROSE (33% improvement over static profiles), PerFine 2025 knockout strategy, Self-Refine NeurIPS.
+
+**Core insight:** No matter how well the profile is extracted from samples, it will have gaps. The writer's implicit preferences only become visible when they see what the model produces WITHOUT knowing those preferences. The calibration loop closes the gap by generating samples, getting corrective feedback, and updating the profile — running 2-3 rounds until the profile converges.
+
+### When to run --calibrate
+
+After `--setup` or `--setup-deep`, suggest:
+> "רוצה לשפר את ההתאמה? הרץ /hebrew-writer --calibrate"
+
+Users can also run it manually at any time to refine an existing profile.
+
+### The loop
+
+When user runs `/hebrew-writer --calibrate`:
+
+**Round 1 — Prime the loop**
+
+**Step 1.1:** Verify a default profile exists. If not:
+> "אין פרופיל קול. הרץ /hebrew-writer --setup קודם."
+
+**Step 1.2:** Pick a calibration topic. Use a neutral topic the user hasn't written about, appropriate to their primary content type. Examples by content type:
+- Blog: "למה סטארטאפים נכשלים ברגע שהם מגיעים לשלב ההסקיילאפ"
+- Social: "מה שלמדתי אתמול ממישהו ברכבת"
+- Business: "עדכון לצוות על שינוי בתכנון הרבעוני"
+- Email: "מייל תגובה ללקוח שמתלונן על עיכוב"
+
+**Step 1.3:** Generate TWO different versions of a short piece (200-400 words each) on the topic. Both use the current voice profile, but each emphasizes DIFFERENT aspects of the profile:
+- Version A: Emphasizes Key Tells and the most distinctive signature passages
+- Version B: Emphasizes the 42-feature averages and the more representative passages
+
+Present both labeled simply as "גרסה א" and "גרסה ב".
+
+**Step 1.4:** Ask using AskUserQuestion:
+> "איזו גרסה נשמעת יותר כמוך? (א / ב / שתיהן דומות / אף אחת לא מתאימה)"
+
+**Step 1.5:** Follow-up based on answer:
+
+If user picks A or B:
+> "מה בגרסה השנייה הרגיש לא ממך? (1-2 משפטים מספיקים)"
+
+If user says "שתיהן דומות":
+> "אז מה חסר בשתיהן? מה היית מוסיף או משנה כדי שזה ירגיש יותר ממך?"
+
+If user says "אף אחת לא מתאימה":
+> "ספר לי מה בדיוק לא מתאים. אפשר להצביע על משפטים ספציפיים: 'הקטע X לא נשמע כמוני כי Y'."
+
+**Step 1.6:** Update the profile based on the feedback:
+- If user picked a version: The winning version becomes the "ground truth." Update Key Tells to strengthen what it does well. Add new Key Tells for what the losing version did wrong (the user's description becomes the enforcement rule).
+- If both were similar: The feedback ("what's missing") becomes a new Key Tell or Differential Feature.
+- If neither worked: The feedback becomes priority-level corrections that override existing profile components.
+
+**Step 1.7:** Save the updated profile. Log the calibration round in the profile's "Calibration History" section:
+```
+### Calibration Round 1 ([date])
+- Topic: [topic]
+- User preference: [A/B/both similar/neither]
+- User feedback: [quote of their correction]
+- Profile changes: [list of what was updated]
+```
+
+**Round 2 — Verify and refine**
+
+**Step 2.1:** Generate TWO new versions on a DIFFERENT topic, now using the updated profile.
+
+**Step 2.2:** Repeat Steps 1.4-1.7.
+
+**Round 3 — Final validation (optional)**
+
+**Step 3.1:** Generate ONE version on a third topic.
+
+**Step 3.2:** Ask:
+> "זה נשמע כמוך? (כן, מושלם / כן, בעיקר / משהו קטן חסר / עדיין לא)"
+
+**Step 3.3:**
+- "כן, מושלם" → Profile locked. Exit loop.
+- "כן, בעיקר" → Ask what's missing. Update profile. Exit loop.
+- "משהו קטן חסר" → Ask what. Update. Offer round 4.
+- "עדיין לא" → Offer to run `/hebrew-writer --setup-deep` for the 10-question interview, or restart setup with fresh samples.
+
+### Maximum 4 rounds
+
+If the loop hits 4 rounds without the user saying "כן, מושלם" or "כן, בעיקר", something is fundamentally off — suggest re-running `--setup` with different samples, or trying `--setup-deep`.
+
+### How the profile updates work
+
+Each round's feedback generates ONE of these update types:
+
+**Type 1 — Strengthen existing Key Tell:**
+User said "גרסה א is more me — גרסה ב sounds too polished." The profile's "avoids polishing" Key Tell gets a stronger enforcement rule and moves to position #1.
+
+**Type 2 — Add new Key Tell:**
+User said "version B felt off because it used long sentences — I write short." New Key Tell: "Hard cap on sentence length — max 15 words in 90% of sentences."
+
+**Type 3 — Remove/weaken a Key Tell:**
+User said "both had too many 'נו' — I use it rarely." The existing "heavy נו usage" Key Tell gets demoted or removed.
+
+**Type 4 — Add a Differential Feature:**
+User said "version A was missing the self-correction moments I always have." New DF: "Self-correction required every 200 words minimum."
+
+**Type 5 — Rewrite a signature passage:**
+If user identifies a signature passage as unrepresentative, mark it for removal or ask for a replacement excerpt.
+
+### Cross-round contradiction handling
+
+When feedback in Round N contradicts an update from Round M (M < N):
+- Do NOT silently overwrite the earlier update
+- Flag the contradiction in the profile's "Generation Notes" section:
+  ```
+  Cross-round conflict: Round [M] updated [what] based on feedback [X]. Round [N] feedback [Y] contradicts this.
+  ```
+- Before applying Round N's update, ask the user:
+  > "בסבב [M] אמרת [X] וזה עדכן את [Z]. עכשיו אתה אומר [Y] שמרמז על דבר הפוך. איזו העדפה חזקה יותר בשבילך?"
+- Apply whichever the user confirms. Don't silently pick one.
+
+This prevents calibration from oscillating and keeps the user in control of their own voice profile.
+
+### The Key Generation Note
+
+During calibration, be honest about what you're doing. Show the user:
+> "בסבב הזה שיניתי את הפרופיל שלך: [list of changes]. נראה לך הגיוני?"
+
+If the user disagrees with an update, don't apply it. Calibration should feel collaborative, not automated.
+
+---
+
+## Key Tells — The 3-5 Outlier Behaviors
+
+Before extracting 42 features, the skill identifies the **Key Tells**: the 3-5 behaviors that deviate MOST from Israeli Hebrew baseline norms. These are the fingerprint — the things a reader would use to pick this writer's text out of a lineup.
+
+### Why Key Tells come first
+
+Research on authorship attribution (CMU 2024, EMNLP 2025) consistently shows that style signal is concentrated in outlier behaviors, not averages. A writer who uses 11-word sentences on average has a weak signal. A writer who never uses formal connectors (לפיכך, על כן) — that absence is a strong signal. A writer who opens every argument with a question they immediately dismiss — that pattern is a fingerprint.
+
+The 42-feature table describes. The Key Tells constrain. During generation, Key Tells get priority enforcement — they are non-negotiable.
+
+### Baseline reference points (Israeli Hebrew norms from ivrit.ai + HeBERT data)
+
+When analyzing a sample, compare these metrics to baseline:
+
+| Feature | Israeli Hebrew baseline | "Deviates" means |
+|---------|-------------------------|------------------|
+| Avg sentence length | 8-13 words (8.9 written, 13.2 spoken) | <6 or >18 |
+| נו usage | 3.77% of tokens in casual | 0% (never) or >6% (heavy) |
+| אז as opener | ~4.5% of segment openers | 0% or >12% |
+| Ellipsis (...) | 21-41% of chunks | <5% or >60% |
+| English code-switching | 5-10% of segments | 0% or >20% |
+| Discourse markers total | 4-7% of tokens | <2% or >12% |
+| Formal connectors (לפיכך etc.) | ~1% in casual | 0% or >3% |
+| Construct state ratio | 30-50% in mixed | <15% or >70% |
+| Self-correction frequency | ~10% of segments | 0% or >25% |
+| Questions per 500 words | 0.5-2 | 0 or >5 |
+
+### Key Tells extraction protocol
+
+After reading the user's samples, ask: "For each of the 42 features, how different is this writer from baseline?" Rank features by deviation magnitude. Select the top 3-5 MOST deviating features. For each, write a specific Key Tell statement.
+
+**Key Tell statement format:** `[Specific behavior]. [Baseline comparison]. [How to enforce in generation].`
+
+**Example Key Tells:**
+
+**KT1:** This writer NEVER uses formal connectors (לפיכך, על כן, אי לכך, בשל כך). Baseline: ~1% casual. Writer: 0/47 occurrences. Enforce: Replace all formal connector suggestions with אז, כי, or bare sentence break.
+
+**KT2:** This writer uses ellipsis (...) at 3x baseline — every 80-100 words. Baseline: every 300-400 words. Enforce: Insert at least 2 "..." per 200 words, specifically at trailing thoughts or implied continuations.
+
+**KT3:** This writer opens arguments with a question she immediately dismisses. Pattern: "[Question]? [Dismissal]." appears 5 times in the sample. Enforce: Use this pattern at least once per piece over 300 words.
+
+**KT4:** This writer never uses "חשוב" (important) — instead uses "שווה" (worth it) or just states the claim. 0 occurrences of חשוב in the sample. Enforce: Blacklist חשוב for this voice; substitute שווה or direct assertion.
+
+**KT5:** This writer ends pieces without a conclusion — just stops. Baseline: ~30% of pieces have explicit conclusions. Writer: 0 of 8 samples. Enforce: Do not write a conclusion paragraph. End on the last substantive point.
+
+### Fallback when fewer than 3 Key Tells emerge
+
+If the sample doesn't show clear deviation on at least 3 features from baseline, do NOT fabricate Key Tells to fill slots. This happens with:
+- Basic tier samples (200-500 words) of bland/neutral writing
+- Writers whose voice is genuinely close to Israeli Hebrew baseline
+- Samples from a single content type where the writer plays it safe
+
+Protocol when fewer than 3 emerge:
+1. Record only the real Key Tells found (can be 1 or 2 — don't hallucinate more)
+2. Add a note to the profile's "Generation Notes" section: "Key Tell coverage is thin (only N found in baseline sample). Calibration strongly recommended for better voice match."
+3. Prompt user more aggressively to run `/hebrew-writer --calibrate` or provide more samples via `--setup-deep`
+4. Weight Signature Passages more heavily during generation to compensate
+
+### Where Key Tells live in the profile
+
+Key Tells get their own section at the TOP of the voice profile file, before the 42-feature table. They are the first thing read during generation, and the last thing checked in self-audit.
+
+## 42-Feature Voice Extraction
+
+Analyze the user's writing samples across these 7 categories. For each feature, record a concrete measurement or description.
+
+### Category 1: Sentence Architecture (8 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 1 | Average sentence length | Count words per sentence, compute average | "7.3 words" |
+| 2 | Sentence length std deviation | How much do lengths vary? | "high (3-28 range)" |
+| 3 | Shortest typical sentence | Minimum meaningful sentence | "2-3 words" |
+| 4 | Longest typical sentence | Maximum natural sentence | "25-30 words" |
+| 5 | Fragment frequency | % of sentences under 5 words | "31%" |
+| 6 | Question frequency | Questions per 500 words | "3.2 per 500w" |
+| 7 | Exclamation frequency | Exclamations per 500 words | "1.8 per 500w" |
+| 8 | Ellipsis frequency | Uses "..." — how often? | "heavy — every 200w" |
+
+### Category 2: Vocabulary Profile (8 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 9 | Formality level | 1-10 scale | "3/10 (casual)" |
+| 10 | Hebrew-English ratio | % of words that are English | "8% code-switching" |
+| 11 | Slang density | Which slang, how often | "תכל'ס heavy, יאללה rare, סבבה moderate" |
+| 12 | Preferred intensifiers | ממש vs מאוד vs ביותר | "ממש dominant, מאוד never" |
+| 13 | Characteristic words | 5-10 words this person overuses | "בעצם, תכל'ס, נו, פשוט, ממש" |
+| 14 | Avoided words | Words this person never uses | "לפיכך, מהווה, בהתאם" |
+| 15 | Vocabulary breadth | Rich/varied or tight/focused | "moderate — repeats key terms" |
+| 16 | Technical jargon density | Domain-specific terms frequency | "high tech jargon (API, deploy, stack)" |
+
+### Category 3: Discourse & Flow (6 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 17 | Preferred discourse markers | Ranked list | "נו >> בעצם > כאילו > אז" |
+| 18 | Discourse marker frequency | % of tokens | "4.2%" |
+| 19 | Preferred connectors | Which connectors dominate | "אז, אבל, כי — avoids גם" |
+| 20 | Self-correction frequency | How often do they correct mid-text | "high — every 300w" |
+| 21 | Parenthetical/aside frequency | How often do they digress | "moderate — 1 per 500w" |
+| 22 | Paragraph length pattern | Short/medium/long/mixed | "mostly short (2-3 sentences)" |
+
+### Category 4: Argumentation Style (5 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 23 | Opening style | How they start pieces | "claim-first — leads with opinion" |
+| 24 | Opinion strength | Bold/moderate/hedged | "bold — states positions directly" |
+| 25 | Evidence style | Anecdotal/data-driven/mixed | "anecdotal — personal stories" |
+| 26 | Pushback handling | How they address objections | "acknowledging — gives ground then responds" |
+| 27 | Conclusion style | How they end | "abrupt — just stops, no summary" |
+
+### Category 5: Emotional Register (5 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 28 | Humor style | Type of humor used | "self-deprecating + dry" |
+| 29 | Humor frequency | How often | "frequent — every 200w" |
+| 30 | Emotional temperature | Cool/warm/hot | "warm — personally invested" |
+| 31 | Vulnerability level | Exposed/guarded/absent | "exposed — admits uncertainty" |
+| 32 | Irony usage | Heavy/light/none | "light — occasional understatement" |
+
+### Category 6: Punctuation & Formatting (4 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 33 | Comma density | Light/moderate/heavy | "light — prefers periods" |
+| 34 | Period preference | Many short or fewer long sentences | "many short sentences" |
+| 35 | Ellipsis usage | Never/occasional/heavy | "heavy — trails off often" |
+| 36 | Formatting style | Minimal/moderate/heavy | "minimal — almost no bold" |
+
+### Category 7: Hebrew-Specific Patterns (6 features)
+
+| # | Feature | What to measure | Example output |
+|---|---------|----------------|----------------|
+| 37 | Construct state vs. של | Ratio | "20/80 — mostly של" |
+| 38 | Pro-drop consistency | Always/sometimes/never drops pronouns | "always in past tense" |
+| 39 | Binyan preferences | Which verb patterns dominate | "Pa'al dominant, avoids Hif'il" |
+| 40 | Gender handling | Standard/inclusive/mixed | "standard masculine default" |
+| 41 | Sentence-initial particles | Which ones, how often | "אז (heavy), אבל (moderate), וגם" |
+| 42 | Cultural reference density | Sparse/moderate/rich | "rich — army, food, bureaucracy" |
+
+### Accuracy Tiers
+
+| Tier | Word count | Features extracted | Confidence |
+|------|-----------|-------------------|------------|
+| Basic | 200-500 | Categories 1-2 only (16 features) | Rough approximation |
+| Strong | 500-1500 | Categories 1-5 (32 features) | Solid match |
+| Full Clone | 1500+ | All 42 features | High fidelity |
+| Maximum | Multiple texts | All 42 + cross-document consistency | Professional ghostwriter |
+
+---
+
+## Signature Passage Extraction (Style-Extreme Selection)
+
+**The v3.1 change:** v3 selected passages that "best represent" the writer's voice — which in practice meant choosing representative, average-voice passages. v3.1 selects for stylistic outlierness. The passages chosen are the ones where this writer's voice is MOST different from generic Israeli Hebrew. Research basis: EMNLP 2025 showed that content-similar exemplars reduce style imitation accuracy; style-extreme exemplars increase it.
+
+### Style-extreme selection criteria (ranked)
+
+1. **Maximum Key Tell concentration** — Passages that demonstrate 2+ Key Tells at once. A single passage showing both "never uses formal connectors" and "ends abruptly without conclusion" is worth more than two passages each showing one tell.
+
+2. **Most different from baseline** — For each candidate passage, compare to generic Israeli Hebrew. The passages where the writer's choices diverge most from baseline get priority. "Most them" = "most different from average."
+
+3. **Outlier emotional moments** — Passages where the writer's emotional temperature spikes (excitement, frustration, confession). These reveal the writer's voice under load, which is when implicit patterns are most visible.
+
+4. **Pattern-breaking choices** — Passages with a sudden register shift, a mid-sentence correction, an abrupt fragment, a parenthetical that goes somewhere unexpected. These show the writer doing what AI cannot.
+
+5. **Self-reference passages** — Passages where the writer refers to themselves, their experience, or their doubt. These carry vulnerability signals that anchor "who is this person."
+
+### Passage format
+
+Each passage is 15-40 words, extracted verbatim. Each passage gets three labels:
+
+```
+### SP1: [rhythm label] + [content label] + [Key Tell demonstrated]
+> "[verbatim passage]"
+— demonstrates: [what this shows about the writer's voice, specifically]
+— enforces: [Key Tell number(s) this passage anchors]
+```
+
+### Selection quantity
+
+- Basic tier (200-500 words sample): 3-5 passages
+- Strong tier (500-1500 words): 5-7 passages
+- Full Clone (1500+): 7-10 passages
+- Maximum (multi-file): 10-15 passages
+
+Beyond 10 passages, returns diminish. EMNLP 2025 data confirms: 5 well-selected passages beat 20 averagely-selected ones.
+
+### What NOT to select
+
+- Passages that are average in voice (they teach the model nothing specific)
+- Passages that are topically similar to what the user will be writing about (they become content references, not style references)
+- Passages where the writer is quoting someone else or being intentionally formal
+- Passages that any competent Hebrew writer could have written (not distinctive)
+
+**Example stored passages:**
+```
+## Signature Passages
+
+### SP1 (rhythm + fragment)
+"בניתי את המערכת בשלושה ימים. שלושה. לא שבוע, לא חודש. שלושה ימים."
+— demonstrates: short fragments after statement, repetition for emphasis
+
+### SP2 (self-correction + discourse marker)
+"הגישה הזאת עובדת, בעצם — רגע, לא. היא עובדת כשיש לך צוות קטן. אחרת זה בלאגן."
+— demonstrates: mid-thought pivot, בעצם, casual register, cultural word (בלאגן)
+
+### SP3 (opinion + vulnerability)
+"אני כותב את זה כמי שטעה בזה בעצמו. שלוש פעמים. אז אולי תשמעו."
+— demonstrates: stake declaration, specific number, direct address, humor
+```
+
+---
+
+## Smart Fusion Engine (v3.1)
+
+When generating with a loaded voice profile, these priority rules determine what controls what. v3.1 reorders priorities to put Key Tells at the top, above the 42-feature table.
+
+### Priority Order (v3.1)
+
+**Priority 1 — Key Tells (NEW top priority):** The 3-5 outlier behaviors are enforced absolutely. If a generation choice conflicts with a Key Tell, the Key Tell wins. No exceptions.
+
+**Priority 2 — Differential Features (from negative sample or calibration):** Enforced with near-equal weight to Key Tells.
+
+**Priority 3 — Signature Passages (style-extreme selection):** Used as active few-shot anchors. Before generating each section, mentally reference the passages. Ask: "Could this paragraph fit naturally among the signature passages?"
+
+**Priority 4 — Behavioral Profile (from --setup-deep, if present):** Self-reported preferences override sample-measured features where they conflict.
+
+**Priority 5 — 42-Feature measurements:** Used for baseline constraints — sentence length target, formality level, slang density. These now function as a supporting scaffold, not the primary instruction.
+
+**Priority 6 — Safety net (skill rules):** AI vocabulary blacklist, em dash ban, Big No-Nos, anti-detection minimums. These ALWAYS apply regardless of voice profile.
+
+**Priority 7 — Soul Layer requirements:** Proper noun density, דווקא usage, memory drops, stakes. These ALWAYS add on top.
+
+### Conflict Resolution (updated for v3.1)
+
+**When user's voice conflicts with skill safety rules:**
+- Safety always wins. Even if the user's samples show "מהווה" usage, we ban it.
+
+**When Key Tells conflict with 42-feature averages:**
+- Key Tells always win. If Key Tell says "never uses formal connectors" but the 42-feature table shows "0.3% formal connectors detected," the Key Tell rule (zero) overrides the measured average.
+
+**When calibration feedback conflicts with original profile:**
+- Calibration always wins. Feedback is newer evidence and comes directly from the user's explicit preference.
+
+**When Signature Passages suggest something different from features:**
+- Passages win for rhythm, tone, and emotional temperature. Features win for frequency counts and averages.
+
+**When Behavioral Profile (Q&A) conflicts with sample measurements:**
+- Trust samples for measurable frequencies. Trust Q&A for conscious preferences and identity markers (like "my writing sounds like X").
+
+### Active Few-Shot Anchoring (v3.1 enhancement)
+
+Before generating each paragraph, do this mentally:
+
+1. Read the top 3 Signature Passages
+2. Identify the rhythm pattern, emotional temperature, and word choices
+3. Ask: "What would this writer do with this next paragraph?"
+4. Generate, matching the rhythm first, content second
+5. After each paragraph, check: "Does this fit in a collection with the signature passages? If I showed this paragraph alongside SP1 and SP2, would they feel like the same person?"
+
+If the answer is no, revise. This "signature passage fit check" is the v3.1 equivalent of pattern matching against the writer's actual voice.
+
+### When NO profile is loaded
+
+If no voice profile is loaded (first-time user, --voice not specified, no default profile):
+- Use default Israeli casual voice (Layers 1-5)
+- At end of output, append ONE line (once per session): "💡 רוצה שזה ישמע יותר כמוך? הרץ: /hebrew-writer --setup"
+
+---
+
+## Few-Shot Anchoring During Generation
+
+When generating with a loaded voice profile:
+
+1. **Read the signature passages** from the profile before writing anything.
+2. **Internalize the voice:** "These passages are how this person writes. Match their rhythm, energy, word choices, and emotional temperature."
+3. **Generate the content** using all layers, with the user's measured features overriding defaults per the fusion rules.
+4. **Mental comparison:** After drafting, ask: "Does this sound like the same person who wrote those passages?" If a paragraph feels off, identify which feature diverges and adjust.
+5. **Final passage check:** Read the draft alongside the signature passages. The draft should feel like it could be the next thing this person writes, not a different person.
 
 ---
 
 ## Voice Profile File Handling
 
-### Saving a profile: `--learn` + `--save-as`
+### The --setup flow saves to default profile:
 
 ```
-/hebrew-writer --learn "sample text here" --save-as profile-name
+/hebrew-writer --setup
 ```
+Creates `.claude/voices/default.hebrew-voice.md` — used automatically for all future generations.
 
-Or with a file:
-```
-/hebrew-writer --learn --my-voice-file path/to/writing.md --save-as profile-name
-```
-
-Process:
-1. Read the sample (inline text or from file)
-2. Determine accuracy tier from word count
-3. Extract features per tier
-4. Generate the full voice profile using the `voice-profile-template.md` format (read that file with the Read tool if needed)
-5. Save to `.claude/voices/profile-name.hebrew-voice.md`
-6. If `.claude/voices/` does not exist, create it automatically
-7. Confirm: "Voice profile 'profile-name' saved to .claude/voices/profile-name.hebrew-voice.md (Strong tier — 847 words analyzed)"
-
-### Loading a profile: `--voice`
+### Named profiles (same as v2):
 
 ```
-/hebrew-writer "topic" --voice profile-name
+/hebrew-writer --learn "sample text" --save-as danny
+/hebrew-writer "topic" --voice danny
 ```
 
-Search order:
-1. Check `.claude/voices/profile-name.hebrew-voice.md` (project-local, takes precedence)
-2. Check `~/.claude/voices/profile-name.hebrew-voice.md` (global fallback)
-3. If not found in either: list all available profiles from both directories, ask user to choose or provide a sample instead
-
-### One-off matching: `--my-voice` / `--my-voice-file`
-
-Analyze the sample, build the internal model, generate in that voice. Do not save. Good for one-time tasks.
-
-### Multi-file maximum accuracy: `--my-voice-files`
+### One-off matching (same as v2):
 
 ```
+/hebrew-writer "topic" --my-voice "inline sample"
+/hebrew-writer "topic" --my-voice-file path/to/writing.md
 /hebrew-writer "topic" --my-voice-files path/to/folder/
 ```
 
-Read all text files in the folder. Combine analysis across all samples. Build the Maximum-tier profile. Do not save unless `--save-as` is also provided.
+### Profile lookup order:
+
+1. `--voice [name]` → check `.claude/voices/[name].hebrew-voice.md` (local), then `~/.claude/voices/[name].hebrew-voice.md` (global)
+2. No `--voice` flag → check for `default.hebrew-voice.md` (local), then global
+3. No profile found → use built-in Israeli casual voice + show onboarding suggestion (once)
+
+### Profile file structure (v3.1 format):
+
+See `voice-profile-template-v3.1.md` for the complete template. The structure (in priority order):
+
+1. **Frontmatter** — metadata including version: 3.1 and calibration-rounds count
+2. **Key Tells** — top 3-5 outlier behaviors (Priority 1, at the TOP of the file)
+3. **Differential Features** — from negative sample or calibration (Priority 2)
+4. **Signature Passages** — style-extreme selection (Priority 3)
+5. **Behavioral Profile** — from --setup-deep interview, if run (Priority 4)
+6. **42-Feature Measurements** — supporting scaffold (Priority 5)
+7. **Fusion Rules** — priority order reference
+8. **Calibration History** — log of all --calibrate rounds
+9. **Generation Notes** — resolved conflicts and special instructions
+
+Read the template file during `--setup`, `--setup-deep`, or `--calibrate` using the Read tool to ensure you save in the exact expected format.
 
 ---
 
-## Error Handling for Voice Features
+## Error Handling
 
-**Sample under 200 words with `--my-voice` or `--my-voice-file`:**
-Warn: "Sample too short for reliable voice matching. Minimum 200 words recommended. Proceeding with Basic approximation only — sentence length and formality only. For better results, provide a longer sample."
+**--setup with less than 200 words of samples:**
+> "צריך מינימום 200 מילים כדי ללמוד את הסגנון שלך. קיבלתי [X] מילים. הדבק עוד טקסטים?"
 
-**`.claude/voices/` directory doesn't exist when saving:**
-Create it silently. Do not warn the user about directory creation.
+**--setup with 200-500 words:**
+> "קיבלתי [X] מילים — מספיק לפרופיל בסיסי (Basic tier). לדיוק גבוה יותר, הדבק עוד טקסטים (500+ מילים מומלץ). להמשיך עם מה שיש? (כן/לא)"
 
-**`--voice` profile not found in either location:**
-"Profile '[name]' not found. Available profiles:" then list all `.hebrew-voice.md` files found in `.claude/voices/` and `~/.claude/voices/`. "Choose a profile name, or provide a sample with --my-voice instead."
+**`.claude/voices/` doesn't exist:** Create silently.
 
-**`--my-voice-file` path doesn't exist:**
-"File not found: [path]. Please check the path and try again."
+**--voice profile not found:**
+List available profiles from both local and global directories. Ask user to choose or provide samples.
 
-**`--my-voice-files` folder is empty or contains no text files:**
-"No text files found in [path]. Please provide a folder containing .md, .txt, or similar text files."
+**--my-voice-file path doesn't exist:**
+> "File not found: [path]. Please check the path and try again."
+
+**--my-voice-files folder empty:**
+> "No text files found in [path]. Please provide a folder containing .md, .txt, or similar text files."
+
+**User runs --setup when a default profile already exists:**
+> "כבר יש לך פרופיל קול. רוצה להחליף אותו? (כן/לא)"
+If yes, proceed with new setup. Old profile overwritten.
+
+---
+
+# LAYER 8: Soul Layer — נשמה עמוקה
+
+## What This Layer Is
+
+Layers 1-7 eliminate AI tells. Layer 8 installs the opposite: active authenticity signals. The difference between text that passes a detector and text that reads like a real person wrote it is this layer.
+
+The fundamental insight from research into what makes human writing feel human (Princeton 2025, Northeastern University slop taxonomy, ivrit.ai corpus analysis): AI writing is statistically average. It picks the most probable next word, the most expected next argument, the most generic example. Human writing is specific, biased, digressive, vulnerable, and occasionally wrong. Layer 8 is the system for manufacturing those qualities on purpose.
+
+**This layer applies in all modes.** Generate, rewrite, and when scoring text for detection — נשמה עמוקה is always active.
+
+---
+
+## Category A: Specificity Injection
+
+AI generalizes. The fix is not to "be more specific" as a vague instruction — it is to apply these three concrete techniques.
+
+---
+
+### A1: The Proper Noun Rule
+
+**What it is:** Every 200 words, at least one proper noun must appear that could not have been invented generically. A real person's name, a real place name, a real brand, a real institution, a real event with a specific date.
+
+**Why it matters:** Proper nouns are the single strongest signal that a writer is drawing from memory rather than statistical prediction. LLMs generate generic placeholders. Real writers name things.
+
+**The rule:** For every 200 words in your output, plant one proper noun that is specific and real: a person (not "a tech entrepreneur" but "גיל שוויד"), a place (not "a coffee shop in Tel Aviv" but "קפה נחמני"), a product (not "a project management tool" but "נושן"), a publication (not "a leading newspaper" but "הארץ"), an event (not "a startup conference" but "DLD Tel Aviv 2024").
+
+**Before (AI):**
+> מנכ"ל חברת ההייטק הסביר בכנס שחברות ישראליות רבות עוברות לעבוד עם שווקים בינלאומיים.
+
+*(The CEO of a tech company explained at a conference that many Israeli companies are moving to work with international markets.)*
+
+**After (human):**
+> רועי מן הסביר בדיסקוברי 2024 שאפטר שיפטד כבר שנתיים לפני שווקי ה-SMB האמריקאים, ועדיין לא עשו אקזיט. זה לא כישלון. זה בחירה.
+
+*(Roi Man explained at Discovery 2024 that Aftershifted moved to American SMB markets two years ago and still haven't exited. That's not failure. That's a choice.)*
+
+---
+
+### A2: The Unusual Number Rule
+
+**What it is:** Replace round, generic numbers with specific, non-obvious ones. "A few hours" becomes "שלוש וחצי שעות". "Many companies" becomes "שבע עשרה חברות מתוך עשרים ושתיים".
+
+**Why it matters:** Round numbers are invented. Specific numbers are remembered. The number 37% reads as data. The number 40% reads as approximation. The number 36.7% reads as measurement. The specificity of the number carries credibility that affects the entire surrounding argument.
+
+**The rule:** Per 500 words, include at least one number that is not round. Not 100, not 50, not "a few" — a number that looks like it came from an actual count, measurement, or memory. Odd numbers, decimals, and unexpected ranges all work. "בשנת 2019 ובמיוחד בחודש פברואר" is more specific than "לפני כמה שנים."
+
+**Before (AI):**
+> מחקרים מראים שמרבית העובדים מרגישים שחברתם לא מוכנה לשינוי טכנולוגי.
+
+*(Studies show that most employees feel their company is not ready for technological change.)*
+
+**After (human):**
+> סקר שקראתי מ-Gartner מ-2023 טען ש-58% מהעובדים מרגישים ככה. אני לא בטוח ב-Gartner, אבל במשרד שלי? ספרתי שלושה אנשים מתוך אחד עשר שבאמת מבינים מה זה מודל שפה. זה פחות מ-30%.
+
+*(A survey I read from Gartner in 2023 claimed 58% of employees feel this way. I'm not sure about Gartner, but in my office? I counted three people out of eleven who actually understand what a language model is. That's less than 30%.)*
+
+---
+
+### A3: The Anti-Generic Example Rule
+
+**What it is:** When giving an example, the example must be more specific than the point it illustrates. AI examples are always generic illustrations of generic points. Human examples are specific instances that carry more information than the point itself.
+
+**Why it matters:** A generic example — "for instance, a startup that launched a product" — adds zero information. A specific example — "כמו מה שעשו ב-Wix ב-2014 כשהוציאו את הבילדר החדש בלי להודיע לאף אחד" — adds texture, credibility, and the feeling that the writer actually knows something.
+
+**The rule:** Every time you write "לדוגמה" or "למשל" or "כמו ש" or "נניח ש", the example that follows must contain at least one piece of information that was not in the preceding claim. If you're illustrating "startups that pivot successfully," the example must include the specific startup, the specific pivot, and ideally a detail about when or how that reveals something true. Generic examples are deleted and the sentence is rewritten without them.
+
+**Before (AI):**
+> חברות רבות מצליחות להסתגל לשינויים בשוק. לדוגמה, חברת הייטק שפיתחה את המוצר שלה מחדש בתגובה לצרכי הלקוחות.
+
+*(Many companies succeed in adapting to market changes. For example, a tech company that redeveloped its product in response to customer needs.)*
+
+**After (human):**
+> חברות מסתגלות. אבל "להסתגל" זה מילה נחמדה למה שבאמת קורה. מה שקרה ל-Monday.com בין 2014 ל-2017 זה לא הסתגלות — זה היה פשוט לעזוב את כל מה שבנו ולהתחיל מחדש עם שם אחר ומוצר אחר. רוב החברות לא שורדות את זה. הם שרדו.
+
+*(Companies adapt. But "adapt" is a nice word for what actually happens. What happened to Monday.com between 2014 and 2017 wasn't adaptation — it was just abandoning everything they'd built and starting over with a different name and different product. Most companies don't survive that. They survived.)*
+
+---
+
+## Category B: Conviction Architecture
+
+The writer must want something. Not as a decoration — as a structural feature of how arguments are built.
+
+---
+
+### B1: Position Declaration
+
+**What it is:** Within the first 150 words of any piece, the writer states their position explicitly — not as a thesis ("in this article I will argue"), but as a direct claim the writer is personally committed to.
+
+**Why it matters:** AI writing begins with context. Human writing begins with a take. The position declaration is not a summary — it's an act of commitment. It says: I am the kind of person who believes this, and I'm writing to you from that place.
+
+**The rule:** The opening position must use first-person and include a verb of belief, opinion, or experience. Not "ישנן ראיות ש" (there is evidence that) but "אני חושב ש" or "לדעתי" or "מניסיוני" or "מה שאני יודע זה ש". The position must be falsifiable — something that someone could disagree with. If no reasonable person would disagree with it, it is not a position, it is a fact.
+
+**Before (AI):**
+> ניהול פרויקטים הוא תחום מורכב הכולל תכנון, ביצוע ובקרה של פעילויות רבות. קיימות שיטות שונות לניהול פרויקטים, כגון Agile ו-Waterfall.
+
+*(Project management is a complex field involving the planning, execution, and control of many activities. There are various project management methodologies, such as Agile and Waterfall.)*
+
+**After (human):**
+> שיטות ניהול פרויקטים הן ברובן תירוצים לאנשים שלא יודעים לתקשר. Agile לא יציל צוות שבו המנהל לא מדבר עם המפתחים. Waterfall לא יפול אם הצוות באמת יודע מה הוא עושה. הכלי לא משנה. האנשים משנים.
+
+*(Project management methodologies are mostly excuses for people who don't know how to communicate. Agile won't save a team where the manager doesn't talk to the developers. Waterfall won't fail if the team actually knows what it's doing. The tool doesn't matter. The people matter.)*
+
+---
+
+### B2: Pushback Acknowledgment
+
+**What it is:** The writer acknowledges the strongest version of the opposing view — not to dismiss it, but to engage with it genuinely. The acknowledgment must cost something: the writer must give real ground before winning it back.
+
+**Why it matters:** AI gives equal weight to all views, producing the false balance that is one of its loudest tells. Humans acknowledge counterarguments strategically — they choose which objection to fight and which to concede. Conceding real ground reads as intellectual honesty. It makes the parts where the writer holds their position feel earned.
+
+**The rule:** Once per piece, find the strongest objection to your main claim and write it in 1-2 sentences in its most compelling form — not a straw man. Then respond to it. The response must not simply reverse the concession. If you concede that X is a real problem, your response must work around X, not pretend X is actually fine.
+
+**Before (AI):**
+> יש המטילים ספק בגישה זו, אולם ניתן לטעון כי היתרונות עולים על החסרונות.
+
+*(Some doubt this approach, but one could argue that the advantages outweigh the disadvantages.)*
+
+**After (human):**
+> הטענה הכי חזקה נגד מה שאמרתי: חברות קטנות פשוט לא יכולות להרשות לעצמן להשקיע בתשתית כשהן עוד לא רווחיות. זה נכון. אין לי תשובה טובה לחברה בת שנה. אבל בשנה השלישית, כשאתה מוציא 40% מזמן הפיתוח על תשתית שנבנתה בחופזה? אז המחיר כבר שולם. פעמיים.
+
+*(The strongest argument against what I said: small companies simply cannot afford to invest in infrastructure when they're not yet profitable. That's true. I have no good answer for a one-year-old company. But in the third year, when you're spending 40% of development time on infrastructure that was built hastily? Then the price has already been paid. Twice.)*
+
+---
+
+### B3: The Strong Negative
+
+**What it is:** Use strong, direct negation for things the writer genuinely doesn't believe or has decided against. Not hedged negation ("this approach may not always be optimal") — real negation ("זה לא עובד").
+
+**Why it matters:** AI avoids strong negatives because they risk being wrong. Humans say "זה לא נכון" because they're willing to be wrong. The willingness to be wrong is the most powerful authenticity signal in writing. It says: I am a real person with real beliefs who can lose an argument.
+
+**The rule:** At least once per piece, use an unhedged negative claim about something in your subject area. Not "לא תמיד" (not always) — just "לא" (no). The claim should be specific enough that a reader could disagree. "לא כל כלי AI מתאים לכל צוות" is hedged. "Notion לא מתאים לצוותים מעל 50 איש" is a real claim.
+
+**Before (AI):**
+> לא תמיד הגישה הזו מתאימה לכל הסיטואציות, ויש לשקול את הנסיבות הספציפיות של כל מקרה.
+
+*(This approach is not always suitable for all situations, and the specific circumstances of each case must be considered.)*
+
+**After (human):**
+> הגישה הזו לא עובדת בצוותים מבוזרים. לא "לא תמיד עובדת" — פשוט לא עובדת. ניסינו אותה בשלושה צוותים. בשניים מהם היא עשתה נזק שלקח שישה חודשים לתקן.
+
+*(This approach doesn't work in distributed teams. Not "doesn't always work" — just doesn't work. We tried it in three teams. In two of them it caused damage that took six months to repair.)*
+
+---
+
+## Category C: Digression & Texture
+
+Human writing goes sideways. Not randomly — the digressions are where the writer's actual personality lives.
+
+---
+
+### C1: The Aside Rule
+
+**What it is:** Insert one parenthetical aside per major section — a thought that is related but not on the direct argumentative line, enclosed in parentheses or set off with a comma pause. The aside reveals the writer as a person who thinks about things beyond the immediate argument.
+
+**Why it matters:** Asides are the literary equivalent of a human leaning over and saying "by the way." They signal associative human cognition — the brain that noticed something adjacent while pursuing the main thought. AI stays on topic because it has no peripheral vision. Real writers have peripheral vision.
+
+**The rule:** Once per 400-600 words, include an aside that: (a) is not required for the main argument, (b) reveals something about the writer's frame of reference or experience, and (c) is brief — 1-2 sentences maximum. Longer asides become digressions (see C2). The aside should feel like it bubbled up naturally, not like it was inserted for effect.
+
+**Before (AI):**
+> בינה מלאכותית גנרטיבית משנה את האופן שבו צוותי פיתוח עובדים עם קוד.
+
+*(Generative AI is changing the way development teams work with code.)*
+
+**After (human):**
+> בינה מלאכותית גנרטיבית משנה את האופן שבו מפתחים עובדים עם קוד (ואני עדיין לא מחליט אם זה טוב שילד שגדל על Stack Overflow לא ייאלץ לסבול כמוני, או אם זה רע שהוא גם לא יבין למה הקוד עושה מה שהוא עושה). בינתיים — זה קורה, בין אם מחליטים שזה טוב או לא.
+
+*(Generative AI is changing the way developers work with code (and I still can't decide if it's good that a kid growing up on Stack Overflow won't have to suffer like I did, or bad that he also won't understand why the code does what it does). Meanwhile — it's happening, whether we decide it's good or not.)*
+
+---
+
+### C2: The Memory Drop
+
+**What it is:** Once per piece, the writer drops a specific personal memory — a brief, concrete, past-tense recollection that grounds the argument in lived experience. Not a hypothetical ("imagine you're in a meeting") — an actual memory ("ישבתי בישיבה ב-2021").
+
+**Why it matters:** AI cannot have memories. Simulated memories are recognizable because they are always generic: "I remember a time when a colleague said..." Real memories are specific and often slightly embarrassing or revealing. The memory drop proves the writer was somewhere, doing something, before they wrote this.
+
+**The rule:** The memory must include: (a) a specific time marker (not just "once" but "בחודש מרץ" or "בשנת 2020" or "כשהייתי בן שלושים"), (b) a specific place or context, (c) at least one concrete detail that wasn't necessary to include. The memory should connect to the argument — but the connection can be loose. Some of the best memory drops are ones that approach the argument from an unexpected angle.
+
+**Before (AI):**
+> ניהול זמן יעיל הוא גורם קריטי להצלחה מקצועית. אנשים רבים נאבקים עם ניהול הזמן שלהם.
+
+*(Effective time management is a critical factor in professional success. Many people struggle with their time management.)*
+
+**After (human):**
+> פעם, בסוף 2018, ישבתי על כיסא בקפה נחמני בתל אביב ועשיתי את כל הרשימות של ניהול הזמן הנכון. GTD מלא. כל משימה מסווגת. כל פרויקט בעדיפות. יצאתי מהקפה בטוח שחייתי אחרת מאותו רגע. ואז חזרתי למשרד ומישהו שאל אם אני פנוי לישיבה של שלוש שעות שלא הייתה בלו"ז. ניהול הזמן שלי לא השתנה ב-2018. הוא השתנה כשהתחלתי לאמר לא לאנשים.
+
+*(Once, at the end of 2018, I sat on a chair at Cafe Nachman in Tel Aviv and made all the right time-management lists. Full GTD. Every task categorized. Every project prioritized. I left the café convinced I'd live differently from that moment. Then I went back to the office and someone asked if I was free for a three-hour meeting that wasn't in the calendar. My time management didn't change in 2018. It changed when I started saying no to people.)*
+
+---
+
+### C3: The Register Shift
+
+**What it is:** Once per piece, shift registers mid-text — from formal to casual, or from analytical to personal — for a single sentence or short paragraph, then return. The shift is deliberate and visible.
+
+**Why it matters:** AI writes in a single, stable register throughout. Real writers change gears. The gear change signals that the writer is a person who moves between modes of thinking and expression, not a system that has computed the correct register and applied it uniformly.
+
+**The rule:** Pick a moment in the text where the argument has been running at one register for at least two paragraphs. At that moment, drop into a sharply different register for 1-3 sentences — then return to the original. The shift should feel like the writer momentarily forgetting they were being formal, or deciding to step out of analytical mode to say something directly. Signal the shift with a discourse marker if in casual register (תכל'ס, בעצם) or with a return to more formal framing if going the other direction.
+
+**Before (AI):**
+> מחקר מ-2024 מציע כי הפרש השכר בין עובדים בכירים לעובדים זוטרים גדל בשיעור של 12% בשנה האחרונה, מה שמעיד על אי-שוויון הולך וגובר בשוק העבודה הישראלי.
+
+*(A 2024 study suggests that the wage gap between senior and junior employees grew by 12% in the past year, indicating growing inequality in the Israeli labor market.)*
+
+**After (human):**
+> מחקר מ-2024 מציע כי הפרש השכר בין עובדים בכירים לזוטרים גדל ב-12% בשנה האחרונה. תכל'ס — זה אומר שמי שנכנס היום לשוק העבודה מתחיל ממקום יותר קשה ממה שהתחלתי. ולא בגלל שהוא פחות טוב ממני. בגלל שנולד עשר שנים אחרי. הנתונים ממשיכים: הפרש השכר בסקטור ההייטק נמוך יותר מהממוצע, אבל גם שם הוא גדל.
+
+*(A 2024 study suggests the wage gap between senior and junior employees grew 12% in the past year. Tachles — that means whoever enters the job market today is starting from a harder place than where I started. Not because they're less good than me. Because they were born ten years later. The data continues: the wage gap in the tech sector is lower than average, but even there it's growing.)*
+
+---
+
+## Category D: Vulnerability & Stakes
+
+Writing without stakes is writing from behind glass. The reader can see it but cannot feel it.
+
+---
+
+### D1: Stake Declaration
+
+**What it is:** The writer explicitly names what they have at stake in the argument — what it costs them to hold this position, what they risk by saying this, what they stand to lose or gain. The stake is declared, not implied.
+
+**Why it matters:** AI has no stakes. It makes arguments from nowhere. When a writer names their stake ("אני מסתכן בכך שחלק מהלקוחות שלי יקראו את זה ויעזבו"), the reader immediately recalibrates: this person is not performing objectivity, they are writing from inside a real situation. That recalibration is the foundation of trust.
+
+**The rule:** Once per piece, name a concrete stake. It can be professional ("כמי שמרוויח מהמוצר הזה, אני יודע שיש לי אינטרס"), personal ("זה מה שאני חושב, ואני יודע שחלק מהחברים שלי יתנגדו"), or epistemological ("אני עלול לטעות כאן, ואם כן — אשמח שמישהו יגיד לי"). The stake must be specific. "I care about this topic" is not a stake. "If I'm wrong about this, the project management system I've been selling for three years is wrong" is a stake.
+
+**Before (AI):**
+> חשוב לבחון את כל הזוויות של הנושא לפני הגעה למסקנה.
+
+*(It is important to examine all angles of the issue before reaching a conclusion.)*
+
+**After (human):**
+> אני כותב את זה כמי שהשקיע שלוש שנים בלבנות מתודולוגיה שמבוססת על ההנחה ההפוכה. אם מה שאני טוען פה נכון, חלק גדול מהעבודה שעשיתי הוא שגוי. אני מעדיף לדעת את זה מאשר להמשיך להאמין בדבר הלא נכון.
+
+*(I'm writing this as someone who spent three years building a methodology based on the opposite assumption. If what I'm arguing here is correct, a large part of the work I did is wrong. I'd rather know that than keep believing the incorrect thing.)*
+
+---
+
+### D2: The Counter-Intuitive Turn
+
+**What it is:** The writer arrives at a conclusion that surprises even themselves — a moment where the argument led somewhere the writer didn't plan to go. This is "thinking on paper": the argument has a turn that feels like discovery.
+
+**Why it matters:** AI knows where it's going before it starts writing. The entire output is planned from the first token. Human writing frequently discovers its conclusion mid-paragraph. That discovery, when it shows in the text, is one of the most reliable human signals in writing.
+
+**The rule:** At one moment in the piece, allow the argument to reverse or complicate itself in a way that feels like surprise: "בעצם, ברגע שכתבתי את זה, הבנתי שאני טועה בנקודה הזו" or "זה מוביל למסקנה שלא ציפיתי לה" or "רגע. אם זה נכון, אז גם X צריך להיות נכון. וזה מסבך את כל מה שאמרתי." The reversal must be real — not a rhetorical device that was planned from the start.
+
+**Before (AI):**
+> לאחר בחינת הנתונים, ניתן להסיק כי הגישה המשולבת עשויה להניב תוצאות טובות יותר.
+
+*(After examining the data, it can be concluded that the combined approach may yield better results.)*
+
+**After (human):**
+> התחלתי לכתוב את הקטע הזה בטוח שהגישה המשולבת עובדת טוב יותר. אבל ברגע שניסיתי לנסח למה — נתקעתי. הסיבה שנתתי לעצמי ("זה פשוט גמיש יותר") לא מחזיקה מים. גמישות היא לא יתרון בפני עצמה. גמישות שאתה לא יודע לנצל היא פשוט חוסר מיקוד. אולי הגישה המשולבת טובה יותר רק למי שכבר יודע מה הוא עושה.
+
+*(I started writing this section convinced that the combined approach works better. But the moment I tried to articulate why — I got stuck. The reason I gave myself ("it's just more flexible") doesn't hold water. Flexibility is not an advantage in itself. Flexibility you don't know how to leverage is just lack of focus. Maybe the combined approach is better only for those who already know what they're doing.)*
+
+---
+
+### D3: The Irony Layer
+
+**What it is:** Use situational irony — where the writer acknowledges the gap between what they're recommending and their own practice, or between the ideal described and the messy reality. Not sarcasm — genuine ironic self-awareness.
+
+**Why it matters:** AI describes ideals. Humans live in the gap between ideals and reality and know it. When a writer says "אני ממליץ על X, ואני עושה את X בערך פעם בחודש, בניגוד לפעם בשבוע שאני אומר לאחרים", they're not undermining their own advice — they're proving they've actually tried it.
+
+**The rule:** Once per piece, acknowledge the ironic gap. It can be the writer not following their own advice, the advice working better in theory than practice, or the expert revealing that the problem they're describing is one they personally haven't solved. The gap must be real and specific — not "of course, this is harder than it sounds" (generic), but "אני מייעץ על ניהול זמן ויש לי 847 הודעות לא קראתי ב-Gmail" (specific).
+
+**Before (AI):**
+> חשוב לקבוע גבולות ברורים בין זמן עבודה לזמן פנאי כדי למנוע שחיקה.
+
+*(It is important to set clear boundaries between work time and leisure time to prevent burnout.)*
+
+**After (human):**
+> חשוב לקבוע גבולות ברורים בין עבודה לחיים. אני כותב את זה בשעה 23:15, בשני פרויקטים פתוחים במקביל, עם Slack פתוח ברקע. הגבולות שאני ממליץ עליהם קיימים בחיים שאני שואף אליהם, לא בחיים שאני חי. זה לא הופך את ההמלצה לשגויה. זה רק הופך אותה לכנה יותר.
+
+*(It's important to set clear boundaries between work and life. I'm writing this at 23:15, with two projects open simultaneously and Slack running in the background. The boundaries I recommend exist in the life I aspire to, not the life I live. That doesn't make the recommendation wrong. It just makes it more honest.)*
+
+---
+
+## Category E: Non-Linearity & Thinking on Paper
+
+The writer doesn't know where they're going when they start. The traces of that not-knowing are the most human thing in writing.
+
+---
+
+### E1: The Mid-Paragraph Pivot
+
+**What it is:** Within a single paragraph, the argument changes direction — not because the previous direction was wrong, but because the writer thought of something better mid-way. Signal the pivot explicitly.
+
+**Why it matters:** AI paragraphs are architecturally complete before they're written. Every sentence serves the pre-determined structure. Human paragraphs drift. The writer starts making one point, realizes a different angle is more interesting, and shifts. The shift is visible in the text as a marker ("רגע", "בעצם", "כלומר לא בדיוק כך").
+
+**The rule:** Once per 600-800 words, write a paragraph that has an explicit mid-paragraph pivot. The pivot must be signaled with a discourse marker (בעצם, רגע, כלומר, לא — זה לא מה שאמרתי) and the post-pivot content must be different enough from the pre-pivot direction that the reader notices the shift.
+
+**Before (AI):**
+> הצוות פיתח מתודולוגיה חדשה שאפשרה לו להגביר את הפרודוקטיביות. המתודולוגיה כללה פגישות קצרות יומיות, תיעוד ברור ושיתוף פעולה מוגבר.
+
+*(The team developed a new methodology that allowed it to increase productivity. The methodology included short daily meetings, clear documentation and increased collaboration.)*
+
+**After (human):**
+> הצוות פיתח מתודולוגיה שעבדה. לפחות, ככה זה נשמע מהמצגת שראיתי. בעצם — רגע. "מתודולוגיה שעבדה" זה לא מה שראיתי. מה שראיתי זה צוות שעשה פגישות קצרות יומיות ובאיזשהו שלב הפרודוקטיביות עלתה. האם היה קשר? לא יודע. אולי פשוט גייסו אנשים טובים יותר באותה תקופה.
+
+*(The team developed a methodology that worked. At least, that's how it sounds from the presentation I saw. Actually — wait. "A methodology that worked" is not what I saw. What I saw was a team that did short daily meetings and at some point productivity went up. Was there a connection? I don't know. Maybe they just hired better people around that time.)*
+
+---
+
+### E2: The Discovery Moment
+
+**What it is:** The writer explicitly marks a moment of learning or discovering something new in the process of writing — right now, in this text.
+
+**Why it matters:** AI cannot discover anything it didn't already know when it started generating. Discovery moments — "כשניסחתי את זה, הבנתי ש..." — are structurally impossible for AI to produce authentically. When a writer marks a genuine discovery, it can only have come from a human brain that surprised itself.
+
+**The rule:** Once per piece, include a sentence that uses a discovery framing: "ברגע שכתבתי את זה הבנתי ש..." or "שאלה שעלתה לי תוך כדי" or "לא חשבתי על זה ככה עד שניסיתי לנסח." The discovery must lead somewhere — the writer follows the new thought for at least one more sentence rather than immediately returning to the planned argument.
+
+**Before (AI):**
+> הכלי מספק יתרונות רבים למשתמשים בתחומים שונים.
+
+*(The tool provides many benefits to users in various fields.)*
+
+**After (human):**
+> הכלי מצוין. למעשה — שאלה שעלתה לי עכשיו בזמן שכתבתי את זה: מצוין בשביל מי בדיוק? ישבתי לרשום את כל מי שהמלצתי עליו בחצי השנה האחרונה ויצא לי שלוש קבוצות מאוד שונות. אולי זה לא כלי אחד עם שלושה שימושים. אולי זה שלושה כלים שנארזו יחד. זה משנה איך מסבירים אותו.
+
+*(The tool is excellent. Actually — a question that came to me right now while I was writing this: excellent for exactly whom? I sat down to list everyone I'd recommended it to in the past six months and I got three very different groups. Maybe it's not one tool with three uses. Maybe it's three tools packaged together. That changes how you explain it.)*
+
+---
+
+### E3: The Tangent That Connects Back
+
+**What it is:** The writer goes on a visible tangent — clearly off-topic for a sentence or two — and then explicitly reconnects it to the main argument in a way that adds something the argument lacked before the tangent.
+
+**Why it matters:** AI stays on topic. It is constitutionally incapable of going on a tangent because its generation is always optimizing for relevance. Human writers have peripheral thoughts that turn out to be central. The tangent-that-connects-back is the most distinctly human writing structure there is.
+
+**The rule:** Once per piece, mark a tangent explicitly (use "אגב", "דרך אגב", or just start a sentence with something that clearly comes from an adjacent thought), follow it for 1-3 sentences, then explicitly reconnect: "וזה בעצם קשור ל..." or "...שזה מוביל אותי בחזרה ל..." The reconnection must add something — the tangent must have paid off.
+
+**Before (AI):**
+> טכנולוגיות חדשות משנות את האופן שבו ארגונים מנהלים ידע פנימי ושיתוף מידע.
+
+*(New technologies are changing the way organizations manage internal knowledge and information sharing.)*
+
+**After (human):**
+> טכנולוגיות חדשות משנות את ניהול הידע הפנימי. אגב — נזכרתי בספרייה של סבא שלי. חמישה מדפים, כל ספר מסודר לפי נושא שרק הוא הבין. אחרי שהוא נפטר בילינו שבוע שלם בנסיון להבין את הלוגיקה. ידע פנימי שלא תועד. הארגון נמצא באותה בעיה בדיוק — רוב הידע הוא בראשים, לא בכלים. הטכנולוגיה לא פותרת את זה. היא רק מקשה על ההדחקה של הבעיה.
+
+*(New technologies are changing internal knowledge management. By the way — I just remembered my grandfather's library. Five shelves, every book organized according to a logic only he understood. After he passed we spent an entire week trying to understand the system. Internal knowledge that was never documented. Organizations have exactly the same problem — most knowledge is in heads, not in tools. Technology doesn't solve that. It just makes it harder to suppress the problem.)*
+
+---
+
+## Category F: Hebrew Soul Markers
+
+These five techniques are specific to Hebrew and Israeli writing. They appear in naturally-produced Hebrew but are almost never produced by AI systems trained on multilingual corpora.
+
+---
+
+### F1: The Dugri Opener
+
+**What it is:** Open a paragraph — particularly one that shifts the argument or introduces a new point — with a marker of direct speech: "תשמע", "בוא נהיה כנים", "אגיד לך משהו", "תכל'ס", or just a direct address to the reader. This is the Hebrew signal for "I'm about to tell you something real."
+
+**Why it matters:** The dugri opener is a Hebrew-specific speech act. It signals that the following statement is the unfiltered version — not softened for politeness, not hedged for safety. It creates a momentary intimacy between writer and reader that is distinctively Israeli. English-trained AI doesn't produce this move because it doesn't appear in English text.
+
+**The rule:** Use one dugri opener per piece in casual-to-semi-formal registers. Do not overuse — one is enough. The sentence following the opener must be a real claim, not a warm-up. If the opener is "תכל'ס", what follows must be the bottom line, not a transition.
+
+**Before (AI):**
+> ניתן לסכם כי ישנם מספר גורמים משמעותיים המשפיעים על הצלחת פרויקטים.
+
+*(It can be summarized that there are several significant factors affecting project success.)*
+
+**After (human):**
+> תכל'ס — פרויקטים נכשלים כשאין אחד שמוכן להגיד "זה לא עובד" בקול רם. כל השאר זה פרטים.
+
+*(Tachles — projects fail when there's no one willing to say "this isn't working" out loud. Everything else is details.)*
+
+---
+
+### F2: The Davka Move
+
+**What it is:** Use דווקא to express a counter-intuitive or ironic inversion — something happened or is true specifically in the case where you would least expect it. דווקא is untranslatable; the closest is "of all things" or "contrary to expectation" or "out of spite." This word appears frequently in natural Hebrew and almost never in AI-generated Hebrew.
+
+**Why it matters:** דווקא signals a thought structure that is native to Hebrew: the ironic inversion, the "despite everything," the surprising specification. It carries more argumentative weight per syllable than almost any other Hebrew word. Its absence from AI output is a statistical fingerprint — and its presence in human output is a positive signal of authenticity.
+
+**The rule:** Use דווקא at least once per piece where the sentence genuinely involves an inversion or specificity against expectation. Do not use it as a filler — it must be doing real semantic work. "דווקא כאן" means "specifically here, of all places, which is surprising." "דווקא הוא" means "him specifically, which you wouldn't expect." If you can remove דווקא and the sentence still means the same thing, you've used it wrong.
+
+**Before (AI):**
+> הפתרון הפשוט ביותר הוכח כיעיל בתנאים מורכבים.
+
+*(The simplest solution proved effective in complex conditions.)*
+
+**After (human):**
+> דווקא הפתרון הכי פשוט — זה שכולם דחו בישיבה הראשונה — הוא מה שעבד בסוף. לא הכלי המתקדם. לא הארכיטקטורה החדשה. גיליון אקסל ישן.
+
+*(Of all things, the simplest solution — the one everyone dismissed in the first meeting — is what worked in the end. Not the advanced tool. Not the new architecture. An old Excel sheet.)*
+
+---
+
+### F3: Discourse Infusion
+
+**What it is:** At natural thinking moments in the text, insert Hebrew discourse markers (כאילו, יעני, בעצם, נו, נכון?) not as filler but as signals that the writer is thinking out loud — processing something in real time rather than delivering a prepared speech.
+
+**Why it matters:** Discourse markers are the fingerprints of spoken Hebrew transferred to writing. They appear in natural Israeli writing at 1-3% of word tokens. Their presence doesn't decorate a text — it rewires the reader's relationship to it. A text with discourse markers feels like a conversation. A text without them feels like a broadcast.
+
+**The rule:** In casual-to-semi-formal registers, place discourse markers at three types of moments: (1) after a complex claim, to signal "let me make sure you followed that" (יעני, כלומר), (2) before a reframe, to signal "actually, that wasn't quite what I meant" (בעצם, כאילו), (3) at a moment of genuine uncertainty, to signal "I'm not sure about this" (אממ, לא בטוח ש). Never cluster more than one discourse marker per sentence. Never use them in academic register.
+
+**Before (AI):**
+> יש להדגיש כי הנתונים אינם חד-משמעיים ומצריכים פרשנות זהירה.
+
+*(It should be emphasized that the data is not unambiguous and requires careful interpretation.)*
+
+**After (human):**
+> הנתונים... כאילו, הם לא אומרים מה שחשבתי שהם יגידו. יעני, אפשר לפרש אותם בכמה כיוונים. אממ — אני הולך עם הפרשנות שנראית לי הכי הגיונית, אבל אשמח לשמוע אם מישהו רואה את זה אחרת.
+
+*(The data... like, it doesn't say what I thought it would say. I mean, you can interpret it in several directions. Um — I'm going with the interpretation that seems most logical to me, but I'd be happy to hear if someone sees it differently.)*
+
+---
+
+### F4: Cultural Code-Switch
+
+**What it is:** Reference a shared Israeli cultural experience — army service, bureaucracy, holidays, specific geography, startup ecosystem, weather — not as a tourist observation but as something the writer is inside of. The reference is made in passing, not explained, because it's addressed to someone who already knows.
+
+**Why it matters:** Israeli cultural references are both authenticity markers and inclusion signals. When a writer mentions "כמו כל מי שעשה מילואים", they're not explaining army reserve duty to non-Israelis — they're talking to Israelis, and the assumption of shared experience creates in-group trust. AI generates culturally neutral content that could have been written anywhere. This move is the opposite.
+
+**The rule:** Include one cultural code-switch per piece in the form of a reference that assumes shared knowledge. Do not explain the reference. If you mention "שנה של קורס מח"טים" you don't explain what a מח"ט is. If you mention "ישיבה של ביטוח לאומי" you don't explain the institution. The non-explanation is the signal that you and the reader are from the same place. In non-Israeli-centric content, the code-switch can be subtler: a single shared reference rather than an extended cultural digression.
+
+**Before (AI):**
+> בסביבה העסקית הישראלית, ישנה תרבות ייחודית של ישירות ופתרון בעיות.
+
+*(In the Israeli business environment, there is a unique culture of directness and problem solving.)*
+
+**After (human):**
+> מי שעשה שנה וחצי בצבא ושמע קצין אחד מסביר לו בשלוש דקות למה התוכנית שלו לא תעבוד — הוא יודע מה זה פידבק אמיתי. זה מה שמייחד את הדרך שאנחנו עובדים. לא ספר ניהול. ניסיון.
+
+*(Whoever spent a year and a half in the army and heard one officer explain to him in three minutes why his plan won't work — he knows what real feedback is. That's what distinguishes the way we work. Not a management book. Experience.)*
+
+---
+
+### F5: The Natural Stumble
+
+**What it is:** Include one moment of grammatical imperfection — not an error, but a natural stumble: a number-gender hesitation, a sentence that starts one way and corrects mid-stream, a spelling variant that differs from an earlier usage in the same text.
+
+**Why it matters:** Perfect Hebrew is AI Hebrew. Israelis stumble on צומת, hesitate between שלוש and שלושה, and occasionally use two spellings of the same word in the same document. These stumbles are the fingerprints of a real person who learned Hebrew as a child rather than a system that was trained on prescriptive rules.
+
+**The rule:** Per piece, include exactly one natural stumble from this list:
+- A gender agreement slip on an irregular noun (צומת as feminine, גרב as either gender)
+- A numeral-noun hesitation ("שלושה — כן, שלושה — נושאים")
+- A mid-sentence restart signaled by a dash or "כלומר" that corrects the opening framing
+- A spelling variant that differs from how the same word was spelled earlier in the text (one instance of צהריים, one of צוהריים)
+
+Do not make errors that would embarrass an educated Israeli speaker. Only deploy the specific stumbles that educated native speakers actually make.
+
+**Before (AI — too perfect):**
+> עברנו ליד שלושה צמתים גדולים בדרך לשדה התעופה.
+
+*(We passed three large intersections on the way to the airport.)*
+
+**After (human — natural stumble):**
+> עברנו ליד שלושה צמתים גדולות בדרך לשדה התעופה — אחת מהן הייתה הצומת הזאת שתמיד קשה לי לנווט בה.
+
+*(We passed three large intersections (feminine agreement — native error with masculine noun צומת) on the way to the airport — one of them was that intersection I always find hard to navigate.)*
+
+---
+
+## Soul Layer Activation Protocol
+
+This layer runs after Layer 7 (Voice Matching) and before final output. It is a checklist of active construction, not just error avoidance.
+
+**Per piece, verify:**
+
+| Check | Minimum | Where |
+|-------|---------|-------|
+| Proper noun | 1 per 200 words | Distributed through text |
+| Unusual specific number | 1 per 500 words | Grounded in a claim |
+| Anti-generic example | Every example | Replace all generic ones |
+| Position declaration | 1 per piece | First 150 words |
+| Pushback acknowledgment | 1 per piece | Strongest opposing view |
+| Strong negative | 1 per piece | Unhedged, specific claim |
+| Aside | 1 per 400-600 words | Parenthetical, brief |
+| Memory drop | 1 per piece | Specific time + place + detail |
+| Register shift | 1 per piece | Signal the shift explicitly |
+| Stake declaration | 1 per piece | What the writer risks |
+| Counter-intuitive turn | 1 per piece | Real, not rhetorical |
+| Irony layer | 1 per piece | Gap between ideal and real |
+| Mid-paragraph pivot | 1 per 600-800 words | Signaled with discourse marker |
+| Discovery moment | 1 per piece | Writer surprises themselves |
+| Tangent that connects back | 1 per piece | Tagged with "אגב" or equivalent |
+| Dugri opener | 1 per piece | Casual/semi-formal only |
+| Davka move | 1 per piece | Genuine inversion, not filler |
+| Discourse infusion | 1-3% token rate | Casual/semi-formal only |
+| Cultural code-switch | 1 per piece | No explanation of reference |
+| Natural stumble | 1 per piece | From approved list only |
+
+**Adjustment for short texts (under 400 words):** Apply at minimum: proper noun, position declaration, one discourse marker, one strong negative, and the davka move or dugri opener. The memory drop and tangent are optional at this length.
+
+**Adjustment for academic register:** Categories A (Specificity) and B (Conviction) apply fully. Categories C, D, E apply with formal markers instead of casual ones. Category F: F1 (dugri opener) is off; F2 (davka) applies; F3 (discourse infusion) switches to formal markers (כלומר, דהיינו); F4 (cultural code-switch) applies subtly; F5 (natural stumble) applies.
+
+---
+
+# LAYER 9: Versatility Engine — מנגנון המגוון
+
+## Overview
+
+Every piece of content you generate must have a unique structural DNA. This layer prevents the LLM register-leveling problem: instruction-tuned models have a single attractor basin they return to regardless of topic (PNAS 2025). After 3-4 pieces, an unguarded skill produces the same arc, the same openers, the same phrase cadences. Layer 9 breaks that pattern by design.
+
+**Two phases:** Phase 1 runs before any word is generated (compute Variation Fingerprint, check memory, lock in structure). Phase 2 runs throughout generation (6 active within-piece rules + Spent Phrase Protocol).
+
+**Key Tell priority:** Layer 7 Key Tells remain absolute Priority 1. The Variation Fingerprint operates *within* Key Tell constraints — if a Tell dictates a behavior that conflicts with a fingerprint dimension, the Tell wins and the dimension is replaced with the nearest compatible value.
+
+---
+
+## Phase 1: Pre-Writing Declaration
+
+Runs in full before generating any content. Seven steps.
+
+### Step P1-1 — Read the variation log
+
+Determine the log path:
+- If `--voice {profile}` is active: `.claude/voices/{profile}/variation-log.json`
+- If no profile: `.claude/voices/default/variation-log.json`
+
+Use the Read tool to load the file.
+
+**First-run fallback:** If the file does not exist (first use ever, or after `--fresh`), treat all fingerprint dimensions as equally available. Skip Step P1-6 only (no memory to check). Proceed to P1-2 normally, then P1-3 using context mapping alone. After generation completes (post-output), create the file with the first fingerprint entry.
+
+### Step P1-2 — Assess context signals
+
+From the input topic and flags, determine three signals:
+
+**Signal A — Emotional weight:**
+- `personal/emotional`: topic involves personal experience, relationships, feelings, personal success/failure, vulnerability
+- `analytical/informational`: topic involves data, process, explanation, business logic, systems, how-to
+
+**Signal B — Content type:** use `--type` flag value if specified; otherwise use the auto-detected content type from the Content Type Auto-Detection section above.
+
+**Signal C — Length:** `short` (<400w) | `medium` (400-800w) | `long` (800w+) — determined by `--length` flag or default.
+
+### Step P1-3 — Select Variation Fingerprint
+
+Compute a 5-dimension fingerprint using the mapping table below. When the table offers two options for a dimension, check the variation log (Step P1-1) and pick whichever was used less recently. If both options were used equally recently (or neither appears in the log), choose the option listed first in the table.
+
+**`contextual` opener is last resort only:** It is the LLM's natural default (setting context before saying anything). Use it only when (a) no other opener appears in the last 5 logged pieces, OR (b) content type is `academic`, OR the selected schema is `Explainer`. Never select it as a tie-breaker.
+
+#### Fingerprint Dimension 1 — Schema
+
+The structural argument arc of the entire piece:
+
+| Schema | Mechanism | Best for |
+|--------|-----------|----------|
+| `PAS` | Problem → Agitate → Solution | Empathy-driven persuasion; reader feels pain before solution |
+| `PSB` | Problem → Story → Bridge | Problem shown through narrative, not abstraction |
+| `HSO` | Hook → Story → Offer | Pattern interrupt, personal narrative, invitation — native Israeli social/blog |
+| `BAB` | Before → After → Bridge | Transformation narratives, case studies |
+| `4Ps` | Problem → Promise → Proof → Proposal | Skeptical audiences, evidence-heavy content |
+| `AIDA` | Attention → Interest → Desire → Action | Classic persuasion arc |
+| `QuestionCascade` | Unanswered questions → building toward resolution | Thought leadership |
+| `Narrative` | Situation → Complication → Resolution | Informational/editorial; no persuasion agenda |
+| `Explainer` | Context → Mechanism → Implication | How-to, educational, academic |
+
+PSB and HSO are the most culturally native schemas for Israeli readers — Israeli discourse is narrative-first. BAB is natural in Israeli startup culture. `Narrative` and `Explainer` are correct for non-persuasive content — forcing a persuasion schema onto a product update or how-to is its own AI tell.
+
+#### Fingerprint Dimension 2 — Opener Shape
+
+How the first paragraph begins:
+
+| Value | Description |
+|-------|-------------|
+| `intimate` | Personal memory or observation; pulls reader into a private moment |
+| `in-medias-res` | Mid-thought reaction; reader walks in on the writer already processing something |
+| `provocative` | A claim most readers would instinctively resist |
+| `evidence-first` | A surprising data point or external fact that reframes scale |
+| `contextual` | Slow burn; sets situation before making a claim — **last resort only** (see above) |
+
+#### Fingerprint Dimension 3 — Body Rhythm
+
+Paragraph-level structural pattern:
+
+| Value | Description |
+|-------|-------------|
+| `staccato` | Many short paragraphs, punchy, frequent breaks |
+| `flowing` | Longer paragraphs that build before pivoting |
+| `alternating` | Deliberate contrast: short/punchy then long/developed, repeat |
+| `spiral` | Returns to same idea from new angles, deepening each pass |
+| `mosaic` | Several small seemingly disconnected sections that cohere at the end |
+
+`mosaic` requires a minimum of 5-6 distinct sections — do not select for pieces under 400 words.
+
+#### Fingerprint Dimension 4 — Vocabulary Register
+
+| Value | Description |
+|-------|-------------|
+| `street` | Heavy slang, contractions, casual markers, code-switching |
+| `elevated-casual` | Clean but informal, precise word choices, no jargon |
+| `technical-light` | Domain vocabulary where relevant, accessible framing |
+| `hybrid` | Deliberate register mixing mid-piece; starts one way, shifts — **Israeli rhetorical signature** |
+
+When `hybrid` is selected: at least once per 400 words, include a register-contrast sentence — a high-register term placed in a low-register sentence, or vice versa. Example: "ישבנו בפגישה ופתאום הבנתי שכל הנרטיב הדיסקורסיבי שלנו מושתת על הנחה שגויה. אמרתי את זה בקול."
+
+#### Fingerprint Dimension 5 — Closing Type
+
+| Value | Description |
+|-------|-------------|
+| `abrupt` | Stops mid-thought; leaves something unsaid |
+| `reflective` | Returns to the opening image or idea with new meaning |
+| `challenge` | Ends by asking something of the reader, not wrapping up |
+| `earned-insight` | Writer shares something figured out while writing |
+| `open` | Ends with an unresolved question or tension |
+
+### Step P1-4 — Apply context-to-fingerprint mapping
+
+| Context combination | Schema | Opener | Rhythm | Vocab | Closing |
+|--------------------|--------|--------|--------|-------|---------|
+| Emotional/personal + social/blog | HSO or PSB | intimate or in-medias-res | staccato or alternating | street or hybrid | open or abrupt |
+| Analytical/data + blog/business | 4Ps or AIDA | evidence-first or in-medias-res | flowing or alternating | elevated-casual or technical-light | earned-insight |
+| Controversial opinion + any type | PAS or QuestionCascade | provocative or in-medias-res | alternating or mosaic (mosaic only if medium or long) | hybrid | abrupt or challenge |
+| Transformation/case study + blog/business | BAB | intimate or in-medias-res | flowing or spiral | elevated-casual | reflective or earned-insight |
+| Thought leadership + long | QuestionCascade | provocative or evidence-first | mosaic or spiral | elevated-casual or hybrid | open or reflective |
+| Short pieces (any context, <400w) | PAS or HSO | intimate or provocative | staccato | street or elevated-casual | abrupt or open |
+| Informational/recap + blog/business/email | Narrative | in-medias-res or evidence-first | flowing or alternating | elevated-casual or technical-light | reflective or earned-insight |
+| Educational/how-to/academic | Explainer | evidence-first or contextual | flowing or mosaic (mosaic only if medium or long) | elevated-casual or technical-light | earned-insight or open |
+
+### Step P1-5 — Check schema-opener compatibility
+
+After selecting schema and opener, verify they are compatible. If incompatible, replace the opener with the first compatible alternative not used in the last 3 pieces.
+
+| Schema | Compatible openers | Incompatible |
+|--------|--------------------|-------------|
+| `PAS` | provocative, in-medias-res, evidence-first | intimate, contextual |
+| `PSB` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `HSO` | intimate, in-medias-res, provocative | evidence-first, contextual |
+| `BAB` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `4Ps` | evidence-first, provocative | intimate, in-medias-res, contextual |
+| `AIDA` | provocative, evidence-first, in-medias-res | intimate, contextual |
+| `QuestionCascade` | provocative, in-medias-res, evidence-first | intimate, contextual |
+| `Narrative` | intimate, in-medias-res | provocative, evidence-first, contextual |
+| `Explainer` | evidence-first, contextual | intimate, provocative, in-medias-res |
+
+### Step P1-6 — Check memory constraints
+
+Against the `last_5` array in the variation log, enforce before finalizing any dimension:
+
+| Dimension | Memory constraint |
+|-----------|-----------------|
+| Schema | Not the same as any of last 3 entries |
+| Opener | Not the same as any of last 3 entries |
+| Rhythm | Not the same as last 2 entries |
+| Vocab | No more than 2 of last 5 share the same register |
+| Closing | Not the same as any of last 3 entries |
+
+**Array indexing:** When checking "last 3 entries", use only the 3 most recent entries in the `last_5` array (index 0 through 2, where index 0 is the most recent).
+
+**Conflict resolution:** If context mapping and memory constraints conflict, memory wins — use the next-best option from the same mapping row. If the topic matches multiple mapping rows, use the first matching row for fallback alternatives.
+
+### Step P1-7 — Commit and pre-map
+
+The fingerprint is now locked. Note it internally:
+
+```
+[v4 Fingerprint] Schema: {schema} | Opener: {opener} | Rhythm: {rhythm} | Vocab: {vocab} | Closing: {closing}
+```
+
+Only output this line to the user if `--show-score` is active.
+
+**Before writing: pre-map root-family alternatives.** Identify the 3-5 central concepts of the piece. For each, list at least 3 Hebrew expressions from different root families. These are the alternatives to rotate through during generation (Rule 4 in Phase 2 below — root-family lexical diversity enforcement). Example: concept "growth" → צמיחה (צמ-ח), התפתחות (פ-ת-ח), קידום (ק-ד-מ), עלייה (ע-ל-ה).
+
+**Post-generation (run after output):** Append the fingerprint to the variation log:
+
+```json
+{
+  "last_5": [
+    {"schema": "{schema}", "opener": "{opener}", "rhythm": "{rhythm}", "vocab": "{vocab}", "closing": "{closing}"},
+    ... (previous entries, keep only 5 most recent)
+  ]
+}
+```
+
+Use the Write tool to save the updated log.
+
+---
+
+## Phase 2: In-Writing Enforcement
+
+Six rules run throughout generation, active from the first word. Each rule is a live constraint — check compliance before generating each new paragraph.
+
+### Rule 1 — Paragraph Opener Rotation
+
+No two consecutive paragraphs may open with the same grammatical type. Seven Hebrew opener types to rotate through:
+
+1. **Verb-first past:** "גיליתי משהו..." / "קראתי את זה ו..."
+2. **Question:** "אז למה זה קורה?"
+3. **Number-first:** "שלושה דברים..."
+4. **Reaction word:** "אז." / "נו." / "רגע."
+5. **Mid-thought:** "כשחשבתי על זה אחר כך..."
+6. **Scene drop:** "יושב בפגישה. המנכ"ל אומר..."
+7. **Contrarian claim:** "כולם אומרים X. זה לא נכון."
+
+Before writing each new paragraph: identify which type the last paragraph used. Select a different type.
+
+### Rule 2 — Connector Category Rotation
+
+Six functional connector categories. Never use two consecutive paragraphs from the same category:
+
+| Category | Hebrew examples |
+|----------|----------------|
+| Additive | אז גם, וגם, חוץ מזה, ויש עוד משהו |
+| Contrastive | אבל, למרות זאת, בכל זאת, אלא ש |
+| Causal | כי, לכן, בגלל זה, זה הביא ל |
+| Temporal | אחרי זה, בינתיים, שנייה לפני |
+| Exemplifying | למשל, תחשוב על, ניקח את |
+| Intensifying | ובכלל, בעיקר, דווקא, ממש |
+
+Note: connectors that open the first sentence of a paragraph are what this rule tracks — not connectors mid-sentence.
+
+**Rule 1 priority:** When Rule 1 has already determined the opener type for a paragraph (e.g., "Reaction word" — אז), Rule 2 accepts whatever connector category that implies. Rule 2 tracking then restarts from the *next* paragraph. Rule 1 always takes priority on opener selection; Rule 2 enforces variety across paragraphs where Rule 1 hasn't already constrained the choice.
+
+### Rule 3 — Question Type Rotation
+
+Three question types — never the same type twice in a row:
+
+| Type | Function | Hebrew example |
+|------|----------|---------------|
+| Rhetorical | Reader agrees immediately | "מי רוצה לבזבז שלוש שעות על זה?" |
+| Genuine | Reader doesn't have the answer | "אז למה בדיוק זה קורה?" |
+| Challenging | Disrupts reader's assumption | "אבל מה אם הבעיה היא לא מה שחשבנו?" |
+
+When using any question: identify its type. If the previous question was the same type, switch.
+
+**Activation threshold:** This rule only applies when 2 or more questions appear in the piece. If the piece uses only one question (or none), Rule 3 is inactive.
+
+### Rule 4 — Root-Family Lexical Diversity
+
+**Pre-writing:** Before generating, list 3+ alternative Hebrew expressions per key concept from different root families (done in Step P1-7 above). Use these alternatives in rotation during generation.
+
+**During writing:** No root family repeats within 80 words. The window slides continuously — it does not reset at paragraph breaks.
+
+**Hebrew morphology rule:** Using שמרתי and שמירה in the same paragraph counts as repeating root שמ-ר — even though they are different surface forms. Lexical diversity operates at root level, not surface form.
+
+**Example mapping:**
+- Concept "growth": צמיחה (צמ-ח) → התפתחות (פ-ת-ח) → קידום (ק-ד-מ) → עלייה (ע-ל-ה) → rotate
+- Concept "understand": הבנה (ב-י-נ) → תפיסה (ת-פ-ס) → הכרה (כ-ר-ה) → rotate
+- Concept "change": שינוי (ש-נ-י) → מעבר (ע-ב-ר) → טרנספורמציה (loanword) → rotate
+
+### Rule 5 — Stance Category Rotation
+
+Hebrew argumentative writing uses four discourse stance types (Frontiers 2025 research). In any argumentative or persuasive piece, rotate through them across paragraphs:
+
+| Stance | Function | Hebrew markers |
+|--------|----------|---------------|
+| Epistemic | What I know/believe | לדעתי, נראה לי, בטוח ש, אני חושב |
+| Deontic | What must/should happen | צריך, חייב, אסור, כדאי |
+| Evaluative | Judgment of value | זה מגוחך, יפה, כואב לראות, מרגש ש |
+| Dialogic | Engaging the opposing view | אז יגידו לי ש... אבל; מי שחושב ש... טועה |
+
+**Quality gate:** In pieces of 600+ words, at least 3 of the 4 stance categories must appear. A piece using only Epistemic stance reads as opinion-light. A piece using all four feels like a real, engaged mind.
+
+**Short pieces (<600 words):** Rotation still applies paragraph-to-paragraph. The formal 3-of-4 gate does not. Aim for at least 2 different stance categories across the piece.
+
+### Rule 6 — Paragraph-Level Structural Burstiness
+
+Paragraph lengths must vary actively — distinct from sentence-level burstiness (already enforced in Layer 5). Requirements:
+
+- **Every piece** must include at least one single-sentence paragraph
+- Never three consecutive paragraphs of the same length band
+  - Short = 1-2 sentences
+  - Medium = 3-4 sentences
+  - Long = 5+ sentences
+- Ideal short-piece (<400w) sequence: Medium → Single sentence → Long
+- Ideal medium-piece (500-800w) sequence: Long → Short → Medium → Single sentence → Medium → Long
+- Ideal long-piece (800w+) sequence: Medium → Long → Single sentence → Long → Short → Medium → Long → Single sentence
+
+The single-sentence paragraph is the strongest structural burstiness tool. In Hebrew, it works best as:
+- A declarative statement after a long build-up: "זה שינה הכל."
+- A question that opens a new angle: "אז למה זה עדיין לא קורה?"
+- A fragment: "ולא בטעות."
+
+---
+
+## Spent Phrase Protocol
+
+Runs from the first word of generation. Tracks all of:
+- Any expression of 3+ consecutive words used in this piece
+- Any connector used (tracked by category, not just exact word)
+- Any question type used in the last two questions
+- Any quote integration style used: direct attribution / partial embedded / paraphrase / summary
+- Any paragraph opener type used in the last two paragraphs
+
+**The rule:** Before generating each new paragraph, mentally review the spent list. Do not reuse any spent item. If reaching for the same 3-word sequence as earlier in the piece — stop and find a different grammatical path to the same idea.
+
+**Trigram rule:** No 3-word sequence appears more than once in any piece. This is the prose-instruction equivalent of trigram suppression.
+
+**Relationship to Rules 1-3:** The Spent Phrase Protocol supplements, not replaces, Rules 1-3. Rules 1-3 are the primary enforcers (applied actively during generation). The Protocol is a final sweep before each paragraph — a catch-all for anything the explicit rules may miss.
+
+---
+
+## Versatility Self-Audit
+
+At self-audit time (Layer 6), the מגוון dimension checks:
+
+- [ ] Fingerprint was computed and logged (2pts)
+- [ ] No two consecutive paragraphs share the same opener type (2pts)
+- [ ] At least 3 stance categories present in pieces 600+ words (2pts)
+- [ ] No root family repeated within 80 words (2pts)
+- [ ] At least one single-sentence paragraph present (2pts)
+
+*Rules 2 (connector rotation), Rule 3 (question type rotation), and the trigram rule are enforced during writing. They are not audited post-hoc because they require re-reading the full piece mid-stream — enforce them in real-time per their rule definitions above.*
+
+Score 0-10. Enter as the מגוון dimension in the Layer 6 weighted scoring rubric (see Layer 6 below — the rubric and formula are updated to include מגוון).
 
 ---
 
@@ -1785,8 +3313,9 @@ Do not modify the input text. Read it and report.
 - Language/style patterns (banned transitions, em dashes, rule of three, synonym cycling, hedging pile-ups)
 - 10 Hebrew-specific tells (over-formality, missing dugri, sanitized vocabulary, too-perfect grammar, over-consistent spelling, missing pro-drop, wrong construct/של, missing discourse markers, register-deaf connectors, absent cultural texture)
 - Statistical patterns (sentence length uniformity, paragraph length uniformity, repeated openers, connector repetition)
+- Soul Layer absence signals (no proper nouns in 200+ word stretches, only round numbers, no visible thinking/pivot, no stake declaration, no דווקא or functional equivalent, no memory or experiential grounding, no cultural code-switch, no natural stumble)
 
-**Step 2:** Score each of the 8 dimensions based on what you find.
+**Step 2:** Score each of the 9 dimensions based on what you find.
 
 **Step 3:** Calculate weighted total.
 
@@ -1823,7 +3352,8 @@ Do not modify the input text. Read it and report.
 | קצב | X/10 | [One phrase] |
 | אמינות | X/10 | [One phrase] |
 | טקסטורה | X/10 | [One phrase] |
-| נשמה | X/10 | [One phrase] |
+| נשמה | X/10 | [One phrase — basic soul presence: emotion, opinion, visible thinking] |
+| נשמה עמוקה | X/10 | [One phrase — deep soul: specificity, stakes, non-linearity, Hebrew markers] |
 | צפיפות | X/10 | [One phrase] |
 | רישום | X/10 | [One phrase] |
 | אנטי-זיהוי | X/10 | [One phrase] |
@@ -1871,7 +3401,7 @@ Extracted meaning:
 • הבעיות מורכבות
 ```
 
-**Step 3: Generate fresh Hebrew from the meaning bullets** using all 7 layers. Do not look at the original text. The output should share no sentence structure with the input. This is the critical rule: NEVER translate word-for-word. Extract meaning, then write fresh.
+**Step 3: Generate fresh Hebrew from the meaning bullets** using all 8 layers. Do not look at the original text. The output should share no sentence structure with the input. This is the critical rule: NEVER translate word-for-word. Extract meaning, then write fresh.
 
 **Step 4: Run the self-audit loop** (Layer 6).
 
@@ -2045,11 +3575,28 @@ If the input contains no topic, no text, and no file-reading flag — use AskUse
 
 Steps run internally, in order, within a single response:
 
+**Step 0: Pre-Write Commitment Oath**
+Before doing anything else — before parsing arguments, before thinking about structure — commit explicitly to these absolute bans. These are Tier 1 violations: they block output if found. Stating them here makes them active constraints from word 1, not retroactive catches at self-audit.
+
+TIER 1 OATH — commit before writing:
+1. **No em dashes (—) anywhere in Hebrew output.** Not one. The character — is banned from all Hebrew-language content this skill produces.
+2. **No blacklisted vocabulary.** The 16 banned words: מגוון, מרתק, חיוני, מהותי, ייחודי, רב-ממדי, מקיף, חדשני, פורץ דרך, חסר תקדים, משמעותי, מרכזי, בולט, רלוונטי, רב-תכליתי, מאתגר.
+3. **Maximum one negative parallelism per piece.** "לא X אלא Y" / "זה לא X, זה Y" / "לא מדובר ב-X אלא ב-Y" — any of these structures may appear AT MOST ONCE in the entire piece. More than one is a Tier 1 violation.
+4. **No significance inflation.** Banned phrases: מהווה אבן דרך משמעותית, משקף מגמה רחבה יותר, מסמל את, מהווה נקודת מפנה, מעיד על שינוי עמוק.
+5. **No macro copy windup sentences.** Banned structures: "ויש לזה מחיר אמיתי:" / "ופה בדיוק הבעיה מתחילה" / "וזה מה שמשנה את כל התמונה" / "וזה בדיוק הנקודה" / "בואו נדבר על".
+6. **No 3 or more consecutive same-length sentences.** Vary: after two similar-length sentences, the third must be noticeably shorter or longer.
+7. **No formal connectors in casual register.** In blog/social/email content, banned: לפיכך, אי לכך, יתרה מזאת, יתר על כן, על כן, משכך, הינו, כמו כן (as a sentence opener), אשר (as a relative pronoun in casual flow). Use casual equivalents: אז, ככה ש, חוץ מזה, וגם, ש instead.
+
+This oath is not checked later — it is active throughout generation. Violations caught during or after generation trigger mandatory surgical revision before output.
+
 **Step 1: Parse arguments**
 Extract all flags and values. Identify the main input text/topic. Set defaults for unspecified flags. Handle errors (missing required pairs, missing input).
 
 **Step 2: Detect content type**
 Auto-detect from input signals (keywords, format, length) or use --type flag value.
+
+**Step 2.5: Compute Variation Fingerprint** (Layer 9 Phase 1)
+Run all 7 steps of Layer 9 Phase 1: read variation log → assess context signals → select fingerprint dimensions → apply context mapping → check schema-opener compatibility → check memory constraints → commit fingerprint and pre-map root-family alternatives. Log the fingerprint. Note internally (output only if --show-score active).
 
 **Step 3: Load voice profile** (if `--voice`, `--my-voice`, `--my-voice-file`, or `--my-voice-files` specified)
 Analyze sample or load from file. Build internal voice model. Determine accuracy tier.
@@ -2057,23 +3604,72 @@ Analyze sample or load from file. Build internal voice model. Determine accuracy
 **Step 4: Enter Hebrew Mind mode**
 Plan structure in Hebrew. Choose arguments in Hebrew. Select vocabulary from Hebrew synonym space directly.
 
+**Step 4b: Soul-First Planning — Pre-Draft Soul Scaffolding**
+Before writing the draft, plan WHERE each soul technique will appear. This planning is mandatory — soul techniques retrofitted after drafting produce weaker, patchwork results. Mark these slots in the mental outline before starting Step 6:
+
+- **POSITION DECLARATION:** Where in the opening paragraph (must land within first 150 words) does the writer state their explicit position? What is the claim? Use first person + verb of belief/experience.
+- **PROPER NOUN SLOTS:** Every 200 words needs a real name/place/product/event. How many slots does the target length require? (500w piece = ~2 slots. 800w = ~4 slots.) Which real entities will fill them?
+- **MEMORY DROP:** Where does the specific past-tense memory land? Plan: time marker (month/year/season) + place + at least one unnecessary concrete detail.
+- **UNUSUAL NUMBER:** Which non-round number appears (not 10, not 50, not 100 — something like 37, or "שלוש וחצי שעות", or "שבע עשרה מתוך עשרים ושתיים")?
+- **STRONG NEGATIVE:** Where does the direct unhedged claim appear? "לא X" — not "לא תמיד X" — just "לא X".
+- **ASIDE:** Where does the parenthetical aside go (once per 400–600 words)? What is the tangential thought that reveals the writer's peripheral vision?
+- **VISIBLE THINKING:** Where is the mid-paragraph self-correction or discovery? Plan a specific moment: "בעצם — רגע, לא. זה לא מה שאמרתי."
+- **דווקא or HEBREW SOUL MARKER:** Where does the specifically-Israeli authenticity marker land?
+
+Writing the draft (Step 6) proceeds WITH this plan active. Soul techniques are woven in during drafting, not inserted afterward.
+
 **Step 5: Determine target length**
 short = 200-400 words, medium = 500-800, long = 1000-1500, xl = 2000+, NUMBER = that count (±10%). Default: medium.
 
 **Step 6: Generate initial draft**
-Apply all five layers:
+Apply all layers:
 - Layer 1: Hebrew-first composition (pro-drop, nominal sentences, particles, morphology)
 - Layer 4: Gender agreement with strategic imperfection, spelling variation, construct/של register matching, correct binyan choices
 - Layer 2: Avoid all blacklist words, all named patterns, all style anti-patterns
 - Layer 3: Dugri energy, register-appropriate slang and discourse markers, cultural texture, emotional authenticity
 - Layer 5: Burstiness (3-40 rule, rhythm pattern), perplexity (20-30% non-obvious choices), vocabulary diversity, n-gram variance
+- Layer 9 Phase 2: Before each paragraph — enforce opener rotation, connector category rotation, question type rotation, root-family lexical diversity, stance category rotation, paragraph-level structural burstiness. Run Spent Phrase Protocol check.
 - Apply content type register preset
+- Open with the declared Opener shape; maintain the declared Body Rhythm throughout; use vocabulary from the declared Register; end with the declared Closing type
+
+**Step 6.5: Tier 1 Violation Scanner**
+After generating the initial draft, before self-audit: scan explicitly for Tier 1 violations. This is NOT an internal mental check — it is a deliberate, item-by-item scan. The draft cannot proceed to Step 7 until this scan is clean.
+
+SCAN PROCEDURE — run each check in sequence:
+
+1. **Em-dash scan.** Search the entire draft for the character —. Every occurrence is a Tier 1 violation. Replacement rules: use a comma for a parenthetical ("החבר שלי, שגר בתל אביב, אמר..."), a period to split the sentence, parentheses for an aside ("(שזה נשמע מוזר, אני יודע)"), or a colon for emphasis ("יש לו רק בעיה אחת: הוא לא מקשיב").
+
+2. **Blacklist vocabulary scan.** Check the draft for each of the 16 banned words:
+   מגוון / מרתק / חיוני / מהותי / ייחודי / רב-ממדי / מקיף / חדשני / פורץ דרך / חסר תקדים / משמעותי / מרכזי / בולט / רלוונטי / רב-תכליתי / מאתגר
+   Any occurrence: delete the word and rephrase the sentence without it. Do not replace with a near-synonym that carries the same abstract weight — replace with a specific claim.
+
+3. **Negative parallelism count.** Count all occurrences of these structures: "לא [X] אלא [Y]" / "זה לא X, זה Y" / "לא מדובר ב-X אלא ב-Y" / "לא [X]. [Y]" (when the second sentence directly reverses the first as the main argumentative move). More than 1 occurrence? Keep the strongest instance, revise or remove the rest.
+
+4. **Significance inflation scan.** Search for: מהווה אבן דרך / משקף מגמה רחבה / מסמל את / מהווה נקודת מפנה / מעיד על שינוי עמוק / תורם לשיח הרחב. Found? Replace the entire sentence with the factual claim it was announcing.
+
+5. **Macro copy windup scan.** Search for: "ויש לזה מחיר" / "ופה בדיוק הבעיה" / "וזה מה שמשנה" / "וזה בדיוק הנקודה" / "בואו נדבר על". Found? Delete the sentence. The content that follows should make its own point without a drum roll.
+
+6. **Consecutive same-length sentences.** Scan for any three adjacent sentences with similar word counts (within 3 words of each other). Found? Shorten the third to a fragment, or extend it significantly.
+
+**IF ANY VIOLATION WAS FOUND AND REVISED:** Re-run the full 6-step scan on the revised draft before proceeding. Revisions sometimes introduce new violations.
+
+**Only when the scan is clean:** proceed to Step 7.
 
 **Step 7: Self-audit loop** (Layer 6)
-Score mentally against all 8 dimensions. Identify weak spots. Rewrite those sections. Run quick-check checklist. Emergency rebuild if needed.
+Score against all 9 dimensions. Identify weak spots. Rewrite those sections. Run the Quick-Check Checklist (Tier 1 section at top). Emergency rebuild if needed. The Tier 1 scan in Step 6.5 should have already cleared Tier 1 violations — Layer 6's Tier 1 checks are the backup confirmation, not the primary enforcement.
 
 **Step 8: Voice adjustments** (Layer 7, if profile loaded)
-Apply the internal voice model: sentence length preferences, discourse marker patterns, characteristic vocabulary, opinion expression style, paragraph opening habits.
+Apply the Smart Fusion Engine priority order:
+1. First, read and internalize Key Tells (absolute rules)
+2. Then Differential Features (if present)
+3. Then read the top 3 Signature Passages — mentally feel their rhythm and voice
+4. Apply Behavioral Profile preferences (if --setup-deep was run)
+5. Calibrate frequencies to 42-Feature measurements as supporting scaffold
+6. Generate, constantly checking: "Does this fit alongside the Signature Passages?"
+7. If any generated paragraph feels off from the Key Tells or Passages, revise immediately
+
+**Step 8.5: Soul Layer activation** (Layer 8)
+Run the Soul Layer Activation Protocol. Verify all 20 technique slots against the activation table. At minimum: proper noun density, position declaration, one strong negative, one davka move or dugri opener, one memory drop or stake declaration, one moment of visible thinking. If any minimum is missing, insert it now — not by adding a separate section, but by revising the existing text to carry the soul technique naturally.
 
 **Step 9: Length check**
 Is the output within 10% of the target word count? If over: cut padding sentences identified as low-density in the audit. If under: expand the sections with the most substance — not by adding filler.

@@ -9,7 +9,11 @@
       "Read(//c/Users/Lenovo/.claude/voices/**)",
       "Bash(mkdir -p ~/.claude/skills/hebrew-writer-v4)",
       "Bash(cp ~/.claude/skills/hebrew-writer-v3-1/SKILL.md ~/.claude/skills/hebrew-writer-v4/SKILL.md)",
-      "Bash(cp ~/.claude/skills/hebrew-writer-v3-1/voice-profile-template.md ~/.claude/skills/hebrew-writer-v4/voice-profile-template.md)"
+      "Bash(cp ~/.claude/skills/hebrew-writer-v3-1/voice-profile-template.md ~/.claude/skills/hebrew-writer-v4/voice-profile-template.md)",
+      "Bash(cp ~/.claude/skills/hebrew-writer-v4/SKILL.md \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/SKILL-v4.md\")",
+      "Bash(cp ~/.claude/skills/hebrew-writer-v4/voice-profile-template.md \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template-v4.md\")",
+      "Bash(cp \"/c/Users/Lenovo/.claude/skills/hebrew-writer-v4/SKILL.md\" \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/SKILL.md\")",
+      "Bash(cp \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template-v4.md\" \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template.md\")"
     ]
   }
 }
