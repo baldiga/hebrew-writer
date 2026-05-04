@@ -19,7 +19,7 @@ description: |
   "humanize Hebrew", "sound Israeli", "Hebrew blog", "Hebrew article",
   "rewrite in Hebrew", "detect AI Hebrew", "תכתוב לי", "shadow writer"
 user-invocable: true
-argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--setup] [--setup-deep] [--calibrate] [--fresh] [--type blog|academic|social|business|email|creative|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
+argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--setup] [--setup-deep] [--calibrate] [--fresh] [--type blog|news|op-ed|landing|newsletter|technical|academic|social|business|email|creative|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
 allowed-tools:
   - Read
   - Write
@@ -96,6 +96,11 @@ When `--type auto` (the default), detect from input signals:
 | Contains מחקר, תזה, ביבליוגרפיה, מתודולוגיה, השערה, ממצאים | academic |
 | Hashtag (#), emoji, very short input (<50 words), @mention | social |
 | Opens with שלום, לכבוד, בברכה, subject line format, reply context | email |
+| Dateline ("תל אביב, [תאריך]"), agency name (רויטרס/AP/Reuters), "דווח היום," "(צילום:)," "מקורות מסרו" | news |
+| Opens with "היי" / "שלום לכולם" + first-person ongoing context, references to "גיליון קודם" / "פעם הקודמת" | newsletter |
+| Code blocks, "שלב 1/2/3", "prerequisites:", numbered install steps, technical English jargon | technical |
+| First-person sustained argument 600+ words, byline format, "טור דעה:" / "דעה:" prefix | op-ed |
+| CTA verbs ("הצטרפו", "נסו", "הירשמו"), value-prop framing, headline + subhead structure, button-like text | landing |
 | Business jargon, company/product context, B2B framing | business |
 | Story framing, character names, narrative voice, poetry | creative |
 | Anything else | blog |
@@ -105,6 +110,11 @@ When `--type auto` (the default), detect from input signals:
 | Type | Register | Slang | Discourse Markers | Cultural Refs |
 |------|----------|-------|-------------------|---------------|
 | blog | casual | light-moderate | 3-5% | frequent |
+| news | semi-formal/journalistic | none | minimal | subtle, factual |
+| op-ed | semi-formal but dugri | תכל'ס survives | 1-2% | frequent, sharp |
+| landing | direct/punchy | minimal | rare | rare |
+| newsletter | warm-casual | light | 2-3% | frequent, intimate |
+| technical | precise/terse | תכל'ס only | rare | rare |
 | academic | formal | none | near zero (formal connectors instead) | subtle |
 | social | ultra-casual | heavy | 5%+ | constant |
 | business | semi-formal | minimal (תכל'ס survives, יאללה doesn't) | 1% | occasional |
@@ -1071,6 +1081,74 @@ These presets modify Layer 3 and Layer 5 behavior by content type.
 **Discourse markers:** 2-3% target
 **Slang:** Light-moderate — סבבה, תכל'ס, ממש, סתם are fine
 **Characteristic opener:** Jump into the topic or the opinion in sentence one. No warm-up.
+
+## News / כתבת חדשות
+
+**Voice:** Journalistic, neutral-but-not-bland. Reports facts, attributes claims to named sources (not "מחקרים מראים" — instead "לפי דובר משטרת ישראל..." / "ynet פרסם הבוקר ש..."). Avoid first-person.
+**Structure:** Inverted pyramid — most important fact in lead sentence. Each paragraph adds detail. Reader can stop at any paragraph and have the main story.
+**Rhythm:** Medium sentences (10-15 words avg). Less burstiness than blog — news has its own rhythm: fact, attribution, context, fact, attribution, context.
+**Formality:** 6/10
+**Construct state vs. של:** 60/40 split (more construct — שר הביטחון, ראש הממשלה, etc.)
+**Discourse markers:** Minimal. אז/בעצם appear sparingly when paraphrasing a source.
+**Slang:** None — except inside direct quotes from interviewees.
+**Cultural refs:** Subtle; appear naturally because the news IS the cultural context.
+**Dugri rule modified:** No first-person opinion. The journalist's position appears through SELECTION (which facts get the lead, which sources are quoted) — not through editorializing verbs.
+**Characteristic opener:** Lead sentence answers ≥3 of: who/what/when/where/why. Example: "שני אנשים נפצעו הבוקר (חמישי) בתאונת דרכים בכביש 4 סמוך למחלף שילת."
+**Banned for news:** Macro copy windups, LinkedIn punchlines, op-ed style first-person, marketing adjectives.
+
+## Op-Ed / טור דעה
+
+**Voice:** Sustained argued opinion. More dugri than blog (this is THE place for it), but with a journalist's discipline — every claim is defended, not just dropped.
+**Structure:** Hook (1 paragraph) → position declared explicitly (1 paragraph) → 3-4 supporting paragraphs each defending one angle → counterargument acknowledged seriously → return to position with sharpened version → close that doesn't bow.
+**Rhythm:** Longer than blog — sentences can run 15-25 words when developing an argument. Fragments still appear at pivots.
+**Formality:** 5/10
+**Construct state vs. של:** 50/50
+**Discourse markers:** 1-2% — בעצם, דווקא, אבל used at argument turns; not for hesitation.
+**Slang:** תכל'ס survives in dugri moments. אחי / יאללה don't.
+**Cultural refs:** Frequent and sharp — this is op-ed, the writer trades on shared cultural knowledge.
+**Characteristic opener:** State the position in the first 2 sentences, then back up. No coy buildup.
+**Length:** Default to long (1000-1500w) when type=op-ed.
+
+## Landing / דף נחיתה
+
+**Voice:** Direct, persuasive, scannable. The reader is here to decide whether to act. No fluff.
+**Structure:** Headline (≤8 words) → subhead (≤20 words) → 3-5 short paragraphs of value props, each with its own H2/H3 → CTA repeated 2-3 times.
+**Rhythm:** Very short. Most sentences ≤10 words. Bullet lists are fine here (one of the few content types where they don't read as "AI slide deck").
+**Formality:** 4/10 — direct but not slangy; trustworthy.
+**Construct state vs. של:** 40/60
+**Discourse markers:** Rare. The reader is scanning, not listening.
+**Slang:** None except where it matches the brand voice (a B2C startup landing page can use תכל'ס; a B2B SaaS page should not).
+**Cultural refs:** Rare — landing pages often address a non-Israeli audience too.
+**Dugri rule modified:** Take a position about the PRODUCT (it solves X, it doesn't try to do Y), not about ideology. The position is value-prop, not opinion.
+**Characteristic opener:** Headline states the value-prop in plain Hebrew. Banned: "פתרון מקיף ל..." / "החדשנות שמשנה את..." / "הכלי שכולם מדברים עליו." Allowed: specific, concrete claim ("חוסך 5 שעות בשבוע למנהלי תיקים בתל אביב").
+
+## Newsletter / ניוזלטר
+
+**Voice:** Warm and intimate, like writing to a friend you haven't seen in a week. Recurring relationship — refer to past issues when natural.
+**Structure:** Greeting (היי / שלום לכולם / בוקר טוב) → personal opener (1-2 sentences about the writer's week, optional) → 2-3 sections separated by mini-headlines → closing line + sign-off.
+**Rhythm:** Mid-length, conversational. Some fragments. Some long enthusiastic sentences.
+**Formality:** 3/10
+**Construct state vs. של:** 30/70
+**Discourse markers:** 2-3% — natural conversational pace.
+**Slang:** Light. תכל'ס, ממש, באמת, נו fit. סבבה / יאללה sparingly.
+**Cultural refs:** Frequent and intimate — shared insider context with regular readers.
+**Characteristic opener:** Greeting + one specific personal detail anchoring this issue's vibe. Banned: "ברוכים הבאים לגיליון השבוע" (corporate). Allowed: "היי. השבוע הזה היה ארוך, ואני כנראה חולה. בכל זאת — שלושה דברים שכדאי לקרוא."
+**Sign-off:** First name, optionally with one extra line of warmth or self-aware humor. Not "בברכה."
+
+## Technical / טכני
+
+**Voice:** Precise, terse, helpful. The reader is trying to do something. Get them there.
+**Structure:** Goal stated upfront → prerequisites listed → numbered steps → expected output / "you should now see" → common pitfalls section if relevant.
+**Rhythm:** Sentences kept short and active. Fragments OK in step descriptions ("כעת — לאתחל").
+**Formality:** 5/10 — neutral, not stiff.
+**Construct state vs. של:** 50/50
+**Discourse markers:** Rare. Allowed at pivot moments: "אם זה לא עבד, בעצם, יש סיבה אחת בעיקר..."
+**Slang:** None except תכל'ס where it actually clarifies ("תכל'ס, מה שצריך לעשות זה...").
+**Cultural refs:** None (technical docs travel internationally).
+**English tech terms:** Keep in English where the Hebrew translation is awkward (commit, push, deploy, container, regex). Don't force תרגומים תקניים שאיש לא משתמש בהם.
+**Code blocks:** Use them. Hebrew prose around them, Latin/English inside.
+**Characteristic opener:** "המטרה: [X]. הצעד הראשון: [Y]." Banned: poetic intros, "במאמר זה נסביר" preludes. Just start.
+**Dugri rule modified:** Honesty about what won't work. "אם אתה ב-Windows — הסקריפט הזה לא יעבוד לך. תקפוץ ל-WSL או תעבוד בקובץ .bat נפרד."
 
 ## Academic / Professional
 
