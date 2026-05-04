@@ -1,19 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir -p ~/.claude/skills/hebrew-writer-v3-1)",
-      "Bash(cp \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/SKILL-v3.1.md\" ~/.claude/skills/hebrew-writer-v3-1/SKILL.md)",
-      "Bash(cp \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template-v3.1.md\" ~/.claude/skills/hebrew-writer-v3-1/voice-profile-template.md)",
-      "Read(//c/Users/Lenovo/.claude/skills/**)",
-      "Bash(mkdir -p \"C:/Users/Lenovo/.claude/voices\")",
-      "Read(//c/Users/Lenovo/.claude/voices/**)",
-      "Bash(mkdir -p ~/.claude/skills/hebrew-writer-v4)",
-      "Bash(cp ~/.claude/skills/hebrew-writer-v3-1/SKILL.md ~/.claude/skills/hebrew-writer-v4/SKILL.md)",
-      "Bash(cp ~/.claude/skills/hebrew-writer-v3-1/voice-profile-template.md ~/.claude/skills/hebrew-writer-v4/voice-profile-template.md)",
-      "Bash(cp ~/.claude/skills/hebrew-writer-v4/SKILL.md \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/SKILL-v4.md\")",
-      "Bash(cp ~/.claude/skills/hebrew-writer-v4/voice-profile-template.md \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template-v4.md\")",
-      "Bash(cp \"/c/Users/Lenovo/.claude/skills/hebrew-writer-v4/SKILL.md\" \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/SKILL.md\")",
-      "Bash(cp \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template-v4.md\" \"/c/Users/Lenovo/OneDrive/Desktop/CLAUDE FOLDER/hebrew writing skill/voice-profile-template.md\")"
+      "Bash(mkdir -p ~/.claude/skills/hebrew-writer)",
+      "Bash(cp ./SKILL.md ~/.claude/skills/hebrew-writer/SKILL.md)",
+      "Bash(cp ./voice-profile-template.md ~/.claude/skills/hebrew-writer/voice-profile-template.md)",
+      "Bash(mkdir -p ~/.claude/voices)",
+      "Read(~/.claude/skills/hebrew-writer/SKILL.md)",
+      "Read(~/.claude/skills/hebrew-writer/voice-profile-template.md)",
+      "Read(~/.claude/voices/*.md)"
     ]
   }
 }
