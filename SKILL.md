@@ -19,7 +19,7 @@ description: |
   "humanize Hebrew", "sound Israeli", "Hebrew blog", "Hebrew article",
   "rewrite in Hebrew", "detect AI Hebrew", "תכתוב לי", "shadow writer"
 user-invocable: true
-argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--setup] [--setup-deep] [--calibrate] [--fresh] [--type blog|news|op-ed|landing|newsletter|technical|academic|social|business|email|creative|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
+argument-hint: '"topic or text" [--mode generate|rewrite|detect] [--setup] [--setup-deep] [--calibrate] [--fresh] [--type blog|news|op-ed|landing|newsletter|technical|academic|social|business|email|creative|auto] [--audience general|expert|developer|executive|customer|internal|youth|auto] [--length short|medium|long|xl|NUMBER] [--gender male|female|neutral] [--voice profile-name] [--my-voice "sample text"] [--my-voice-file path] [--learn "text" --save-as name] [--show-score]'
 allowed-tools:
   - Read
   - Write
@@ -62,6 +62,8 @@ Strip flags from `$ARGUMENTS`; remainder is the topic/text. All flags and their 
 **Length targets:** short=200-400w · medium=500-800w · long=1000-1500w · xl=2000+w · NUMBER=±10%.
 
 **Gender flag** controls the WRITER's first-person conjugation (`female` → אני חושבת/רציתי/כתבתי), not the audience.
+
+**Audience flag** is a MODIFIER on top of `--type`. It changes assumed knowledge level, jargon allowance, formality bump, and CTA framing — but does NOT replace the type's structural rules. Default `auto` infers from the topic (technical topic + dev terms → developer; business pitch + ROI framing → executive; consumer product → customer; otherwise → general). See Audience Profiles section for the per-audience modifications.
 
 **Error handling:**
 - No text AND no file flag → `AskUserQuestion`: "על מה לכתוב? / What should I write about?"
@@ -1200,6 +1202,84 @@ These presets modify Layer 3 and Layer 5 behavior by content type.
 
 ---
 
+# Audience Profiles
+
+`--audience` is a MODIFIER applied on top of `--type`. It does NOT change the type's structural rules (a news article stays inverted-pyramid; a landing page keeps its CTA structure). It DOES change: assumed knowledge level, jargon density, vocabulary pitch, formality bump, second-person usage, and what counts as a "specific" reference.
+
+**Application order in the Generation Pipeline:** Apply `--type` preset first (Step 6), then layer the `--audience` modifier on top.
+
+## general (default)
+
+**Assumed knowledge:** None. Briefly define any term that's not high-school Hebrew.
+**Jargon density:** Minimal. Replace ז'רגון with concrete description on first use.
+**Formality:** ±0 (use the type's default).
+**Cultural references:** Pan-Israeli — army, weather, bureaucracy, Pesach, traffic. Avoid niche subculture references.
+**Second person:** Singular אתה/את — addressing one reader at a time.
+**Banned for general:** Specialty acronyms without expansion. Inside-baseball references ("הסיפור עם פלוני בכנס באזור 3").
+
+## expert / מומחה
+
+**Assumed knowledge:** Domain insider. Skip 101 explanations. Reference frameworks, methods, and historical debates by name without unpacking.
+**Jargon density:** Full. Use the actual technical/academic terminology of the field — Hebrew where the term has a real Hebrew form, English/transliterated where the field uses it that way (e.g., "פוסט-סטרוקטורליסטי", "kernel method", "MIRR").
+**Formality:** +1 from the type's base. Peer-to-peer professional, not customer-facing.
+**Cultural references:** Domain-specific — refer to seminal papers, key conferences, leading practitioners. Less general-public color.
+**Second person:** Often plural אנחנו (peer framing) or impersonal infinitive constructions.
+**Banned for expert:** "כפי שכולם יודעים" (patronizing) · explanations of basic terminology · marketing adjectives.
+
+## developer / מפתח
+
+**Assumed knowledge:** Programming literate. Familiar with at least one mainstream stack. Knows what "deploy", "branch", "API" mean.
+**Jargon density:** English tech terms preserved as English: commit, push, merge, deploy, container, regex, async, callback, bug, refactor, PR, CI/CD, SDK, lint. Don't force Hebrew translations that real devs don't use.
+**Formality:** ±0 (the type's default — but devs prefer terse-direct over warm-conversational).
+**Code:** Code blocks belong here. Use them for snippets, error messages, file paths, command lines. Hebrew prose around them, code itself in Latin/English.
+**Examples > theory:** Lead with a concrete code example or terminal output, then explain. Not the reverse.
+**Cultural references:** Tech-Israel specific — startup names, hub neighborhoods (פלורנטין, רמת החייל), שרת מילואים, חברות גדולות (Wix, Monday, Lemonade), Geektime, Make.
+**Second person:** אתה/את in tutorial context. אנחנו for shared-debugging framing.
+**Banned for developer:** Over-explained basics ("Git, מערכת בקרת גרסאות, מאפשרת ל...") · marketing language about tools · "ליצור חוויית משתמש מהפכנית."
+
+## executive / מנהל בכיר
+
+**Assumed knowledge:** Business-fluent. Knows the company's domain. Doesn't have time for context paragraphs.
+**Jargon density:** Business terms (ROI, runway, EBITDA, אקזיט, סבב, MRR, churn) used naturally. Tech jargon only when essential, with one-line context.
+**Formality:** +1 — professional, but Israeli-direct. תכל'ס survives, יאללה doesn't.
+**Length cap:** Soft cap at medium even if `--length long` is requested. Executives stop reading. If long IS requested, structure with an executive summary in the first 3 sentences, details below.
+**Lead with the bottom line:** First sentence states the conclusion / the ask / the dollar figure. Background follows.
+**Cultural references:** Business-Israel — Tel Aviv ecosystem, IDF intelligence-unit alumni networks, specific companies, board dynamics.
+**Second person:** Often skipped — write as a memo or briefing.
+**Banned for executive:** "כמו שכולנו יודעים" preludes · narrative buildup · sustained anecdotes longer than two sentences · soft language ("יכול להיות שאולי") instead of a recommendation.
+
+## customer / לקוח
+
+**Assumed knowledge:** Outsider. Doesn't know the company's product, internal terminology, or industry shorthand.
+**Jargon density:** Zero internal jargon. Replace product code names with descriptive labels. Replace feature names with what they DO for the reader.
+**Formality:** -1 from type's base — warmer, more accessible. Even a B2B landing page reads more conversational here.
+**Value language, not spec language:** "תקבלו דוח שבועי שמראה איפה הזמן הולך" beats "פלטפורמת analytics עם dashboard מתקדם." Translate every feature into a benefit the customer feels.
+**Second person:** Heavy אתה/את (or plural אתם for B2B). Address them directly, often.
+**Cultural references:** General-Israeli, accessible — avoid in-group startup ecosystem references that read as exclusionary.
+**Banned for customer:** Internal feature codenames · "כפי שראינו ברבעון האחרון" (you = company speaking to itself) · acronyms without expansion · "הפלטפורמה שלנו" repeated in every paragraph.
+
+## internal / פנים-ארגוני
+
+**Assumed knowledge:** Full. Shared context with team. Project codenames, internal acronyms, named individuals, last week's incident — all fair game without setup.
+**Jargon density:** Maximum. Use the team's actual vocabulary, including codenames the public doesn't know.
+**Formality:** -1 from type's base — peer-to-peer, slightly looser.
+**Cultural references:** Inside jokes, recurring team memes, named meetings ("בסטנדאפ של שלישי").
+**Second person:** אתם / אנחנו common — addressing a known group.
+**Banned for internal:** Over-explanation that wastes the reader's time ("צוות הפיתוח שלנו, שמורכב מ-X מפתחים...") · external-facing marketing tone · padding sentences.
+
+## youth / נוער
+
+**Assumed knowledge:** Variable — assume social-media literate, less institutional knowledge.
+**Jargon density:** Heavy slang including current Gen Z slang (לא חיל, על הכיפק, זה הצ'יל, ב-מיליון אחוז). Mix Hebrew + English freely (random ✨ אסטטי, vibes, no cap, mid).
+**Formality:** -2 from type's base. Even an academic explainer for youth uses far more casual register.
+**Rhythm:** Ultra-short. Many fragments. Longer "thought-stream" sentences are fine when emotional.
+**Emoji:** Tolerated in social/newsletter types, not in news/op-ed.
+**Cultural references:** Pop culture, TikTok references, music, gaming, content creators. NOT army (Gen Z hasn't served yet) or political nostalgia.
+**Second person:** Singular אתה/את, often.
+**Banned for youth:** Patronizing tone ("נוער יקר") · "כדאי שתדעו" · trying-too-hard slang from the wrong era ("חבר'ה, באמת ש...") · long paragraphs.
+
+---
+
 # LAYER 6: Self-Audit Loop
 
 ## The Process
@@ -1228,7 +1308,7 @@ For full revision diagnostics (8/10 and Below 8 explanations per dimension), loa
 | 5 | נשמה (Soul, basic) | 7% | ≥1 moment of genuine emotion; ≥1 place where thinking is visible (mid-sentence correction, "I don't know"); the stakes are clear. |
 | 5b | נשמה עמוקה (Deep Soul) | 7% | ≥1 proper noun or unusual specific number; ≥1 visible-thinking moment; ≥1 stake declared; ≥1 Hebrew soul marker (דווקא, memory drop, register shift). See `layers/soul-deep.md`. |
 | 6 | צפיפות (Density) | 6% | Remove any sentence and something is lost. No padding, no restated openings. |
-| 7 | רישום (Register) | 6% | Formality matches content type and `--gender` flag. Slang-to-connector ratio matches the Content Type Preset exactly. |
+| 7 | רישום (Register) | 6% | Formality matches content type AND audience modifier. Slang-to-connector ratio matches the Content Type Preset, with the Audience Profile bump applied. Second-person framing matches the audience (אתה for general/customer, אתם for internal/B2B, often-skipped for executive). |
 | 8 | אנטי-זיהוי (Anti-Detection) | 18% | Zero blacklist words. Zero em-dashes. Genuinely varied sentence lengths. ≥20-30% non-obvious word choices. No repeated openers across consecutive paragraphs. No connector repeated within 300 words. |
 | 9 | מגוון (Versatility) | 10% | Variation Fingerprint computed and logged. No two consecutive paragraphs share an opener type. ≥3 stance categories (in 600+ word pieces). No root family within 80 words. ≥1 single-sentence paragraph. See `layers/versatility.md`. |
 
@@ -1666,6 +1746,7 @@ Apply all layers:
 - Layer 5: Burstiness (3-40 rule, rhythm pattern), perplexity (20-30% non-obvious choices), vocabulary diversity, n-gram variance
 - Layer 9 Phase 2 (only if `versatility.md` loaded): Before each paragraph — enforce opener rotation, connector category rotation, question type rotation, root-family lexical diversity, stance category rotation, paragraph-level structural burstiness. Run Spent Phrase Protocol check.
 - Apply content type register preset
+- **Apply audience modifier ON TOP of type preset** (see Audience Profiles section). The type sets structure; the audience adjusts knowledge assumptions, jargon density, formality bump, and second-person framing. If `--audience auto`, infer from topic signals before drafting.
 - Open with the declared Opener shape; maintain the declared Body Rhythm throughout; use vocabulary from the declared Register; end with the declared Closing type
 
 **Step 6.5: Tier 1 Violation Scanner**
